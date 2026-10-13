@@ -52,6 +52,36 @@ footer{background:#11140f;color:#d8d9cf;padding:32px 0}.foot{display:flex;justif
 @media(max-width:980px){.links{gap:13px}.links a{font-size:11px}.brand{min-width:auto}.nav-link{display:none}.category-grid,.product-grid{grid-template-columns:repeat(2,1fr)}.trust-row{grid-template-columns:repeat(2,1fr)}.hero-panel{grid-template-columns:1fr  .8fr}.hero-copy{padding:36px}.hero-art{min-height:390px}.steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.announcement{font-size:9px}.nav{height:70px}.brand-emblem{width:46px;height:46px;flex-basis:46px}.brand-name{font-size:11px}.brand-name span{font-size:9px}.menu{display:block}.links{display:none;position:absolute;left:0;right:0;top:70px;background:var(--paper);padding:18px 4%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.links.open{display:flex;background:#11141b;color:#f1eee6}.hero{padding-top:22px}.hero-panel{grid-template-columns:1fr}.hero-copy{padding:32px 25px 28px}.hero h1{font-size:48px}.hero-art{min-height:310px}.full-logo-card{width:min(88%,340px);padding:15px}.logo-img{width:100%;max-height:260px}.section-top{display:block}.section-top p{margin-top:15px}.trade-grid{grid-template-columns:1fr}.dealer-banner{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr;gap:28px}section{padding:64px 0}}
 @media(max-width:440px){.category-grid,.product-grid,.trust-row,.steps{grid-template-columns:1fr}.category{min-height:unset}.trust-item{padding:14px}.hero h1{font-size:43px}.hero-proof{gap:11px}.product-image{height:205px}.form{grid-template-columns:1fr}.field.full,.form-actions{grid-column:1}.hero-buttons .btn{width:100%}.foot{align-items:flex-start;flex-direction:column}}
+
+/* Final noir overrides: deliberately placed last so they win over legacy theme rules */
+:root{--ink:#f4ede0!important;--muted:#b3a796!important;--paper:#0b0908!important;--white:#12100d!important;--gold:#e4b95b!important;--gold-light:#f5d68a!important;--line:rgba(228,185,91,.22)!important;--dark:#080706!important}
+body{background:#0b0908!important;color:#f4ede0!important}
+header{background:rgba(8,7,6,.94)!important;color:#f4ede0!important;border-bottom:1px solid rgba(228,185,91,.22)!important}
+.announcement{background:#080706!important;color:#e9ddc4!important;border-bottom:1px solid rgba(228,185,91,.22)!important}
+.hero-panel{background:#11100d!important;border:1px solid rgba(228,185,91,.22)!important;box-shadow:0 28px 90px #0007!important}
+.hero-copy{background:linear-gradient(135deg,#11100d,#19150f)!important}
+.hero h1,.hero-copy h1{color:#f7f0e5!important}
+.hero h1 em,.hero-copy h1 em{color:#e4b95b!important}
+.hero-copy p{color:#c0b4a2!important}
+.hero-art{background:radial-gradient(circle at 50% 42%,#263a2c,#0b1710 72%)!important}
+.full-logo-card{background:#fffaf0!important;box-shadow:0 25px 70px #0005!important}
+.brand-emblem{background:#fffaf0!important;border:1px solid #e4b95b!important;object-fit:contain!important}
+.brand-name{color:#f4ede0!important}.links,.links a{color:#eee5d5!important}
+.nav-link{border-color:#e4b95b!important;color:#f5d68a!important;background:transparent!important}
+.btn{background:linear-gradient(135deg,#f5d68a,#d4a64d)!important;color:#17100a!important;border-color:#e4b95b!important}
+.btn.light{background:transparent!important;color:#f4ede0!important;border-color:#65563c!important}
+.trust-row,.trust-item,.category,.product-card,.bulk-card,.dealer-card,.contact-card{background:#12100d!important;color:#f4ede0!important;border-color:rgba(228,185,91,.2)!important}
+section{background:transparent!important;color:#f4ede0!important}
+section:nth-of-type(even){background:#0e0c09!important}
+h2,h3,h4,.section-top h2{color:#f4ede0!important}
+p,.category p,.section-top p,.trust-item small{color:#b3a796!important}
+.category a,.text-link{color:#f5d68a!important}
+input,select,textarea{background:#100e0b!important;color:#f4ede0!important;border-color:#5a4930!important}
+input::placeholder,textarea::placeholder{color:#817665!important}
+footer{background:#080706!important;color:#f4ede0!important;border-top:1px solid rgba(228,185,91,.22)!important}
+footer a{color:#b3a796!important}
+@media(max-width:760px){.hero-panel{grid-template-columns:1fr!important}.hero-art{min-height:320px!important}.nav-links.open{background:#0b0908!important}}
+
 </style>
 </head>
 <body>
@@ -60,7 +90,7 @@ footer{background:#11140f;color:#d8d9cf;padding:32px 0}.foot{display:flex;justif
 <div class="loader-title">DHARAMRAJ CARTEL</div><div class="loader-line"></div></div></div>
 <div class="announcement">RETAIL · WHOLESALE · GLOBAL SOURCING <b>— INDIA & CHINA</b></div>
 <header><div class="wrap nav">
-<a class="brand" href="#home" aria-label="Dharamraj Cartel home"><img class="brand-emblem" src="./favicon.svg" width="48" height="48" alt="Dharamraj Cartel Kalash emblem"><span class="brand-name">DHARAMRAJ<span>CARTEL</span></span></a>
+<a class="brand" href="#home" aria-label="Dharamraj Cartel home"><img class="brand-emblem" src="./%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%B0%E0%A4%BE%E0%A4%9C%20Cartel%20Emblem.png" width="48" height="48" alt="Dharamraj Cartel Kalash emblem"><span class="brand-name">DHARAMRAJ<span>CARTEL</span></span></a>
 <nav class="links" id="navlinks"><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#bulk">Bulk Import</a><a href="#dealers">Dealer Network</a><a href="#contact">Contact</a></nav>
 <div class="nav-actions"><a class="nav-link" href="#bulk">Request a quote ↗</a><button class="menu" id="menu" aria-label="Toggle navigation" aria-expanded="false">☰</button></div>
 </div></header>
@@ -106,7 +136,7 @@ footer{background:#11140f;color:#d8d9cf;padding:32px 0}.foot{display:flex;justif
 <div class="form-actions"><button class="btn" type="submit">Prepare enquiry email ↗</button><span class="form-help">Your email app will open with the enquiry details. This demo form does not store submissions.</span></div>
 </form></div></section>
 </main>
-<footer><div class="wrap foot"><div class="foot-brand"><img class="foot-emblem" src="./favicon.svg" width="44" height="44" alt="Dharamraj Cartel Kalash emblem" loading="lazy"><div>DHARAMRAJ CARTEL<small>RETAIL · WHOLESALE · GLOBAL SOURCING</small></div></div><div class="foot-links"><a href="#shop">Shop</a><a href="#bulk">Bulk Import</a><a href="#dealers">Dealers</a><a href="#contact">Contact</a></div><div class="copyright">© <span id="year">2026</span> Dharamraj Cartel. All rights reserved.</div></div></footer>
+<footer><div class="wrap foot"><div class="foot-brand"><img class="foot-emblem" src="./%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%B0%E0%A4%BE%E0%A4%9C%20Cartel%20Emblem.png" width="44" height="44" alt="Dharamraj Cartel Kalash emblem" loading="lazy"><div>DHARAMRAJ CARTEL<small>RETAIL · WHOLESALE · GLOBAL SOURCING</small></div></div><div class="foot-links"><a href="#shop">Shop</a><a href="#bulk">Bulk Import</a><a href="#dealers">Dealers</a><a href="#contact">Contact</a></div><div class="copyright">© <span id="year">2026</span> Dharamraj Cartel. All rights reserved.</div></div></footer>
 <script>
 const menu=document.getElementById('menu'),nav=document.getElementById('navlinks');
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
