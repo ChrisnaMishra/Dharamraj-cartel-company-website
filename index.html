@@ -14,10 +14,27 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dharamraj Cartel — Shop, Source & Supply">
 <meta property="og:description" content="Retail products, wholesale supply, and import sourcing from India and China.">
-<meta property="og:image" content="https://chrisnamishra.github.io/Draramraj-cartel-company-website/धर्मराज%20Cartel%20Emblem.png">
+<meta property="og:image" content="https://chrisnamishra.github.io/Dharamraj-cartel-company-website/धर्मराज%20Cartel%20Emblem.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chrisnamishra.github.io/Draramraj-cartel-company-website/धर्मराज%20Cartel%20Emblem.png">
+<meta name="twitter:image" content="https://chrisnamishra.github.io/Dharamraj-cartel-company-website/धर्मराज%20Cartel%20Emblem.png">
 <style>
+:root{--ink:#f4ede0;--muted:#b3a796;--paper:#0b0908;--white:#12100d;--gold:#e4b95b;--gold-light:#f5d68a;--line:rgba(228,185,91,.22);--green:#263b30;--dark:#080706;--radius:14px;--shadow:0 22px 60px #0008}
+html{background:#0b0908}body{background:radial-gradient(ellipse at 80% 0%,rgba(228,185,91,.09),transparent 35%),#0b0908;color:#f4ede0}
+#cinema-loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#090807;transition:opacity .8s ease,visibility .8s ease}
+#cinema-loader.done{opacity:0;visibility:hidden;pointer-events:none}.loader-inner{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.loader-mark{width:86px;height:86px;object-fit:contain;border:1px solid rgba(228,185,91,.5);border-radius:50%;padding:8px;animation:markPulse 1.8s ease-in-out infinite;background:#fff}
+.loader-title{font-family:Georgia,serif;letter-spacing:.25em;color:#e4b95b;font-size:clamp(12px,2vw,16px)}.loader-line{width:180px;height:2px;background:#292219;overflow:hidden}
+.loader-line:after{content:"";display:block;width:40%;height:100%;background:#e4b95b;animation:loadSweep 1.2s ease-in-out infinite}
+@keyframes loadSweep{from{transform:translateX(-110%)}to{transform:translateX(360%)}}@keyframes markPulse{50%{box-shadow:0 0 32px #e4b95b33;transform:scale(1.04)}}
+header{background:rgba(8,7,6,.88);border-bottom:1px solid var(--line)}.announcement{background:#080706;color:#e9ddc4;border-bottom:1px solid var(--line)}
+.brand-emblem,.foot-emblem{background:#fff;border:1px solid var(--gold)}.brand-name{color:#f4ede0}.links a{color:#d6c9b5}
+.nav-link,.btn{border-color:var(--gold);background:linear-gradient(135deg,#f5d68a,#d4a64d);color:#17100a}
+h1,h2,h3,h4{color:#f7f0e5}p,.muted,.form-help{color:#b3a796}input,select,textarea{background:#100e0b!important;color:#f4ede0!important;border-color:#5a4930!important}
+footer{background:#080706;border-top:1px solid var(--line);color:#f4ede0}a,button{transition:transform .25s ease,background .25s ease,border-color .25s ease}
+a:hover,button:hover{transform:translateY(-2px)}.reveal-on-scroll{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal-on-scroll{opacity:1;transform:none}}
+
 :root{--ink:#171713;--muted:#68685f;--paper:#f7f6f1;--white:#fff;--gold:#c8a45d;--gold-light:#ead7a7;--line:#e6e2d8;--green:#334b3b;--dark:#171b17;--radius:18px;--shadow:0 18px 50px #1b1b1410}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}.wrap{width:min(1180px,92%);margin-inline:auto}.announcement{background:var(--dark);color:#eee8d9;text-align:center;padding:9px 12px;font-size:11px;letter-spacing:.1em}.announcement b{color:var(--gold-light);font-weight:650}
 header{position:sticky;top:0;z-index:50;background:#11141b;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff20;color:#fff}.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:flex;align-items:center;gap:11px;min-width:210px}.brand-emblem{display:block;width:48px;height:48px;flex:0 0 48px;object-fit:contain;border-radius:50%;background:#28151b}.brand-name{font-weight:850;letter-spacing:.08em;font-size:13px;line-height:1.15;color:#fff}.brand-name span{display:block;color:var(--gold);font-size:10px;letter-spacing:.3em;margin-top:5px}.links{display:flex;align-items:center;gap:23px;font-size:12px;font-weight:650;color:#f1eee6}.links a:hover{color:var(--gold-light)}.nav-actions{display:flex;align-items:center;gap:10px}.nav-link{font-size:12px;font-weight:750;padding:12px 15px;border:1px solid #d7d0c0;border-radius:999px;color:#fff}.menu{display:none;background:transparent;color:#fff;border:1px solid #ffffff44;border-radius:12px;padding:10px 12px}
@@ -38,6 +55,9 @@ footer{background:#11140f;color:#d8d9cf;padding:32px 0}.foot{display:flex;justif
 </style>
 </head>
 <body>
+<div id="cinema-loader" aria-label="Loading Dharamraj Cartel"><div class="loader-inner">
+<img class="loader-mark" src="./%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%B0%E0%A4%BE%E0%A4%9C%20Cartel%20Emblem.png" alt="Dharamraj Cartel logo">
+<div class="loader-title">DHARAMRAJ CARTEL</div><div class="loader-line"></div></div></div>
 <div class="announcement">RETAIL · WHOLESALE · GLOBAL SOURCING <b>— INDIA & CHINA</b></div>
 <header><div class="wrap nav">
 <a class="brand" href="#home" aria-label="Dharamraj Cartel home"><img class="brand-emblem" src="./favicon.svg" width="48" height="48" alt="Dharamraj Cartel Kalash emblem"><span class="brand-name">DHARAMRAJ<span>CARTEL</span></span></a>
@@ -92,8 +112,14 @@ const menu=document.getElementById('menu'),nav=document.getElementById('navlinks
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
 document.getElementById('year').textContent=new Date().getFullYear();
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('cinema-loader')?.classList.add('done'),650));
+const revealNodes=document.querySelectorAll('main section, main .hero, main .section-heading, main .product-card, main .card, footer');
+revealNodes.forEach(el=>el.classList.add('reveal-on-scroll'));
+if('IntersectionObserver' in window){const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.08});revealNodes.forEach(el=>revealObserver.observe(el));}else{revealNodes.forEach(el=>el.classList.add('is-visible'))}
+setTimeout(()=>document.getElementById('cinema-loader')?.classList.add('done'),3500);
 document.querySelectorAll('[data-product]').forEach(a=>a.addEventListener('click',()=>{const field=document.getElementById('product');field.value='Product of interest: '+a.dataset.product+'\nQuantity: ';}));
 document.querySelectorAll('[data-type]').forEach(a=>a.addEventListener('click',()=>{const type=document.getElementById('enquiry');type.value=a.dataset.type;}));
-document.getElementById('request-form').addEventListener('submit',e=>{e.preventDefault();const d=new FormData(e.currentTarget);const subject=encodeURIComponent('Dharamraj Cartel — '+d.get('enquiry'));const body=encodeURIComponent('Name: '+d.get('name')+'\nBusiness: '+(d.get('business')||'Not provided')+'\nEmail: '+d.get('email')+'\nPhone/WhatsApp: '+(d.get('phone')||'Not provided')+'\nEnquiry type: '+d.get('enquiry')+'\nDestination: '+(d.get('country')||'Not provided')+'\n\nProduct / requirements:\n'+d.get('product'));window.location.href='mailto:info@dharamrajcartel.com?subject='+subject+'&body='+body;});
+document.getElementById('request-form').addEventListener('submit',e=>{e.preventDefault();const d=new FormData(e.currentTarget);const subject=encodeURIComponent('Dharamraj Cartel — '+d.get('enquiry'));const body=encodeURIComponent('Name: '+d.get('name')+'\nBusiness: '+(d.get('business')||'Not provided')+'\nEmail: '+d.get('email')+'\nPhone/WhatsApp: '+(d.get('phone')||'Not provided')+'\nEnquiry type: '+d.get('enquiry')+'\nDestination: '+(d.get('country')||'Not provided')+'\n\nProduct / requirements:\n'+d.get('product'));const enquiryText='Subject: '+decodeURIComponent(subject)+'\n\n'+decodeURIComponent(body);
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(enquiryText).then(()=>alert('Enquiry copied. Add your official contact details before sending.'));}else{window.prompt('Copy your enquiry message:',enquiryText)}});
 </script>
 </body></html>
