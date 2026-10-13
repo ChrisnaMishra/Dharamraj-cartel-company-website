@@ -55,11 +55,11 @@ section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::befo
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background-image:url("./logo-emblem.svg?v=5");
   background-repeat:repeat;background-position:center top;
-  background-size:280px auto;opacity:.085;mix-blend-mode:screen;
+  background-size:360px auto;opacity:.095;mix-blend-mode:screen;
 }
 @media(max-width:600px){
   section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::before{
-    background-size:220px auto;opacity:.07;
+    background-size:280px auto;opacity:.08;
   }
 }
 /* For new standalone pages: add class="inner-page" to the body or main wrapper. */
@@ -189,14 +189,14 @@ section{padding:110px 4vw;position:relative}
 .brand-signature:before{content:"";position:absolute;top:35%;left:50%;width:min(420px,85vw);height:220px;
   transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(228,185,91,.13),transparent 70%);
   pointer-events:none;z-index:-1}
-.brand-signature img{display:block;width:clamp(190px,30vw,300px);height:auto;object-fit:contain;
+.brand-signature img{display:block;width:clamp(240px,36vw,360px);height:auto;object-fit:contain;
   mix-blend-mode:multiply;filter:drop-shadow(0 0 16px rgba(228,185,91,.18))}
 .brand-signature .ornament{display:flex;align-items:center;gap:14px;width:min(520px,82%);color:var(--gold)}
 .brand-signature .ornament:before,.brand-signature .ornament:after{content:"";height:1px;flex:1;
   background:linear-gradient(90deg,transparent,rgba(228,185,91,.8))}
 .brand-signature .ornament:after{transform:scaleX(-1)}
 .brand-signature .ornament span{font-size:18px;text-shadow:0 0 14px rgba(228,185,91,.65)}
-@media(max-width:560px){.brand-signature{padding-top:34px;gap:18px}.brand-signature img{width:230px}}
+@media(max-width:560px){.brand-signature{padding-top:34px;gap:18px}.brand-signature img{width:280px}}
 
 
 /* ================= STORE CARDS ================= */
@@ -329,7 +329,7 @@ footer a:hover{color:var(--cream)}
 /* Video-slider layout: cinematic moving backdrop, original logo artwork preserved */
 .brand-logo-image{object-fit:contain!important;background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;box-shadow:none!important}
 .logo .brand-logo-image{width:48px;height:48px;flex:0 0 48px}
-#loader .mark.brand-logo-image{width:132px;height:132px;border-radius:0!important;padding:0!important;background:transparent!important;border:0!important;object-fit:contain!important}
+#loader .mark.brand-logo-image{width:220px;height:220px;border-radius:0!important;padding:0!important;background:transparent!important;border:0!important;object-fit:contain!important}
 .foot-logo{display:flex;align-items:center;gap:12px}.foot-brand-logo{width:54px;height:54px;object-fit:contain;background:transparent!important;padding:0!important;border:0!important;box-shadow:none!important}
 .hero{isolation:isolate;overflow:hidden}
 .slider-backdrops{position:absolute;inset:0;z-index:0;background:#0b0908}.hero-glow,.hero-glow2{z-index:1}
