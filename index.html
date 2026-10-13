@@ -5,9 +5,9 @@
      DHARAMRAJ CARTEL — v2.0 "NOIR EDITION"
      Premium dark-luxury single-file site.
      EDIT BEFORE LAUNCH:
-       1. Find & replace  919999999999  → real WhatsApp number
+       1. Find & replace    → real WhatsApp number
        2. Replace IEC / GST placeholders  XXXXXXXXXXXX
-       3. Replace email hello@dharamrajcartel.com
+       3. Replace email Contact via enquiry form
      ============================================================ -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -297,11 +297,11 @@ footer a:hover{color:var(--cream)}
 #loader .mark.brand-logo-image{width:82px;height:82px;border-radius:50%!important;padding:5px!important}
 .foot-logo{display:flex;align-items:center;gap:12px}.foot-brand-logo{width:54px;height:54px;object-fit:contain;background:#fff;padding:3px;border:1px solid var(--gold)}
 .hero{isolation:isolate;overflow:hidden}
-.slider-backdrops{position:absolute;inset:0;z-index:-2;background:#0b0908}
+.slider-backdrops{position:absolute;inset:0;z-index:0;background:#0b0908}.hero-glow,.hero-glow2{z-index:1}
 .slider-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.06);transition:opacity 1.1s ease,transform 7s linear}
 .slider-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,6,5,.94) 0%,rgba(7,6,5,.78) 48%,rgba(7,6,5,.5) 100%),linear-gradient(0deg,#0b0908 0%,transparent 35%)}
 .slider-bg.active{opacity:1;transform:scale(1)}
-.hero .kicker,.hero h1,.hero .sub,.hero .gateway{position:relative;z-index:2}
+.hero .kicker,.hero h1,.hero .sub,.hero .gateway,.hero .slider-controls{position:relative;z-index:2}
 .hero h1{max-width:1100px;text-shadow:0 5px 28px #0006}
 .hero .sub{max-width:660px;color:#d0c6b8}
 .slider-controls{display:flex;align-items:center;gap:14px;margin-top:24px;position:relative;z-index:3}
@@ -403,32 +403,32 @@ footer a:hover{color:var(--cream)}
     <p>Every category is stocked on demand. Ask on WhatsApp — we confirm price, stock and delivery before you pay a rupee.</p>
   </div>
   <div class="cats rv">
-    <a class="cat" href="https://wa.me/919999999999?text=Hi!%20I%20want%20to%20order%20Pooja%20Samagri." target="_blank" rel="noopener">
+    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
       <span class="tag">Popular</span><div><div class="idx">01</div><h4>Pooja Samagri</h4>
       <p>Incense, dhoop, oils and daily worship essentials.</p></div>
       <div class="go">Order <s>→</s></div>
     </a>
-    <a class="cat" href="https://wa.me/919999999999?text=Hi!%20I%20want%20a%20Festival%20Kit." target="_blank" rel="noopener">
+    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
       <div><div class="idx">02</div><h4>Festival Kits</h4>
       <p>Ready-made Diwali, Navratri &amp; wedding pooja boxes.</p></div>
       <div class="go">Order <s>→</s></div>
     </a>
-    <a class="cat" href="https://wa.me/919999999999?text=Hi!%20Enquiry%20about%20Electronics." target="_blank" rel="noopener">
+    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
       <div><div class="idx">03</div><h4>Electronics</h4>
-      <p>Consumer electronics &amp; accessories, BIS-compliant.</p></div>
+      <p>Consumer electronics and accessories; specifications confirmed per product.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
-    <a class="cat" href="https://wa.me/919999999999?text=Hi!%20Enquiry%20about%20Beauty%20products." target="_blank" rel="noopener">
+    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
       <div><div class="idx">04</div><h4>Beauty &amp; Care</h4>
       <p>Verified beauty products and accessories.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
-    <a class="cat" href="https://wa.me/919999999999?text=Hi!%20Enquiry%20about%20Sarees%20%26%20Ethnic%20Wear." target="_blank" rel="noopener">
+    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
       <div><div class="idx">05</div><h4>Sarees &amp; Ethnic</h4>
       <p>Sourced to your fabric, design and budget.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
-    <a class="cat" href="https://wa.me/919999999999?text=Hi!%20Enquiry%20about%20Home%20%26%20Kitchen." target="_blank" rel="noopener">
+    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
       <div><div class="idx">06</div><h4>Home &amp; Kitchen</h4>
       <p>Household goods for homes, shops &amp; bulk buyers.</p></div>
       <div class="go">Enquire <s>→</s></div>
@@ -438,7 +438,7 @@ footer a:hover{color:var(--cream)}
       <p>Any product, any spec. Tell us quantity &amp; destination.</p></div>
       <div class="go">Request <s>→</s></div>
     </a>
-    <a class="cat" href="https://wa.me/919999999999?text=Hi!%20I%20want%20to%20suggest%20a%20product." target="_blank" rel="noopener">
+    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
       <div><div class="idx">08</div><h4>Suggest a Product</h4>
       <p>New lines added as dependable supply is established.</p></div>
       <div class="go">Tell us <s>→</s></div>
@@ -482,7 +482,7 @@ footer a:hover{color:var(--cream)}
   <!-- FORM -->
   <div class="form-shell rv" id="enquiry" style="margin-top:100px">
     <h3>Get a sourcing quotation</h3>
-    <p>Fill this in — it opens WhatsApp with your enquiry pre-written. Nothing is paid at this stage.</p>
+    <p>Fill in your details to prepare an enquiry message. Nothing is paid at this stage.</p>
     <form id="enqForm">
       <div class="frow">
         <div class="field"><label>Your name *</label><input id="q-name" required placeholder="Full name"></div>
@@ -508,7 +508,7 @@ footer a:hover{color:var(--cream)}
       <div class="field" style="margin-bottom:22px"><label>Product details *</label>
         <textarea id="q-msg" required placeholder="Product name, specs, target price, reference link…"></textarea>
       </div>
-      <button class="btn-gold" type="submit">Send Enquiry via WhatsApp ↗</button>
+      <button class="btn-gold" type="submit">Prepare Enquiry Message ↗</button>
       <p class="fine">Reply within 24 hours on business days · No obligation</p>
     </form>
   </div>
@@ -518,7 +518,7 @@ footer a:hover{color:var(--cream)}
 <div class="dealer-band rv" id="dealers">
   <h2>Join the <span>Network</span></h2>
   <p>Repeat supply, bulk pricing and products-by-specification for shops &amp; resellers. First access to new stock lines and festival-season pricing.</p>
-  <a class="btn-gold" style="width:auto;padding:18px 44px;display:inline-flex" href="https://wa.me/919999999999?text=Hi!%20I%20want%20to%20apply%20as%20a%20dealer." target="_blank" rel="noopener">Apply as a Dealer ↗</a>
+  <a class="btn-gold" style="width:auto;padding:18px 44px;display:inline-flex" href="#enquiry" target="_blank" rel="noopener">Apply as a Dealer ↗</a>
 </div>
 
 <!-- FOOTER -->
@@ -535,8 +535,8 @@ footer a:hover{color:var(--cream)}
     </div>
     <div>
       <h5>Contact</h5>
-      <a href="https://wa.me/919999999999" target="_blank" rel="noopener">+91 99999 99999</a>
-      <a href="mailto:hello@dharamrajcartel.com">hello@dharamrajcartel.com</a>
+      <a href="#enquiry" target="_blank" rel="noopener">Use the enquiry form</a>
+      <a href=" #enquiry">Contact via enquiry form</a>
       <a href="#contact">India</a>
     </div>
     <div>
@@ -555,11 +555,12 @@ footer a:hover{color:var(--cream)}
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/919999999999?text=Hi!%20Found%20you%20via%20your%20website." target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="wa" href="#enquiry" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.3 0-4.6-.6-6.5-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2-2-4.4-2-6.9C3.3 9 9 3.3 16 3.3S28.7 9 28.7 16 23 28.5 16 28.5zm7-9.5c-.4-.2-2.3-1.1-2.6-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.8-2-1.1-2.8-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.3 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/></svg>
 </a>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
 /* Accessible hero slider: auto-rotates, with manual controls and reduced-motion support */
 (function(){
  const slides=[
@@ -634,8 +635,7 @@ document.querySelectorAll('section .rv, .dealer-band, footer .rv').forEach(el=>{
 /* ---------- MARQUEE duplicate for seamless loop ---------- */
 const t=document.getElementById('mqtrack');t.innerHTML+=t.innerHTML;
 
-/* ---------- ENQUIRY → WHATSAPP ---------- */
-const WA='919999999999'; // <-- CHANGE TO REAL NUMBER
+/* ---------- ENQUIRY: prepare message without fake contact details ---------- */
 document.getElementById('enqForm').addEventListener('submit',e=>{
   e.preventDefault();
   const v=id=>document.getElementById(id).value.trim();
@@ -647,7 +647,7 @@ document.getElementById('enqForm').addEventListener('submit',e=>{
     +'Quantity: '+encodeURIComponent(v('q-qty')||'-')+'%0A'
     +'Destination: '+encodeURIComponent(v('q-dest')||'-')+'%0A'
     +'Details: '+encodeURIComponent(v('q-msg'));
-  window.open('https://wa.me/'+WA+'?text='+msg,'_blank');
+  const plain=decodeURIComponent(msg.replaceAll('%0A','\n'));\n  if(navigator.clipboard && navigator.clipboard.writeText){navigator.clipboard.writeText(plain).then(()=>alert('Enquiry message copied. Send it using your official business contact channel.')).catch(()=>window.prompt('Copy your enquiry message:',plain));}else{window.prompt('Copy your enquiry message:',plain);}
 });
 </script>
 </body>
