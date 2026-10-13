@@ -646,7 +646,8 @@ document.getElementById('enqForm').addEventListener('submit',e=>{
     +'Quantity: '+encodeURIComponent(v('q-qty')||'-')+'%0A'
     +'Destination: '+encodeURIComponent(v('q-dest')||'-')+'%0A'
     +'Details: '+encodeURIComponent(v('q-msg'));
-  const plain=decodeURIComponent(msg.replaceAll('%0A','\n'));\n  if(navigator.clipboard && navigator.clipboard.writeText){navigator.clipboard.writeText(plain).then(()=>alert('Enquiry message copied. Send it using your official business contact channel.')).catch(()=>window.prompt('Copy your enquiry message:',plain));}else{window.prompt('Copy your enquiry message:',plain);}
+  const plain=decodeURIComponent(msg.replaceAll('%0A','\n'));
+  if(navigator.clipboard && navigator.clipboard.writeText){navigator.clipboard.writeText(plain).then(()=>alert('Enquiry message copied. Send it using your official business contact channel.')).catch(()=>window.prompt('Copy your enquiry message:',plain));}else{window.prompt('Copy your enquiry message:',plain);}
 });
 </script>
 </body>
