@@ -91,7 +91,7 @@ body::after{
 }
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(228,185,91,.25)}50%{box-shadow:0 0 0 18px rgba(228,185,91,0)}}
 #loader .pct{font-family:var(--disp);font-size:.8rem;letter-spacing:.35em;color:var(--muted)}
-#loader .bar{width:180px;height:1px;background:#241F18;overflow:hidden}
+#loader .bar{width:min(68vw,300px);height:1px;background:#241F18;overflow:hidden}
 #loader .bar i{display:block;height:100%;width:0;background:var(--gold)}
 
 /* ================= NAV ================= */
@@ -329,7 +329,7 @@ footer a:hover{color:var(--cream)}
 /* Video-slider layout: cinematic moving backdrop, original logo artwork preserved */
 .brand-logo-image{object-fit:contain!important;background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;box-shadow:none!important}
 .logo .brand-logo-image{width:48px;height:48px;flex:0 0 48px}
-#loader .mark.brand-logo-image{width:220px;height:201px;border-radius:0!important;padding:0!important;background:transparent!important;border:0!important;object-fit:contain!important}
+#loader .mark.brand-logo-image{width:min(82vw,380px);height:min(75vw,348px);border-radius:0!important;padding:0!important;background:transparent!important;border:0!important;object-fit:contain!important}
 .foot-logo{display:flex;align-items:center;gap:12px}.foot-brand-logo{width:54px;height:54px;object-fit:contain;background:transparent!important;padding:0!important;border:0!important;box-shadow:none!important}
 .hero{isolation:isolate;overflow:hidden}
 .slider-backdrops{position:absolute;inset:0;z-index:0;background:#0b0908}.hero-glow,.hero-glow2{z-index:1}
@@ -360,7 +360,7 @@ footer a:hover{color:var(--cream)}
 
 <!-- PRELOADER -->
 <div id="loader">
-  <img class="mark brand-logo-image" src="./logo-full-transparent.svg?v=1" alt="Dharamraj Cartel original logo">
+  <img class="mark brand-logo-image" src="./logo-full-transparent.svg?v=2" alt="Dharamraj Cartel original logo">
   <div class="bar"><i id="loadbar"></i></div>
   <div class="pct" id="loadpct">00</div>
 </div>
