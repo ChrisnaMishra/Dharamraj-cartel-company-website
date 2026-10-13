@@ -165,6 +165,21 @@ section{padding:110px 4vw;position:relative}
 .stat:hover{background:var(--panel)}
 .stat .n{font-family:var(--disp);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--gold);font-weight:500}
 .stat .l{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+/* Brand signature beneath trust statistics */
+.brand-signature{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:24px;padding:46px 20px 0;position:relative;isolation:isolate}
+.brand-signature:before{content:"";position:absolute;top:35%;left:50%;width:min(420px,85vw);height:220px;
+  transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(228,185,91,.13),transparent 70%);
+  pointer-events:none;z-index:-1}
+.brand-signature img{display:block;width:clamp(150px,24vw,245px);height:auto;object-fit:contain;
+  mix-blend-mode:multiply;filter:drop-shadow(0 0 16px rgba(228,185,91,.18))}
+.brand-signature .ornament{display:flex;align-items:center;gap:14px;width:min(520px,82%);color:var(--gold)}
+.brand-signature .ornament:before,.brand-signature .ornament:after{content:"";height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,rgba(228,185,91,.8))}
+.brand-signature .ornament:after{transform:scaleX(-1)}
+.brand-signature .ornament span{font-size:18px;text-shadow:0 0 14px rgba(228,185,91,.65)}
+@media(max-width:560px){.brand-signature{padding-top:34px;gap:18px}.brand-signature img{width:190px}}
+
 
 /* ================= STORE CARDS ================= */
 .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border:1px solid var(--line)}
@@ -392,6 +407,10 @@ footer a:hover{color:var(--cream)}
     <div class="stat"><div class="n">24h</div><div class="l">Enquiry Response Time</div></div>
     <div class="stat"><div class="n">FOB·CIF·DDP</div><div class="l">Incoterms Offered</div></div>
     <div class="stat"><div class="n">100%</div><div class="l">QC Photos Before Dispatch</div></div>
+  </div>
+  <div class="brand-signature rv" aria-label="Dharamraj Cartel Kalash emblem">
+    <img src="./logo-emblem.svg?v=3" alt="Original red and gold Kalash emblem">
+    <div class="ornament" aria-hidden="true"><span>✧</span></div>
   </div>
 </section>
 
