@@ -1,3 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1032" height="710" viewBox="140 0 1032 710" preserveAspectRatio="xMidYMid meet">
-<image href="./%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%B0%E0%A4%BE%E0%A4%9C%20Cartel%20Emblem.png" x="0" y="0" width="1312" height="1199" preserveAspectRatio="none"/>
+  <defs>
+    <filter id="remove-white" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        -1 -1 -1 0 2.98"/>
+    </filter>
+  </defs>
+  <image href="./%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%B0%E0%A4%BE%E0%A4%9C%20Cartel%20Emblem.png" x="0" y="0" width="1312" height="1199" preserveAspectRatio="none" filter="url(#remove-white)"/>
 </svg>
