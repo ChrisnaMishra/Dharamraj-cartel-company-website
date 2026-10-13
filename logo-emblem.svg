@@ -3,7 +3,8 @@
 <g stroke-linejoin="round" stroke-linecap="round">
 <path fill="#c80008" d="M10 60 Q23 48 37 65 L43 79 Q25 77 10 60Z"/>
 <path fill="#c80008" d="M90 60 Q77 48 63 65 L57 79 Q75 77 90 60Z"/>
-<path fill="#f7b006" d="M50 8 C43 20 36 27 39 39 Q42 47 50 52 Q58 47 61 39 C64 27 57 20 50 8Z"/>
+<!-- Single solid crown: deliberately no inner arch or nested outline -->
+<path fill="#f7b006" d="M50 12 C45 22 42 29 43 36 Q44 43 50 47 Q56 43 57 36 C58 29 55 22 50 12Z"/>
 <path fill="#f7b006" d="M40 36 Q26 27 18 38 Q26 48 41 47Z"/>
 <path fill="#f7b006" d="M60 36 Q74 27 82 38 Q74 48 59 47Z"/>
 <path fill="#f7b006" d="M35 49 Q35 46 39 46 H61 Q65 46 65 49 V55 Q77 62 76 74 Q74 87 57 90 H43 Q26 87 24 74 Q23 62 35 55Z"/>
