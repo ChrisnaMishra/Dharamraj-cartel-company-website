@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1312" height="1199" viewBox="0 0 1312 1199">
+  <defs>
+    <filter id="transparent-white" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1 -1 -1 0 2.98"/>
+    </filter>
+  </defs>
+  <image href="./%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%B0%E0%A4%BE%E0%A4%9C%20Cartel%20Emblem.png" width="1312" height="1199" filter="url(#transparent-white)"/>
+</svg>
