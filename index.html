@@ -46,21 +46,23 @@ body{
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
 
-/* Brand watermark: shared background treatment for all sections and future pages */
-body::before{
-  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:url("./logo-emblem.svg?v=4");
-  background-repeat:no-repeat;background-position:center 56%;
-  background-size:min(76vw,620px) auto;
-  opacity:.09;mix-blend-mode:screen;
+/* Repeated original Kalash watermark for inner content areas.
+   Keep the hero/homepage clean; reuse .inner-page on any future standalone page. */
+section:not(.hero),.dealer-band,footer,.inner-page{
+  position:relative;isolation:isolate;
 }
-body>*{position:relative;z-index:1}
-body>#loader,body>nav,body>.cursor,body>.cursor-ring,body>.wa{z-index:150}
-body::after{z-index:200}
+section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:url("./logo-emblem.svg?v=5");
+  background-repeat:repeat;background-position:center top;
+  background-size:190px auto;opacity:.075;mix-blend-mode:screen;
+}
 @media(max-width:600px){
-  body::before{background-size:min(100vw,430px) auto;background-position:center 52%;opacity:.04}
+  section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::before{
+    background-size:145px auto;opacity:.06;
+  }
 }
-@media(prefers-reduced-motion:reduce){body::before{transition:none}}
+/* For new standalone pages: add class="inner-page" to the body or main wrapper. */
 
 /* film grain over everything */
 body::after{
