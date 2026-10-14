@@ -54,9 +54,9 @@ section:not(.hero),.dealer-band,footer,.inner-page{
 }
 section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::before{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:url("./logo-emblem.svg?v=6");
+  background-image:url("./favicon.svg?v=7");
   background-repeat:repeat;background-position:center top;
-  background-size:460px auto;opacity:.14;mix-blend-mode:screen;
+  background-size:460px auto;opacity:.20;mix-blend-mode:screen;
 }
 /* Keep real text, cards, buttons and forms above the decorative watermark. */
 section:not(.hero)>*,.dealer-band>*,footer>*,.inner-page>*{
@@ -64,7 +64,7 @@ section:not(.hero)>*,.dealer-band>*,footer>*,.inner-page>*{
 }
 @media(max-width:600px){
   section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::before{
-    background-size:320px auto;opacity:.11;
+    background-size:320px auto;opacity:.16;
   }
 }
 /* For new standalone pages: add class="inner-page" to the body or main wrapper. */
