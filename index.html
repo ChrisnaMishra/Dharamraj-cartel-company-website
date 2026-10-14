@@ -46,20 +46,25 @@ body{
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
 
-/* Repeated original Kalash watermark for inner content areas.
-   Keep the hero/homepage clean; reuse .inner-page on any future standalone page. */
+/* Repeated original Kalash watermark on inner content areas only.
+   The watermark sits ABOVE each section's background but BELOW its content.
+   The homepage hero stays clean. */
 section:not(.hero),.dealer-band,footer,.inner-page{
   position:relative;isolation:isolate;
 }
 section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background-image:url("./logo-emblem.svg?v=5");
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:url("./logo-emblem.svg?v=6");
   background-repeat:repeat;background-position:center top;
-  background-size:360px auto;opacity:.095;mix-blend-mode:screen;
+  background-size:460px auto;opacity:.14;mix-blend-mode:screen;
+}
+/* Keep real text, cards, buttons and forms above the decorative watermark. */
+section:not(.hero)>*,.dealer-band>*,footer>*,.inner-page>*{
+  position:relative;z-index:1;
 }
 @media(max-width:600px){
   section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::before{
-    background-size:280px auto;opacity:.08;
+    background-size:320px auto;opacity:.11;
   }
 }
 /* For new standalone pages: add class="inner-page" to the body or main wrapper. */
