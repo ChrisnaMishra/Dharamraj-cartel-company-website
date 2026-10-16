@@ -579,9 +579,9 @@ footer a:hover{color:var(--cream)}
     </div>
     <div>
       <h5>Contact</h5>
-      <a href="#enquiry" target="_blank" rel="noopener">Use the enquiry form</a>
-      <a href=" #enquiry">Contact via enquiry form</a>
-      <a href="#contact">India</a>
+      <a href="https://wa.me/9779845656595?text=Namaste%20Dharamraj%20Cartel%2C%20I%20have%20an%20enquiry." target="_blank" rel="noopener noreferrer">WhatsApp: +977 9845656595</a>
+      <a href="#enquiry">Send a sourcing enquiry</a>
+      <a href="mailto:">Email contact (coming soon)</a>
     </div>
     <div>
       <h5>Compliance</h5>
@@ -598,7 +598,7 @@ footer a:hover{color:var(--cream)}
   </div>
 </footer>
 
-<a class="wa" href="#enquiry" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="wa" href="https://wa.me/9779845656595?text=Namaste%20Dharamraj%20Cartel%2C%20I%20have%20an%20enquiry." target="_blank" rel="noopener noreferrer" aria-label="Chat with Dharamraj Cartel on WhatsApp">
   <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.3 0-4.6-.6-6.5-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2-2-4.4-2-6.9C3.3 9 9 3.3 16 3.3S28.7 9 28.7 16 23 28.5 16 28.5zm7-9.5c-.4-.2-2.3-1.1-2.6-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.8-2-1.1-2.8-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.3 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/></svg>
 </a>
 
@@ -678,20 +678,23 @@ document.querySelectorAll('section .rv, .dealer-band, footer .rv').forEach(el=>{
 /* ---------- MARQUEE duplicate for seamless loop ---------- */
 const t=document.getElementById('mqtrack');t.innerHTML+=t.innerHTML;
 
-/* ---------- ENQUIRY: prepare message without fake contact details ---------- */
+/* ---------- ENQUIRY: open WhatsApp with a pre-filled message ---------- */
 document.getElementById('enqForm').addEventListener('submit',e=>{
   e.preventDefault();
   const v=id=>document.getElementById(id).value.trim();
-  const msg='*NEW SOURCING ENQUIRY — WEBSITE*%0A'+'—'.repeat(12)+'%0A'
-    +'Name: '+encodeURIComponent(v('q-name'))+'%0A'
-    +'Business: '+encodeURIComponent(v('q-biz')||'-')+'%0A'
-    +'Category: '+encodeURIComponent(v('q-cat'))+'%0A'
-    +'Source: '+encodeURIComponent(v('q-origin'))+'%0A'
-    +'Quantity: '+encodeURIComponent(v('q-qty')||'-')+'%0A'
-    +'Destination: '+encodeURIComponent(v('q-dest')||'-')+'%0A'
-    +'Details: '+encodeURIComponent(v('q-msg'));
-  const plain=decodeURIComponent(msg.replaceAll('%0A','\n'));
-  if(navigator.clipboard && navigator.clipboard.writeText){navigator.clipboard.writeText(plain).then(()=>alert('Enquiry message copied. Send it using your official business contact channel.')).catch(()=>window.prompt('Copy your enquiry message:',plain));}else{window.prompt('Copy your enquiry message:',plain);}
+  const lines=[
+    'NEW SOURCING ENQUIRY — DHARAMRAJ CARTEL WEBSITE',
+    '----------------------------',
+    'Name: '+v('q-name'),
+    'Business: '+(v('q-biz')||'-'),
+    'Category: '+v('q-cat'),
+    'Source country: '+v('q-origin'),
+    'Quantity / MOQ: '+(v('q-qty')||'-'),
+    'Delivery destination: '+(v('q-dest')||'-'),
+    'Product details: '+v('q-msg')
+  ];
+  const url='https://wa.me/9779845656595?text='+encodeURIComponent(lines.join('\\n'));
+  window.open(url,'_blank','noopener,noreferrer');
 });
 </script>
 </body>
