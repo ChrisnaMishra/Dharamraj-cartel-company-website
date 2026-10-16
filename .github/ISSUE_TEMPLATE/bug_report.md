@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a broken page, link, image, layout, or enquiry flow
+about: Report a broken page, link, image, layout or enquiry flow
 title: "[Bug]: "
 ---
 
@@ -25,7 +25,7 @@ What happened instead?
 For example: Android + Chrome, iPhone + Safari, or Windows + Chrome.
 
 ## Screenshot or recording
-Add one if it helps explain the problem. Remove personal or confidential information first.
+Add one if useful. Remove personal or confidential information first.
 
 ## Safety check
-- [ ] I have not included passwords, tokens, private customer data, or confidential supplier information.
+- [ ] I have not included passwords, tokens, private customer data or confidential supplier information.

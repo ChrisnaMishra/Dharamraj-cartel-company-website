@@ -12,9 +12,9 @@
 - [ ] Checked that images load or have a useful fallback.
 
 ## Safety and accuracy
-- [ ] No secrets, credentials, private customer information, or confidential supplier data added.
-- [ ] Images and other assets are owned, licensed, or approved for use.
-- [ ] No unsupported claims about stock, quality, delivery, certifications, or business registration.
+- [ ] No secrets, credentials, private customer information or confidential supplier data added.
+- [ ] Images and other assets are owned, licensed or approved for use.
+- [ ] No unsupported claims about stock, quality, delivery, certifications or business registration.
 - [ ] Original Dharamraj Cartel brand artwork has not been altered without approval.
 
 ## Merge target
