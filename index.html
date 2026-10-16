@@ -90,9 +90,9 @@ section>* ,.dealer-band>*,footer>*,.inner-page>*{
   z-index:0;
   pointer-events:none;
   background-image:url("./Golden%20Bull%20Emblem%20with%20DharmaRaj%20Cartel.png");
-  background-repeat:repeat;
-  background-position:center top;
-  background-size:140px auto;
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size:min(460px, 78vw) auto;
   opacity:.08;
   mix-blend-mode:normal;
 }
@@ -381,6 +381,9 @@ footer a:hover{color:var(--cream)}
 
 /* Layout safety: preserve normal document flow and avoid horizontal overflow. */
 #sourcing .b2b-wrap,#sourcing .form-shell{min-width:0}
+#sourcing .b2b-sticky,#sourcing .b2b-wrap>div{min-width:0}
+#sourcing .b2b-sticky{transform:none!important}
+#sourcing .rv{transform:none;}
 #sourcing .form-shell{margin-top:clamp(40px,7vw,80px)!important}
 #sourcing .b2b-sticky h2{font-size:clamp(2rem,4.8vw,3.2rem);line-height:1.08;overflow-wrap:normal;word-break:normal}
 #sourcing .eyebrow{flex-wrap:wrap}
