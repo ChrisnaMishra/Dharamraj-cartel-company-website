@@ -252,7 +252,7 @@ section{padding:110px 4vw;position:relative;overflow:hidden;isolation:isolate}
 /* ================= DHARAMRAJ CARTEL KITCHENWARE CATALOGUE ================= */
 .kw-section{display:none;margin:24px 0 0;padding:clamp(20px,3vw,32px);border:1px solid var(--line);
   background:linear-gradient(135deg,rgba(24,20,15,.98),rgba(10,9,8,.98))}
-.kw-section.is-expanded{display:block}
+.kw-section.is-expanded{display:block;grid-column:1/-1;margin:0}
 .kw-close{flex:0 0 auto;border:1px solid rgba(228,185,91,.35);background:transparent;color:var(--gold);
   padding:10px 13px;font:inherit;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
 .kw-close:hover{background:var(--gold);color:var(--bg)}
@@ -625,33 +625,7 @@ footer a:hover{color:var(--cream)}
       <p>Cookware, kitchen tools, tableware, storage, cleaning, cutlery and serving essentials—all in one place.</p></div>
       <div class="go">Explore kitchenware <s>↓</s></div>
     </a>
-    <a class="cat" href="#enquiry" target="_self" data-category="Pooja Samagri">
-      <div class="cat-photo"><img src="https://phxcfyfwwtwbjzibzccy.supabase.co/storage/v1/object/public/product-images/0.23948929217694248.webp" alt="Traditional pooja thali with diya and incense" loading="lazy" decoding="async"></div>
-      <div class="cat-copy"><div class="idx">03</div><h4>Pooja Samagri</h4>
-      <p>Daily worship essentials and traditional pooja items.</p></div>
-      <div class="go">Enquire <s>→</s></div>
-    </a>
-    <a class="cat" href="#enquiry" target="_self" data-category="Festival & Gift Sets">
-      <div class="cat-photo"><img src="https://i.etsystatic.com/11382487/r/il/126b29/6429956212/il_1080xN.6429956212_n2tt.jpg" alt="Festive gift boxes with traditional decoration" loading="lazy" decoding="async"></div>
-      <div class="cat-copy"><div class="idx">04</div><h4>Festival &amp; Gift Sets</h4>
-      <p>Seasonal essentials, curated gift sets and festive bundles.</p></div>
-      <div class="go">Enquire <s>→</s></div>
-    </a>
-    <a class="cat" href="#enquiry" target="_self" data-category="Beauty & Personal Care">
-      <div class="cat-photo"><img src="https://lotshop.pk/cdn/shop/collections/skin_care.png?v=1782153144" alt="Skincare and personal care products" loading="lazy" decoding="async"></div>
-      <div class="cat-copy"><div class="idx">05</div><h4>Beauty &amp; Personal Care</h4>
-      <p>Selected beauty products and everyday care accessories.</p></div>
-      <div class="go">Enquire <s>→</s></div>
-    </a>
-    <a class="cat" href="#enquiry" target="_self" data-category="Sarees & Ethnic Wear">
-      <div class="cat-photo"><img src="https://agalaz.com/images/landings/virtual-saree-try-on-item.webp" alt="Red and gold traditional saree" loading="lazy" decoding="async"></div>
-      <div class="cat-copy"><div class="idx">06</div><h4>Sarees &amp; Ethnic Wear</h4>
-      <p>Traditional clothing and selected ethnic accessories.</p></div>
-      <div class="go">Enquire <s>→</s></div>
-    </a>
-  </div>
-  <p class="store-note">Photos are illustrative. Specific designs, stock and prices are confirmed when you enquire.</p>
-  <div class="kw-section" id="kitchenware">
+    <div class="kw-section" id="kitchenware">
     <div class="kw-head">
       <div><div class="eyebrow">Home &amp; Kitchen · Product Catalogue</div><h3>Everything for your kitchen,<br><em>all in one place.</em></h3></div>
       <p>Browse all kitchen and household categories below. Select a category to filter products, then choose an item to enquire about availability and price.</p>
@@ -1214,7 +1188,33 @@ footer a:hover{color:var(--cream)}
     </div>
     <p class="kw-note">Product illustrations are visual guides, not official product photographs. Product availability, exact model, specifications and pricing are confirmed during enquiry.</p>
   </div>
-  <div class="store-bridge rv">
+    <a class="cat" href="#enquiry" target="_self" data-category="Pooja Samagri">
+      <div class="cat-photo"><img src="https://phxcfyfwwtwbjzibzccy.supabase.co/storage/v1/object/public/product-images/0.23948929217694248.webp" alt="Traditional pooja thali with diya and incense" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">03</div><h4>Pooja Samagri</h4>
+      <p>Daily worship essentials and traditional pooja items.</p></div>
+      <div class="go">Enquire <s>→</s></div>
+    </a>
+    <a class="cat" href="#enquiry" target="_self" data-category="Festival & Gift Sets">
+      <div class="cat-photo"><img src="https://i.etsystatic.com/11382487/r/il/126b29/6429956212/il_1080xN.6429956212_n2tt.jpg" alt="Festive gift boxes with traditional decoration" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">04</div><h4>Festival &amp; Gift Sets</h4>
+      <p>Seasonal essentials, curated gift sets and festive bundles.</p></div>
+      <div class="go">Enquire <s>→</s></div>
+    </a>
+    <a class="cat" href="#enquiry" target="_self" data-category="Beauty & Personal Care">
+      <div class="cat-photo"><img src="https://lotshop.pk/cdn/shop/collections/skin_care.png?v=1782153144" alt="Skincare and personal care products" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">05</div><h4>Beauty &amp; Personal Care</h4>
+      <p>Selected beauty products and everyday care accessories.</p></div>
+      <div class="go">Enquire <s>→</s></div>
+    </a>
+    <a class="cat" href="#enquiry" target="_self" data-category="Sarees & Ethnic Wear">
+      <div class="cat-photo"><img src="https://agalaz.com/images/landings/virtual-saree-try-on-item.webp" alt="Red and gold traditional saree" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">06</div><h4>Sarees &amp; Ethnic Wear</h4>
+      <p>Traditional clothing and selected ethnic accessories.</p></div>
+      <div class="go">Enquire <s>→</s></div>
+    </a>
+  </div>
+  <p class="store-note">Photos are illustrative. Specific designs, stock and prices are confirmed when you enquire.</p>
+    <div class="store-bridge rv">
     <div>
       <h3>Looking for construction supplies?</h3>
       <p>Steel pipes, GI pipes, sheets, TMT, cement and hardware are listed in our dedicated product catalogue.</p>
