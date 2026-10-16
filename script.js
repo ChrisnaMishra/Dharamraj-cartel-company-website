@@ -372,15 +372,27 @@ if(enquiryForm) enquiryForm.addEventListener('submit',e=>{
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.classList.contains('is-open'))close();});
   async function getDetails(){
     if(detailCache) return detailCache;
-    const urls=[new URL('./indigo_images/product-details.json',window.location.href).href,new URL('/Dharamraj-cartel-company-website/indigo_images/product-details.json',window.location.origin).href];
-    for(const url of [...new Set(urls)]){try{const response=await fetch(url,{cache:'no-cache'});if(response.ok){detailCache=await response.json();return detailCache;}}catch(e){}}
-    throw new Error('Product details are still being prepared.');
+    const urls=[new URL('./indigo_images/products.json',window.location.href).href,new URL('/Dharamraj-cartel-company-website/indigo_images/products.json',window.location.origin).href];
+    let lastError;
+    for(const url of [...new Set(urls)]){
+      try{
+        const response=await fetch(url,{cache:'no-cache'});
+        if(!response.ok){lastError=new Error('Catalogue returned HTTP '+response.status);continue;}
+        const manifest=await response.json();
+        const products=(manifest.categories||[]).flatMap(category=>(category.products||[]).map(product=>({...product,category:product.category||category.name})));
+        detailCache=Object.fromEntries(products.filter(product=>product.url).map(product=>[product.url,product]));
+        if(Object.keys(detailCache).length) return detailCache;
+        lastError=new Error('The catalogue contains no product records.');
+      }catch(error){lastError=error;}
+    }
+    throw lastError||new Error('Product details are still being prepared.');
   }
   function render(detail,card){
     const name=detail.name||card.dataset.product||'Kitchenware product';
     /* Prefer the image already served by Dharamraj Cartel; supplier-hosted gallery photos follow. */
     const cardImage=card.querySelector('.kw-product-photo')?.getAttribute('src')||'';
-    const images=[cardImage,detail.local_image,...(detail.image_urls||[])];
+    const localImages=(detail.images||[]).map(path=>localCatalogueAsset(path));
+    const images=[cardImage,...localImages,...(detail.image_urls||[])];
     const uniqueImages=[...new Set(images)].filter(Boolean);
     const firstImage=uniqueImages[0]||'';
     const specs=Array.isArray(detail.specifications)?detail.specifications:[];
