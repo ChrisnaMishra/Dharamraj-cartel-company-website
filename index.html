@@ -248,6 +248,13 @@ section{padding:110px 4vw;position:relative;overflow:hidden;isolation:isolate}
   text-transform:uppercase;color:var(--red);border:1px solid rgba(212,58,47,.4);
   padding:4px 10px;border-radius:999px}
 
+.store-bridge{margin-top:2px;padding:28px clamp(20px,4vw,42px);border:1px solid var(--line);
+  background:var(--bg-2);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.store-bridge h3{font-family:var(--disp);font-weight:500;font-size:clamp(1.15rem,2vw,1.55rem);margin:0 0 8px}
+.store-bridge p{color:var(--muted);font-size:.86rem;max-width:680px}
+.store-bridge .nav-cta{flex-shrink:0}
+@media(max-width:600px){.store-bridge{align-items:flex-start;flex-direction:column}.store-bridge .nav-cta{align-self:flex-start}}
+
 /* ================= B2B ================= */
 .b2b-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,8vw);align-items:start;min-width:0}
 .b2b-sticky{position:relative;top:auto;min-width:0}
@@ -498,57 +505,49 @@ footer a:hover{color:var(--cream)}
 <section id="store">
   <div class="sec-head rv">
     <div>
-      <div class="eyebrow">The Store</div>
-      <h2>Curated goods,<br><em>enquiry-led.</em></h2>
+      <div class="eyebrow">Retail Store</div>
+      <h2>Everyday finds,<br><em>carefully sourced.</em></h2>
     </div>
-    <p>Every category is stocked on demand. Ask on WhatsApp — we confirm price, stock and delivery before you pay a rupee.</p>
+    <p>Browse selected retail and lifestyle categories. We confirm availability, final price and delivery before you place an order.</p>
   </div>
   <div class="cats rv">
-    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
-      <span class="tag">Popular</span><div><div class="idx">01</div><h4>Pooja Samagri</h4>
-      <p>Incense, dhoop, oils and daily worship essentials.</p></div>
-      <div class="go">Order <s>→</s></div>
-    </a>
-    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
-      <div><div class="idx">02</div><h4>Festival Kits</h4>
-      <p>Ready-made Diwali, Navratri &amp; wedding pooja boxes.</p></div>
-      <div class="go">Order <s>→</s></div>
-    </a>
-    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
-      <div><div class="idx">03</div><h4>Electronics</h4>
-      <p>Consumer electronics and accessories; specifications confirmed per product.</p></div>
+    <a class="cat" href="#enquiry" target="_self" data-category="Electronics & Accessories">
+      <div><div class="idx">01</div><h4>Electronics &amp; Accessories</h4>
+      <p>Everyday tech, mobile accessories and useful gadgets.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
-    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
-      <div><div class="idx">04</div><h4>Beauty &amp; Care</h4>
-      <p>Verified beauty products and accessories.</p></div>
+    <a class="cat" href="#enquiry" target="_self" data-category="Home & Kitchen">
+      <div><div class="idx">02</div><h4>Home &amp; Kitchen</h4>
+      <p>Practical household goods, kitchen tools and storage.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
-    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
-      <div><div class="idx">05</div><h4>Sarees &amp; Ethnic</h4>
-      <p>Sourced to your fabric, design and budget.</p></div>
+    <a class="cat" href="#enquiry" target="_self" data-category="Pooja Samagri">
+      <div><div class="idx">03</div><h4>Pooja Samagri</h4>
+      <p>Daily worship essentials and traditional pooja items.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
-    <a class="cat" href="#enquiry" target="_blank" rel="noopener">
-      <div><div class="idx">06</div><h4>Home &amp; Kitchen</h4>
-      <p>Household goods for homes, shops &amp; bulk buyers.</p></div>
+    <a class="cat" href="#enquiry" target="_self" data-category="Festival & Gift Sets">
+      <div><div class="idx">04</div><h4>Festival &amp; Gift Sets</h4>
+      <p>Seasonal essentials, curated gift sets and festive bundles.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
-    <a class="cat" href="#enquiry">
-      <div><div class="idx">07</div><h4>Custom Bulk Order</h4>
-      <p>Any product, any spec. Tell us quantity &amp; destination.</p></div>
-      <div class="go">Request <s>→</s></div>
-    </a>
-    <a class="cat" href="#enquiry">
-      <div><div class="idx">08</div><h4>Hardware &amp; Tools</h4>
-      <p>Tools, fasteners, fittings and practical hardware for homes, workshops and businesses.</p></div>
+    <a class="cat" href="#enquiry" target="_self" data-category="Beauty & Personal Care">
+      <div><div class="idx">05</div><h4>Beauty &amp; Personal Care</h4>
+      <p>Selected beauty products and everyday care accessories.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
-    <a class="cat" href="#enquiry">
-      <div><div class="idx">09</div><h4>Suggest a Product</h4>
-      <p>New lines added as dependable supply is established.</p></div>
-      <div class="go">Tell us <s>→</s></div>
+    <a class="cat" href="#enquiry" target="_self" data-category="Sarees & Ethnic Wear">
+      <div><div class="idx">06</div><h4>Sarees &amp; Ethnic Wear</h4>
+      <p>Traditional clothing and selected ethnic accessories.</p></div>
+      <div class="go">Enquire <s>→</s></div>
     </a>
+  </div>
+  <div class="store-bridge rv">
+    <div>
+      <h3>Looking for construction supplies?</h3>
+      <p>Steel pipes, GI pipes, sheets, TMT, cement and hardware are listed in our dedicated product catalogue.</p>
+    </div>
+    <a class="nav-cta" href="./products.html" target="_self">Browse Our Products ↗</a>
   </div>
 </section>
 
@@ -598,9 +597,13 @@ footer a:hover{color:var(--cream)}
         <div class="field"><label>Category *</label>
           <select id="q-cat" required>
             <option value="" disabled selected>Select category</option>
-            <option>Pooja Samagri</option><option>Electronics</option>
-            <option>Textiles / Sarees</option><option>Beauty &amp; Care</option>
-            <option>Home &amp; Kitchen</option><option>Other / Custom</option>
+            <option>Electronics &amp; Accessories</option>
+            <option>Home &amp; Kitchen</option>
+            <option>Pooja Samagri</option>
+            <option>Festival &amp; Gift Sets</option>
+            <option>Beauty &amp; Personal Care</option>
+            <option>Sarees &amp; Ethnic Wear</option>
+            <option>Other / Custom</option>
           </select>
         </div>
         <div class="field"><label>Source country</label>
@@ -729,6 +732,14 @@ document.querySelectorAll('section .rv, .dealer-band, footer .rv').forEach(el=>{
 
 /* ---------- MARQUEE duplicate for seamless loop ---------- */
 const t=document.getElementById('mqtrack');t.innerHTML+=t.innerHTML;
+
+/* ---------- STORE: preselect the category when a customer opens an enquiry ---------- */
+document.querySelectorAll('.cat[data-category]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const select=document.getElementById('q-cat');
+    if(select) select.value=card.dataset.category;
+  });
+});
 
 /* ---------- ENQUIRY: open WhatsApp with a pre-filled message ---------- */
 document.getElementById('enqForm').addEventListener('submit',e=>{
