@@ -1525,8 +1525,22 @@ async function loadRealKitchenwarePhotos(){
   const grid=document.querySelector('.kw-product-grid');
   if(!grid) return;
   try{
-    const response=await fetch('./indigo_images/products.json',{cache:'no-store'});
-    if(!response.ok) throw new Error('Photo manifest is not published yet.');
+    /* GitHub Pages project URLs can resolve relative assets differently when opened from a nested path.
+       Try the page-relative path first, then the canonical project path. */
+    let response;
+    const manifestUrls = [
+      new URL('./indigo_images/products.json', window.location.href).href,
+      new URL('/Dharamraj-cartel-company-website/indigo_images/products.json', window.location.origin).href
+    ];
+    let lastError;
+    for (const manifestUrl of [...new Set(manifestUrls)]) {
+      try {
+        const candidate = await fetch(manifestUrl, { cache: 'no-cache' });
+        if (candidate.ok) { response = candidate; break; }
+        lastError = new Error('Catalogue manifest returned HTTP ' + candidate.status);
+      } catch (error) { lastError = error; }
+    }
+    if (!response) throw lastError || new Error('Catalogue manifest could not be loaded.');
     const manifest=await response.json();
     const groups=Array.isArray(manifest.categories)?manifest.categories:[];
     const byName=new Map(groups.map(group=>[group.name,group]));
@@ -1609,8 +1623,17 @@ async function loadRealKitchenwarePhotos(){
     kitchenProductCards=[...document.querySelectorAll('.kw-product-card')];
     filterKitchenProducts('All products');
   }catch(error){
-    /* Keep the page usable during the first sync or if the supplier is unavailable. */
-    console.warn('Kitchenware product photos have not finished loading:',error);
+    /* Keep the catalogue informative if a deployment serves the HTML before its data files. */
+    console.error('Kitchenware catalogue failed to load:', error);
+    const grid=document.querySelector('.kw-product-grid');
+    if(grid && !grid.children.length){
+      const notice=document.createElement('p');
+      notice.className='kw-product-empty';
+      notice.style.display='block';
+      notice.setAttribute('role','status');
+      notice.textContent='The product catalogue is temporarily unavailable. Please refresh this page or contact us on WhatsApp for the current product list.';
+      grid.replaceWith(notice);
+    }
   }
 }
 loadRealKitchenwarePhotos();
