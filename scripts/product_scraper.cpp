@@ -8,6 +8,7 @@
 #include <chrono>
 #include <cctype>
 #include <fstream>
+#include <filesystem>
 #include <iostream>
 #include <regex>
 #include <set>
@@ -172,6 +173,7 @@ static json scrape(const std::string& url, const json& fallback, const std::stri
 
 int main() {
     curl_global_init(CURL_GLOBAL_DEFAULT);
+    std::filesystem::create_directories("indigo_images/product-gallery");
     std::ifstream input(MANIFEST);
     if (!input) { std::cerr << "Cannot open " << MANIFEST << "\n"; curl_global_cleanup(); return 2; }
     json manifest;
@@ -188,7 +190,45 @@ int main() {
             ++total;
             json product = scrape(url, item, category);
             if (product.contains("sync_error")) ++failed;
-            std::cout << "[" << total << "] " << (product.value("name", std::string("Product"))) << "\n";
+
+            // Download gallery images into this repository so product details do not depend
+            // on Indigo's image server at runtime. Keep up to four photos per product.
+            json localImages = json::array();
+            std::regex slugPattern(R"(/product/([^/]+)/)");
+            std::smatch slugMatch;
+            std::string slug = std::regex_search(url, slugMatch, slugPattern)
+                ? slugMatch[1].str() : ("product-" + std::to_string(total));
+            json remoteImages = product.value("image_urls", json::array());
+            size_t imageIndex = 0;
+            for (const auto& imageValue : remoteImages) {
+                if (imageIndex >= 4) break;
+                if (!imageValue.is_string()) continue;
+                std::string imageUrl = imageValue.get<std::string>();
+                std::smatch extMatch;
+                std::regex extPattern(R"(\.(jpe?g|png|webp|gif)(?:[?#].*)?$)", std::regex::icase);
+                std::string ext = std::regex_search(imageUrl, extMatch, extPattern)
+                    ? extMatch[1].str() : "jpg";
+                std::transform(ext.begin(), ext.end(), ext.begin(),
+                    [](unsigned char ch) { return static_cast<char>(std::tolower(ch)); });
+                std::string localPath = "indigo_images/product-gallery/" + slug + "-" +
+                    std::to_string(imageIndex + 1) + "." + ext;
+                std::string imageBytes = get_url(imageUrl);
+                if (!imageBytes.empty()) {
+                    std::ofstream imageFile(localPath, std::ios::binary);
+                    imageFile.write(imageBytes.data(), static_cast<std::streamsize>(imageBytes.size()));
+                    if (imageFile.good()) {
+                        localImages.push_back("./" + localPath);
+                        ++imageIndex;
+                        continue;
+                    }
+                }
+                // Preserve a working image if the source refuses a download.
+                localImages.push_back(imageUrl);
+                ++imageIndex;
+            }
+            if (!localImages.empty()) product["image_urls"] = localImages;
+            std::cout << "[" << total << "] " << (product.value("name", std::string("Product")))
+                      << " (" << localImages.size() << " local/gallery images)\n";
             products[url] = std::move(product);
             std::this_thread::sleep_for(std::chrono::milliseconds(180));
         }
