@@ -1663,7 +1663,8 @@ async function loadRealKitchenwarePhotos(){
       const imagePath=Array.isArray(product.images)&&product.images.length?product.images[0]:categoryPhoto;
       const card=document.createElement('a');
       card.className='kw-product-card';
-      card.href='#enquiry';
+      card.href=product.url||'#enquiry';
+      if(product.url){card.target='_blank';card.rel='noopener noreferrer';}
       card.dataset.category=category;
       card.dataset.product=productName;
       if(product.url) card.dataset.productUrl=product.url;
@@ -1687,7 +1688,7 @@ async function loadRealKitchenwarePhotos(){
       const callToAction=document.createElement('span');
       callToAction.className='kw-product-cta';
       const callText=document.createElement('span');
-      callText.textContent='Enquire for details';
+      callText.textContent=product.url?'View product details':'Enquire for details';
       const arrow=document.createElement('span');
       arrow.setAttribute('aria-hidden','true');
       arrow.textContent='↗';
