@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: indigo-household-photos-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   collect-product-photos:
