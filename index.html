@@ -1777,9 +1777,9 @@ document.getElementById('enqForm').addEventListener('submit',e=>{
   }
   function render(detail,card){
     const name=detail.name||card.dataset.product||'Kitchenware product';
-    const images=[...(detail.image_urls||[])];
-    const localImage=detail.local_image;
-    if(localImage) images.unshift(localImage);
+    /* Prefer the image already served by Dharamraj Cartel; supplier-hosted gallery photos follow. */
+    const cardImage=card.querySelector('.kw-product-photo')?.getAttribute('src')||'';
+    const images=[cardImage,detail.local_image,...(detail.image_urls||[])];
     const uniqueImages=[...new Set(images)].filter(Boolean);
     const firstImage=uniqueImages[0]||'';
     const specs=Array.isArray(detail.specifications)?detail.specifications:[];
