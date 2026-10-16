@@ -14,10 +14,11 @@ permissions:
 
 concurrency:
   group: indigo-household-photos-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   collect-product-photos:
+    if: github.ref == 'refs/heads/development'
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
