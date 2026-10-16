@@ -250,8 +250,13 @@ section{padding:110px 4vw;position:relative;overflow:hidden;isolation:isolate}
 /* ================= STORE CARDS ================= */
 
 /* ================= DHARAMRAJ CARTEL KITCHENWARE CATALOGUE ================= */
-.kw-section{margin:24px 0 0;padding:clamp(20px,3vw,32px);border:1px solid var(--line);
+.kw-section{display:none;margin:24px 0 0;padding:clamp(20px,3vw,32px);border:1px solid var(--line);
   background:linear-gradient(135deg,rgba(24,20,15,.98),rgba(10,9,8,.98))}
+.kw-section.is-expanded{display:block}
+.kw-close{flex:0 0 auto;border:1px solid rgba(228,185,91,.35);background:transparent;color:var(--gold);
+  padding:10px 13px;font:inherit;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.kw-close:hover{background:var(--gold);color:var(--bg)}
+.kw-close:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .kw-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px}
 .kw-head .eyebrow{margin-bottom:8px}
 .kw-head h3{font-family:var(--disp);font-weight:500;font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;margin:0}
@@ -614,11 +619,11 @@ footer a:hover{color:var(--cream)}
       <p>Everyday tech, mobile accessories and useful gadgets.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
-    <a class="cat" href="#kw-products" target="_self" data-category="Kitchenware &amp; Dining">
+    <a class="cat" href="#kitchenware" target="_self" data-category="Kitchenware &amp; Dining" data-kitchenware-toggle aria-expanded="false" aria-controls="kitchenware">
       <div class="cat-photo"><img src="https://www.muraahstore.com/blog/alat-masak-terdekat/images/alat-masak-terdekat-b1.webp" alt="Cookware and kitchen utensils" loading="lazy" decoding="async"></div>
-      <div class="cat-copy"><div class="idx">02</div><h4>Kitchenware &amp; Dining</h4>
-      <p>Browse cookware, tableware, storage, cutlery, cleaning and serving essentials.</p></div>
-      <div class="go">Enquire <s>→</s></div>
+      <div class="cat-copy"><div class="idx">02</div><h4>Home &amp; Kitchen</h4>
+      <p>Cookware, kitchen tools, tableware, storage, cleaning, cutlery and serving essentials—all in one place.</p></div>
+      <div class="go">Explore kitchenware <s>↓</s></div>
     </a>
     <a class="cat" href="#enquiry" target="_self" data-category="Pooja Samagri">
       <div class="cat-photo"><img src="https://phxcfyfwwtwbjzibzccy.supabase.co/storage/v1/object/public/product-images/0.23948929217694248.webp" alt="Traditional pooja thali with diya and incense" loading="lazy" decoding="async"></div>
@@ -646,11 +651,13 @@ footer a:hover{color:var(--cream)}
     </a>
   </div>
   <p class="store-note">Photos are illustrative. Specific designs, stock and prices are confirmed when you enquire.</p>
-  <div class="kw-section rv" id="kitchenware">
+  <div class="kw-section" id="kitchenware">
     <div class="kw-head">
-      <div><div class="eyebrow">Kitchenware &amp; Household</div><h3>Everyday essentials,<br><em>curated for Nepal.</em></h3></div>
-      <p>Browse kitchen tools, cookware, tableware, storage, cloth care, bowls and colanders, dustbins, imported household accessories, hot pots, tea urns and cutlery.</p>
+      <div><div class="eyebrow">Home &amp; Kitchen · Product Catalogue</div><h3>Everything for your kitchen,<br><em>all in one place.</em></h3></div>
+      <p>Browse all kitchen and household categories below. Select a category to filter products, then choose an item to enquire about availability and price.</p>
+      <button class="kw-close" id="kitchenware-close" type="button">Close catalogue ↑</button>
     </div>
+    <div class="kw-grid">
     <div class="kw-grid">
 <a class="kw-card" href="#kw-products" data-category="Kitchen Tools" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Kitchen Tools category illustration"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><path d="M48 29 Q28 47 39 63 Q48 76 57 63 Q68 47 48 29Z M48 67 V148"/><path d="M92 29 Q79 47 85 66 H99 Q105 47 92 29 M92 66 V148"/><path d="M132 31 Q115 45 125 63 Q132 74 141 63 Q151 45 132 31Z M132 67 V148"/></g><path class="detail" d="M39 145 H57 M83 145 H101 M123 145 H141"/></svg></div>
@@ -1409,7 +1416,10 @@ document.querySelectorAll('section .rv, .dealer-band, footer .rv').forEach(el=>{
 /* ---------- MARQUEE duplicate for seamless loop ---------- */
 const t=document.getElementById('mqtrack');t.innerHTML+=t.innerHTML;
 
-/* ---------- STORE: category selection and kitchenware product catalogue ---------- */
+/* ---------- STORE: Home & Kitchen expands its catalogue in place ---------- */
+const kitchenwareToggle=document.querySelector('[data-kitchenware-toggle]');
+const kitchenwarePanel=document.getElementById('kitchenware');
+const kitchenwareClose=document.getElementById('kitchenware-close');
 const kitchenProductCards=[...document.querySelectorAll('.kw-product-card')];
 const kitchenFilters=[...document.querySelectorAll('.kw-filter')];
 const kitchenEmpty=document.querySelector('.kw-product-empty');
@@ -1429,6 +1439,32 @@ function filterKitchenProducts(category){
   if(kitchenCount) kitchenCount.textContent=shown+' product line'+(shown===1?'':'s');
 }
 
+function setKitchenwareOpen(open,scrollIntoView=true){
+  if(!kitchenwarePanel||!kitchenwareToggle) return;
+  kitchenwarePanel.classList.toggle('is-expanded',open);
+  kitchenwareToggle.setAttribute('aria-expanded',String(open));
+  const cta=kitchenwareToggle.querySelector('.go');
+  if(cta) cta.innerHTML=open?'Close catalogue <s>↑</s>':'Explore kitchenware <s>↓</s>';
+  if(open){
+    filterKitchenProducts('All products');
+    if(scrollIntoView) kitchenwarePanel.scrollIntoView({behavior:'smooth',block:'start'});
+  }else if(scrollIntoView){
+    kitchenwareToggle.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+
+if(kitchenwareToggle){
+  kitchenwareToggle.addEventListener('click',event=>{
+    event.preventDefault();
+    const select=document.getElementById('q-cat');
+    if(select) select.value='Kitchenware & Dining';
+    setKitchenwareOpen(!kitchenwarePanel.classList.contains('is-expanded'));
+  });
+}
+if(kitchenwareClose){
+  kitchenwareClose.addEventListener('click',()=>setKitchenwareOpen(false));
+}
+
 kitchenFilters.forEach(button=>{
   button.addEventListener('click',()=>filterKitchenProducts(button.dataset.filter));
 });
@@ -1439,11 +1475,10 @@ document.querySelectorAll('.kw-card[data-category]').forEach(card=>{
   });
 });
 
-document.querySelectorAll('.cat[data-category]').forEach(card=>{
+document.querySelectorAll('.cat[data-category]:not([data-kitchenware-toggle])').forEach(card=>{
   card.addEventListener('click',()=>{
     const select=document.getElementById('q-cat');
     if(select) select.value=card.dataset.category;
-    if(card.dataset.category==='Kitchenware & Dining') filterKitchenProducts('All products');
   });
 });
 
@@ -1455,6 +1490,11 @@ document.querySelectorAll('.kw-product-card[data-category]').forEach(card=>{
     if(details) details.value='I am enquiring about '+card.dataset.product+'. Please share current availability, specifications, minimum order quantity and price.';
   });
 });
+
+/* Open the catalogue for direct product links and bookmarks. */
+if(window.location.hash==='#kw-products'||window.location.hash==='#kitchenware'){
+  setKitchenwareOpen(true,false);
+}
 
 /* ---------- ENQUIRY: open WhatsApp with a pre-filled message ---------- */
 document.getElementById('enqForm').addEventListener('submit',e=>{
