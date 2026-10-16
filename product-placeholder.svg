@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+<title id="title">Dharamraj Cartel construction materials</title><desc id="desc">Stylised steel sections and construction materials illustration in charcoal and gold.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1d1912"/><stop offset="1" stop-color="#080706"/></linearGradient><linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5d68a"/><stop offset=".35" stop-color="#7b6c4e"/><stop offset=".6" stop-color="#2e2a22"/><stop offset="1" stop-color="#b89b59"/></linearGradient></defs>
+<rect width="800" height="600" fill="url(#bg)"/><g opacity=".22" stroke="#e4b95b" fill="none"><path d="M0 500L800 0M-100 600L700 0M100 600L800 100"/><path d="M0 80H800M0 520H800"/></g>
+<g transform="translate(140 150) rotate(-12 260 150)" stroke="#e4b95b" stroke-width="4">
+<path d="M30 30H450V95H30Z" fill="url(#steel)"/><path d="M30 120H450V185H30Z" fill="#171511"/><path d="M30 120H450L410 153H70Z" fill="url(#steel)"/><path d="M70 153H410V185H70Z" fill="#3c3528"/><path d="M30 210H450V275H30Z" fill="url(#steel)"/><path d="M30 210L65 242H415L450 210" fill="none" stroke="#f5d68a" stroke-width="3"/></g>
+<g fill="#e4b95b" font-family="Arial,sans-serif" text-anchor="middle"><text x="400" y="500" font-size="29" letter-spacing="8">DHARAMRAJ CARTEL</text><text x="400" y="540" font-size="15" letter-spacing="5" fill="#9a8f7e">HARDWARE · STEEL · CONSTRUCTION</text></g>
+</svg>
