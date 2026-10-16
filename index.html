@@ -67,6 +67,12 @@ section:not(.hero)>*,.dealer-band>*,footer>*,.inner-page>*{
     background-size:320px auto;opacity:.16;
   }
 }
+
+/* Import / Export sourcing section: do not repeat the Kalash watermark here.
+   Keep the main Kalash brand and all other inner-page watermarks unchanged. */
+#sourcing::before{
+  background-image:none !important;
+}
 /* For new standalone pages: add class="inner-page" to the body or main wrapper. */
 
 /* film grain over everything */
