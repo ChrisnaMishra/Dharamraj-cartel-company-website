@@ -46,49 +46,57 @@ body{
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
 
-/* Original Kalash watermark on inner content areas, except Import / Export.
-   The bull emblem must never leak into the Store section. */
-section:not(.hero):not(#sourcing),.dealer-band,footer,.inner-page{
-  position:relative;isolation:isolate;
+/* Brand patterns: contained inside their own section; content always above pattern. */
+section,.dealer-band,footer,.inner-page{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
 }
-section:not(.hero):not(#sourcing)::before,.dealer-band::before,footer::before,.inner-page::before{
-  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:url("./favicon.svg?v=7");
-  background-repeat:repeat;background-position:center top;
-  background-size:460px auto;opacity:.20;mix-blend-mode:screen;
+section:not(#sourcing)::before,.dealer-band::before,footer::before,.inner-page::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:url("./logo-emblem.svg?v=3");
+  background-repeat:repeat;
+  background-position:center top;
+  background-size:140px auto;
+  opacity:.08;
+  mix-blend-mode:screen;
 }
-/* Keep real text, cards, buttons and forms above the decorative watermark. */
-section:not(.hero)>*,.dealer-band>*,footer>*,.inner-page>*{
-  position:relative;z-index:1;
+section>* ,.dealer-band>*,footer>*,.inner-page>*{
+  position:relative;
+  z-index:1;
 }
 @media(max-width:600px){
-  section:not(.hero):not(#sourcing)::before,.dealer-band::before,footer::before,.inner-page::before{
-    background-size:320px auto;opacity:.16;
+  section:not(#sourcing)::before,.dealer-band::before,footer::before,.inner-page::before{
+    background-size:140px auto;
+    opacity:.07;
   }
 }
 
-/* Import / Export section: show one bull emblem only.
-   Override the repeated Kalash watermark for this section only. */
+/* Import / Export desk only: tiled bull artwork; no Kalash pattern in this section. */
+#sourcing{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:var(--bg-2);
+}
 #sourcing::before{
   content:"";
   position:absolute;
   inset:0;
   z-index:0;
   pointer-events:none;
-  background-image:url("https://chrisnamishra.github.io/Dharamraj-cartel-company-website/Golden%20Bull%20Emblem%20with%20DharmaRaj%20Cartel.png") !important;
-  background-repeat:no-repeat !important;
-  background-position:center center;
-  background-size:min(520px, 68vw) auto;
-  opacity:.22;
+  background-image:url("./Golden%20Bull%20Emblem%20with%20DharmaRaj%20Cartel.png");
+  background-repeat:repeat;
+  background-position:center top;
+  background-size:140px auto;
+  opacity:.08;
   mix-blend-mode:normal;
 }
 #sourcing>*{position:relative;z-index:1}
-@media(max-width:600px){
-  #sourcing::before{
-    background-size:min(300px, 78vw);
-    opacity:.18;
-  }
-}
 /* For new standalone pages: add class="inner-page" to the body or main wrapper. */
 
 /* film grain over everything */
@@ -97,15 +105,7 @@ body::after{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
 }
 
-/* ================= CURSOR ================= */
-.cursor{position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;
-  background:var(--gold);z-index:300;pointer-events:none;mix-blend-mode:difference;
-  transform:translate(-50%,-50%)}
-.cursor-ring{position:fixed;top:0;left:0;width:38px;height:38px;border-radius:50%;
-  border:1px solid rgba(228,185,91,.5);z-index:300;pointer-events:none;
-  transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
-.cursor-ring.hov{width:64px;height:64px;border-color:var(--gold)}
-@media(hover:none){.cursor,.cursor-ring{display:none}body{cursor:auto}}
+/* Custom cursor removed to prevent stray dot/ring artifacts. */
 
 /* ================= PRELOADER ================= */
 #loader{position:fixed;inset:0;z-index:400;background:var(--bg);
@@ -145,11 +145,12 @@ nav.scrolled{background:rgba(11,9,8,.75);backdrop-filter:blur(14px);padding:14px
 
 /* ================= HERO ================= */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-  padding:140px 4vw 60px;position:relative}
-.hero-glow{position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;
+  padding:140px 4vw 60px;position:relative;overflow:hidden;isolation:isolate}
+.hero-glow{position:absolute;z-index:0;top:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;
   background:radial-gradient(circle,rgba(228,185,91,.10),transparent 65%);pointer-events:none}
-.hero-glow2{position:absolute;bottom:-30%;left:-15%;width:55vw;height:55vw;border-radius:50%;
+.hero-glow2{position:absolute;z-index:0;bottom:-30%;left:-15%;width:55vw;height:55vw;border-radius:50%;
   background:radial-gradient(circle,rgba(212,58,47,.08),transparent 65%);pointer-events:none}
+.hero .kicker,.hero h1,.hero .sub,.hero .slider-controls,.hero .gateway,.hero .scroll-hint{position:relative;z-index:1}
 .hero .kicker{display:flex;align-items:center;gap:14px;color:var(--gold);
   font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;font-weight:500;margin-bottom:4vh}
 .hero .kicker::before{content:"";width:44px;height:1px;background:var(--gold)}
@@ -192,7 +193,7 @@ nav.scrolled{background:rgba(11,9,8,.75);backdrop-filter:blur(14px);padding:14px
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* ================= SECTION SHELL ================= */
-section{padding:110px 4vw;position:relative}
+section{padding:110px 4vw;position:relative;overflow:hidden;isolation:isolate}
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;
   flex-wrap:wrap;margin-bottom:64px}
 .sec-head .eyebrow{color:var(--gold);font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;
@@ -204,7 +205,7 @@ section{padding:110px 4vw;position:relative}
 .sec-head p{max-width:380px;color:var(--muted);font-size:.92rem;font-weight:300}
 
 /* ================= STATS ================= */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line)}
 .stat{padding:36px 30px;border-right:1px solid var(--line);transition:background .4s}
 .stat:last-child{border-right:0}
 .stat:hover{background:var(--panel)}
@@ -227,7 +228,7 @@ section{padding:110px 4vw;position:relative}
 
 
 /* ================= STORE CARDS ================= */
-.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border:1px solid var(--line)}
+.cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line)}
 .cat{background:var(--bg);padding:36px 28px;min-height:250px;display:flex;flex-direction:column;
   justify-content:space-between;position:relative;overflow:hidden;transition:.4s}
 .cat .idx{font-family:var(--disp);color:#33291d;font-size:3rem;font-weight:600;line-height:1;transition:.4s}
@@ -246,14 +247,14 @@ section{padding:110px 4vw;position:relative}
   padding:4px 10px;border-radius:999px}
 
 /* ================= B2B ================= */
-.b2b-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:start}
-.b2b-sticky{position:sticky;top:120px}
-.b2b-sticky h2{font-family:var(--disp);font-weight:500;font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin-top:16px}
+.b2b-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,8vw);align-items:start;min-width:0}
+.b2b-sticky{position:relative;top:auto;min-width:0}
+.b2b-sticky h2{font-family:var(--disp);font-weight:500;font-size:clamp(2rem,5vw,3.2rem);line-height:1.08;margin-top:16px;max-width:100%;width:auto;overflow-wrap:anywhere}
 .b2b-sticky h2 em{color:var(--gold);font-style:italic;font-weight:400}
 .b2b-sticky p{color:var(--muted);font-weight:300;margin-top:20px;max-width:420px;font-size:.95rem}
-.country{margin-bottom:18px;border:1px solid var(--line);padding:30px;background:var(--panel);
+.country{margin-bottom:18px;border:1px solid var(--line);padding:30px;background:var(--panel);min-width:0;
   transition:.4s;position:relative;overflow:hidden}
-.country:hover{border-color:rgba(228,185,91,.45);transform:translateX(6px)}
+.country:hover{border-color:rgba(228,185,91,.45)}
 .country .flag{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
 .country h3{font-family:var(--disp);font-size:1.5rem;font-weight:500;margin:8px 0}
 .country p{font-size:.87rem;color:var(--muted);font-weight:300;margin-bottom:16px}
@@ -273,7 +274,7 @@ section{padding:110px 4vw;position:relative}
   background:radial-gradient(circle,rgba(228,185,91,.14),transparent 65%)}
 .form-shell h3{font-family:var(--disp);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:500}
 .form-shell>p{color:var(--muted);font-size:.88rem;font-weight:300;margin:8px 0 34px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
+.frow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-bottom:22px}
 .field{position:relative}
 .field label{display:block;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;
   color:var(--muted);margin-bottom:10px}
@@ -377,13 +378,39 @@ footer a:hover{color:var(--cream)}
 @media(max-width:600px){.hero{padding-top:125px}.slider-bg:after{background:linear-gradient(90deg,rgba(7,6,5,.88),rgba(7,6,5,.66)),linear-gradient(0deg,#0b0908 0%,transparent 50%)}.slider-controls{margin-bottom:12px}}
 @media(prefers-reduced-motion:reduce){.slider-bg{transition:none;transform:none}}
 
+
+/* Layout safety: preserve normal document flow and avoid horizontal overflow. */
+#sourcing .b2b-wrap,#sourcing .form-shell{min-width:0}
+#sourcing .form-shell{margin-top:clamp(40px,7vw,80px)!important}
+#sourcing .b2b-sticky h2{font-size:clamp(2rem,4.8vw,3.2rem);line-height:1.08;overflow-wrap:normal;word-break:normal}
+#sourcing .eyebrow{flex-wrap:wrap}
+#sourcing .chips{min-width:0}
+#sourcing .chips span{max-width:100%;overflow-wrap:anywhere}
+#sourcing .step{min-width:0}
+#sourcing .step>div:last-child{min-width:0}
+@media(max-width:900px){
+  .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .b2b-wrap{grid-template-columns:minmax(0,1fr);gap:36px}
+  .b2b-sticky{position:relative;top:auto}
+  .foot-top{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  section{padding:76px 5vw}
+  .cats{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:minmax(0,1fr)}
+  .frow{grid-template-columns:minmax(0,1fr);gap:16px}
+  .country{padding:22px}
+  .b2b-sticky h2{font-size:clamp(2rem,9vw,3rem);max-width:100%}
+  .foot-top{grid-template-columns:minmax(0,1fr);gap:30px}
+  .wa{right:16px;bottom:16px;width:52px;height:52px}
+  .hero h1{font-size:clamp(2.7rem,12vw,5rem);overflow-wrap:anywhere}
+  .nav-links{gap:14px}
+}
 </style>
 <base target="_blank">
 </head>
 <body>
-
-<!-- CURSOR -->
-<div class="cursor"></div><div class="cursor-ring"></div>
 
 <!-- PRELOADER -->
 <div id="loader">
@@ -667,16 +694,6 @@ gsap.registerPlugin(ScrollTrigger);
 function heroIn(){
   gsap.to('.hero .rv',{opacity:1,y:0,duration:1.1,stagger:.12,ease:'power3.out'});
 }
-
-/* ---------- CURSOR ---------- */
-const dot=document.querySelector('.cursor'), ring=document.querySelector('.cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-(function loop(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button,.cat,.gate,.country').forEach(el=>{
-  el.addEventListener('mouseenter',()=>ring.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>ring.classList.remove('hov'));
-});
 
 /* ---------- GATEWAY glow follows mouse ---------- */
 document.querySelectorAll('.gate').forEach(g=>{
