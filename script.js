@@ -198,6 +198,15 @@ function localCatalogueAsset(relativePath){
   return new URL('/Dharamraj-cartel-company-website/indigo_images/'+path,window.location.origin).href;
 }
 
+/* Supplier copy can contain headings as plain text; show the description separately. */
+function cleanProductDescription(value){
+  return String(value||'')
+    .replace(/^\s*description\s*:?\s*/i,'')
+    .split(/\b(?:key features|features|specifications|technical specifications)\b/i)[0]
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
 function setPhoto(img, primaryPath, fallbackPath, altText, remoteFallback){
   img.src=localCatalogueAsset(primaryPath||fallbackPath||'categories/household-range.webp');
   img.alt=altText;
@@ -308,7 +317,7 @@ async function loadRealKitchenwarePhotos(){
       const title=document.createElement('h5');
       title.textContent=productName;
       const description=document.createElement('p');
-      description.textContent='Ask us for the available model, specification, quantity and Nepal delivery price.';
+      description.textContent=cleanProductDescription(product.description||'')||'Ask us for the available model, specification, quantity and Nepal delivery price.';
       const callToAction=document.createElement('span');
       callToAction.className='kw-product-cta';
       const callText=document.createElement('span');
