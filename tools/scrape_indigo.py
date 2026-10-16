@@ -150,8 +150,22 @@ def find_categories() -> dict[str, str]:
     return categories
 
 
-def list_products(category_url: str) -> dict[str, str]:
-    """Return unique product URL -> display name, following WooCommerce pages."""
+def safe_household_listing(name: str, url: str, category_name: str) -> bool:
+    """Keep the public storefront photo set focused on safe household items."""
+    title = re.sub(r"[^a-z0-9]+", " ", name.lower()).strip()
+    slug = urlparse(url).path.lower()
+    restricted_terms = {"knife", "knives", "cleaver", "machete", "dagger", "blade"}
+    if any(term in title.split() or term in slug.split("/") for term in restricted_terms):
+        return False
+    # Show only clearly identified spoon/fork/serving items in the cutlery group.
+    if category_name == "Cutlery":
+        allowed_words = ("spoon", "fork", "ladle", "rice server", "rice panja", "serving")
+        return any(word in title for word in allowed_words)
+    return True
+
+
+def list_products(category_url: str, category_name: str) -> dict[str, str]:
+    """Return unique safe household product URL -> display name, following pagination."""
     products: dict[str, str] = {}
     visited: set[str] = set()
     url: str | None = category_url
@@ -170,8 +184,9 @@ def list_products(category_url: str) -> dict[str, str]:
                 ".woocommerce-loop-product__title, h2, h3"
             )
             name = title.get_text(" ", strip=True) if title else anchor.get_text(" ", strip=True)
-            if href and "/product/" in urlparse(href).path:
-                products.setdefault(href, name or href.rstrip("/").split("/")[-1])
+            name = name or href.rstrip("/").split("/")[-1]
+            if href and "/product/" in urlparse(href).path and safe_household_listing(name, href, category_name):
+                products.setdefault(href, name)
 
         next_link = page.select_one("a.next.page-numbers, a.next")
         if next_link and next_link.get("href"):
@@ -297,7 +312,7 @@ def main() -> int:
         category_url = categories[category_name]
         category_slug = CATEGORY_SLUGS[category_name]
         print(f"\n== {category_name}: {category_url}", flush=True)
-        products = list_products(category_url)
+        products = list_products(category_url, category_name)
         print(f"   {len(products)} product listings", flush=True)
         grouped[category_name] = []
         category_images: list[str] = []
