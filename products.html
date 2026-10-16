@@ -145,9 +145,11 @@ function render(){
   const card=document.createElement("article");card.className="card";
   const imageSrc=p.img||(p.f?IMG_BASE+p.f:"");
   const media=imageSrc
-   ?'<img loading="lazy" src="'+esc(imageSrc)+'" alt="'+esc(p.n)+'" onerror="this.style.display=\\'none\\';this.parentElement.style.background=\\'#211a10\\';">'
+   ?'<img loading="lazy" src="'+esc(imageSrc)+'" alt="'+esc(p.n)+'">'
    :'<div style="padding:20px;text-align:center;color:#d4a843;font-weight:700">DHARAMRAJ CARTEL</div>';
   card.innerHTML='<div class="img">'+media+'</div><div class="body"><div class="cat">'+esc(p.c)+'</div><h3>'+esc(p.n)+'</h3><button class="btn" type="button">Enquire on WhatsApp</button></div>';
+  const productImage=card.querySelector(".img img");
+  if(productImage) productImage.addEventListener("error",()=>{productImage.style.display="none";productImage.parentElement.style.background="#211a10";});
   card.querySelector("button").addEventListener("click",()=>enquire(p.n));
   grid.appendChild(card);
  });
