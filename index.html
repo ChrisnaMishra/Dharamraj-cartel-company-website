@@ -46,13 +46,12 @@ body{
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
 
-/* Repeated original Kalash watermark on inner content areas only.
-   The watermark sits ABOVE each section's background but BELOW its content.
-   The homepage hero stays clean. */
-section:not(.hero),.dealer-band,footer,.inner-page{
+/* Original Kalash watermark on inner content areas, except Import / Export.
+   The bull emblem must never leak into the Store section. */
+section:not(.hero):not(#sourcing),.dealer-band,footer,.inner-page{
   position:relative;isolation:isolate;
 }
-section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::before{
+section:not(.hero):not(#sourcing)::before,.dealer-band::before,footer::before,.inner-page::before{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background-image:url("./favicon.svg?v=7");
   background-repeat:repeat;background-position:center top;
@@ -63,7 +62,7 @@ section:not(.hero)>*,.dealer-band>*,footer>*,.inner-page>*{
   position:relative;z-index:1;
 }
 @media(max-width:600px){
-  section:not(.hero)::before,.dealer-band::before,footer::before,.inner-page::before{
+  section:not(.hero):not(#sourcing)::before,.dealer-band::before,footer::before,.inner-page::before{
     background-size:320px auto;opacity:.16;
   }
 }
