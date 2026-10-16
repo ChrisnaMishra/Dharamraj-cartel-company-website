@@ -546,6 +546,30 @@ footer a:hover{color:var(--cream)}
   .hero h1{font-size:clamp(2.7rem,12vw,5rem);overflow-wrap:anywhere}
   .nav-links{gap:14px}
 }
+
+/* In-site kitchenware product details */
+.kw-detail-modal{position:fixed;inset:0;z-index:500;display:none;overflow:auto;background:rgba(5,4,3,.88);backdrop-filter:blur(10px);padding:clamp(14px,4vw,44px)}
+.kw-detail-modal.is-open{display:grid;place-items:start center}
+.kw-detail-panel{position:relative;width:min(1040px,100%);margin:auto;background:#100e0b;border:1px solid rgba(228,185,91,.4);box-shadow:0 24px 100px #000;padding:clamp(18px,3vw,34px);color:var(--cream)}
+.kw-detail-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:22px}
+.kw-detail-kicker{color:var(--gold);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase}
+.kw-detail-close{border:1px solid rgba(228,185,91,.45);background:transparent;color:var(--gold);padding:9px 13px;cursor:pointer;font:inherit}
+.kw-detail-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,4vw,42px)}
+.kw-detail-image{width:100%;aspect-ratio:1/1;object-fit:contain;background:#f2f3f4;display:block}
+.kw-detail-thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.kw-detail-thumb{width:64px;height:64px;object-fit:cover;background:#f2f3f4;border:1px solid #51452e;cursor:pointer}
+.kw-detail-title{font-family:var(--disp);font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.1;font-weight:500;margin:8px 0 16px}
+.kw-detail-description{color:#d2c8b8;font-size:.92rem;white-space:pre-line;line-height:1.75}
+.kw-detail-section{margin-top:22px;padding-top:16px;border-top:1px solid rgba(228,185,91,.2)}
+.kw-detail-section h4{font-family:var(--disp);font-size:1.05rem;font-weight:500;color:var(--gold);margin-bottom:10px}
+.kw-detail-specs{width:100%;border-collapse:collapse;font-size:.83rem}
+.kw-detail-specs td,.kw-detail-specs th{padding:9px 10px;text-align:left;border-bottom:1px solid rgba(228,185,91,.15);vertical-align:top}
+.kw-detail-specs th{color:var(--gold);font-weight:500}
+.kw-detail-features{padding-left:19px;color:#d2c8b8;font-size:.86rem}
+.kw-detail-features li{margin:7px 0}
+.kw-detail-enquire{display:inline-flex;align-items:center;justify-content:center;margin-top:22px;background:var(--gold);color:#0b0908;padding:13px 20px;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.kw-detail-loading{padding:30px;color:var(--muted)}
+@media(max-width:720px){.kw-detail-layout{grid-template-columns:1fr}.kw-detail-image{max-height:420px}.kw-detail-panel{padding:16px}.kw-detail-modal{padding:10px}}
 </style>
 </head>
 <body>
@@ -1730,6 +1754,59 @@ document.getElementById('enqForm').addEventListener('submit',e=>{
   const url='https://wa.me/9779845656595?text='+encodeURIComponent(lines.join('\n'));
   window.open(url,'_blank','noopener,noreferrer');
 });
+
+/* Open full product information inside Dharamraj Cartel (same tab). */
+(function setupKitchenwareDetails(){
+  const modal=document.getElementById('kw-detail-modal');
+  const content=document.getElementById('kw-detail-content');
+  const closeButton=document.getElementById('kw-detail-close');
+  const grid=document.querySelector('.kw-product-grid');
+  if(!modal||!content||!grid) return;
+  let detailCache=null;
+  const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const whatsappUrl=name=>'https://wa.me/9779845656595?text='+encodeURIComponent('Namaste Dharamraj Cartel, I am interested in '+name+'. Please share availability, specifications and Nepal delivery price.');
+  function close(){modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  closeButton.addEventListener('click',close);
+  modal.addEventListener('click',event=>{if(event.target===modal)close();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.classList.contains('is-open'))close();});
+  async function getDetails(){
+    if(detailCache) return detailCache;
+    const urls=[new URL('./indigo_images/product-details.json',window.location.href).href,new URL('/Dharamraj-cartel-company-website/indigo_images/product-details.json',window.location.origin).href];
+    for(const url of [...new Set(urls)]){try{const response=await fetch(url,{cache:'no-cache'});if(response.ok){detailCache=await response.json();return detailCache;}}catch(e){}}
+    throw new Error('Product details are still being prepared.');
+  }
+  function render(detail,card){
+    const name=detail.name||card.dataset.product||'Kitchenware product';
+    const images=[...(detail.image_urls||[])];
+    const localImage=detail.local_image;
+    if(localImage) images.unshift(localImage);
+    const uniqueImages=[...new Set(images)].filter(Boolean);
+    const firstImage=uniqueImages[0]||'';
+    const specs=Array.isArray(detail.specifications)?detail.specifications:[];
+    const features=Array.isArray(detail.features)?detail.features:[];
+    const specHtml=specs.length?'<div class="kw-detail-section"><h4>Item codes & specifications</h4><table class="kw-detail-specs"><tbody>'+specs.map(row=>'<tr>'+row.map((cell,index)=>index===0?'<th>'+esc(cell)+'</th>':'<td>'+esc(cell)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>':'';
+    const featureHtml=features.length?'<div class="kw-detail-section"><h4>Key features</h4><ul class="kw-detail-features">'+features.map(item=>'<li>'+esc(item)+'</li>').join('')+'</ul></div>':'';
+    content.className='';
+    content.innerHTML='<div class="kw-detail-layout"><div><img class="kw-detail-image" id="kw-detail-main-image" src="'+esc(firstImage)+'" alt="'+esc(name)+'" '+(firstImage?'':'hidden')+'><div class="kw-detail-thumbs">'+uniqueImages.slice(0,8).map(url=>'<button type="button" class="kw-detail-thumb-button" data-image="'+esc(url)+'" style="padding:0;border:0;background:transparent"><img class="kw-detail-thumb" src="'+esc(url)+'" alt="More photos of '+esc(name)+'" loading="lazy"></button>').join('')+'</div></div><div><div class="kw-detail-kicker">'+esc(detail.category||card.dataset.category||'Kitchenware')+'</div><h2 class="kw-detail-title" id="kw-detail-title">'+esc(name)+'</h2><p class="kw-detail-description">'+esc(detail.description||'Product description has not been published by the supplier.')+'</p>'+specHtml+featureHtml+'<a class="kw-detail-enquire" href="'+whatsappUrl(name)+'" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp ↗</a><p class="kw-note">Availability, final specifications and Nepal delivery price are confirmed on enquiry.</p></div></div>';
+    content.querySelectorAll('[data-image]').forEach(button=>button.addEventListener('click',()=>{const img=content.querySelector('#kw-detail-main-image');if(img)img.src=button.dataset.image;}));
+  }
+  grid.addEventListener('click',async event=>{
+    const card=event.target.closest('.kw-product-card');
+    if(!card) return;
+    event.preventDefault();
+    modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+    content.className='kw-detail-loading';content.textContent='Loading full product details…';
+    try{const all=await getDetails();const detail=all[card.dataset.productUrl]||all.products?.[card.dataset.productUrl];if(!detail)throw new Error('Detailed information for this item is not available yet.');render(detail,card);}
+    catch(error){content.className='kw-detail-loading';content.textContent=(error&&error.message)||'Could not load product details. Please try again shortly.';}
+  });
+})();
 </script>
+
+<div class="kw-detail-modal" id="kw-detail-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="kw-detail-title">
+  <div class="kw-detail-panel">
+    <div class="kw-detail-top"><span class="kw-detail-kicker">Dharamraj Cartel · Product details</span><button class="kw-detail-close" type="button" id="kw-detail-close" aria-label="Close product details">Close ✕</button></div>
+    <div id="kw-detail-content" class="kw-detail-loading">Loading product details…</div>
+  </div>
+</div>
 </body>
 </html>
