@@ -248,20 +248,26 @@ section{padding:110px 4vw;position:relative;overflow:hidden;isolation:isolate}
 
 
 /* ================= STORE CARDS ================= */
-.cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line)}
-.cat{background:var(--bg);padding:36px 28px;min-height:250px;display:flex;flex-direction:column;
-  justify-content:space-between;position:relative;overflow:hidden;transition:.4s}
-.cat .idx{font-family:var(--disp);color:#33291d;font-size:3rem;font-weight:600;line-height:1;transition:.4s}
-.cat h4{font-family:var(--disp);font-weight:500;font-size:1.15rem;margin:18px 0 8px}
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line)}
+.cat{background:rgba(11,9,8,.94);padding:28px 24px 24px;min-height:370px;display:flex;flex-direction:column;
+  justify-content:space-between;position:relative;overflow:hidden;transition:background .35s,border-color .35s}
+.cat-photo{height:148px;margin:-28px -24px 22px;overflow:hidden;background:#17110f;border-bottom:1px solid rgba(228,185,91,.22)}
+.cat-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.82) saturate(.86);
+  transition:transform .5s ease,filter .5s ease}
+.cat:hover .cat-photo img{transform:scale(1.045);filter:brightness(.94) saturate(.98)}
+.cat-copy{flex:1}
+.cat .idx{font-family:var(--disp);color:#8d7040;font-size:2.15rem;font-weight:600;line-height:1;transition:color .4s}
+.cat h4{font-family:var(--disp);font-weight:500;font-size:1.15rem;margin:12px 0 8px}
 .cat p{font-size:.83rem;color:var(--muted);font-weight:300}
 .cat .go{margin-top:20px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);display:flex;align-items:center;gap:8px}
 .cat .go s{text-decoration:none;transition:transform .3s}
 .cat::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .45s}
 .cat:hover::after{width:100%}
-.cat:hover{background:var(--bg-2)}
+.cat:hover{background:rgba(18,16,13,.97)}
 .cat:hover .idx{color:var(--gold)}
 .cat:hover .go s{transform:translateX(6px)}
+.store-note{padding:16px 6px 22px;font-size:.76rem;letter-spacing:.02em;color:var(--muted);text-align:right}
 .cat .tag{position:absolute;top:24px;right:24px;font-size:.6rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--red);border:1px solid rgba(212,58,47,.4);
   padding:4px 10px;border-radius:999px}
@@ -420,6 +426,8 @@ footer a:hover{color:var(--cream)}
 #sourcing .step>div:last-child{min-width:0}
 @media(max-width:900px){
   .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cat{min-height:350px}
+  .cat-photo{height:155px}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .b2b-wrap{grid-template-columns:minmax(0,1fr);gap:36px}
   .b2b-sticky{position:relative;top:auto}
@@ -428,6 +436,8 @@ footer a:hover{color:var(--cream)}
 @media(max-width:600px){
   section{padding:76px 5vw}
   .cats{grid-template-columns:minmax(0,1fr)}
+  .cat{min-height:330px;padding:24px 22px 22px}
+  .cat-photo{height:175px;margin:-24px -22px 20px}
   .stats{grid-template-columns:minmax(0,1fr)}
   .frow{grid-template-columns:minmax(0,1fr);gap:16px}
   .country{padding:22px}
@@ -530,36 +540,43 @@ footer a:hover{color:var(--cream)}
   </div>
   <div class="cats rv">
     <a class="cat" href="#enquiry" target="_self" data-category="Electronics & Accessories">
-      <div><div class="idx">01</div><h4>Electronics &amp; Accessories</h4>
+      <div class="cat-photo"><img src="https://cdn.prod.website-files.com/6256995755a7ea0a3d8fbd11/692cb714bb0a6fcaf727c7bc_image%20695-min.jpg" alt="Phone cases and charging cables" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">01</div><h4>Electronics &amp; Accessories</h4>
       <p>Everyday tech, mobile accessories and useful gadgets.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
     <a class="cat" href="#enquiry" target="_self" data-category="Home & Kitchen">
-      <div><div class="idx">02</div><h4>Home &amp; Kitchen</h4>
+      <div class="cat-photo"><img src="https://www.muraahstore.com/blog/alat-masak-terdekat/images/alat-masak-terdekat-b1.webp" alt="Cookware and kitchen utensils" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">02</div><h4>Home &amp; Kitchen</h4>
       <p>Practical household goods, kitchen tools and storage.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
     <a class="cat" href="#enquiry" target="_self" data-category="Pooja Samagri">
-      <div><div class="idx">03</div><h4>Pooja Samagri</h4>
+      <div class="cat-photo"><img src="https://phxcfyfwwtwbjzibzccy.supabase.co/storage/v1/object/public/product-images/0.23948929217694248.webp" alt="Traditional pooja thali with diya and incense" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">03</div><h4>Pooja Samagri</h4>
       <p>Daily worship essentials and traditional pooja items.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
     <a class="cat" href="#enquiry" target="_self" data-category="Festival & Gift Sets">
-      <div><div class="idx">04</div><h4>Festival &amp; Gift Sets</h4>
+      <div class="cat-photo"><img src="https://i.etsystatic.com/11382487/r/il/126b29/6429956212/il_1080xN.6429956212_n2tt.jpg" alt="Festive gift boxes with traditional decoration" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">04</div><h4>Festival &amp; Gift Sets</h4>
       <p>Seasonal essentials, curated gift sets and festive bundles.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
     <a class="cat" href="#enquiry" target="_self" data-category="Beauty & Personal Care">
-      <div><div class="idx">05</div><h4>Beauty &amp; Personal Care</h4>
+      <div class="cat-photo"><img src="https://lotshop.pk/cdn/shop/collections/skin_care.png?v=1782153144" alt="Skincare and personal care products" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">05</div><h4>Beauty &amp; Personal Care</h4>
       <p>Selected beauty products and everyday care accessories.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
     <a class="cat" href="#enquiry" target="_self" data-category="Sarees & Ethnic Wear">
-      <div><div class="idx">06</div><h4>Sarees &amp; Ethnic Wear</h4>
+      <div class="cat-photo"><img src="https://agalaz.com/images/landings/virtual-saree-try-on-item.webp" alt="Red and gold traditional saree" loading="lazy" decoding="async"></div>
+      <div class="cat-copy"><div class="idx">06</div><h4>Sarees &amp; Ethnic Wear</h4>
       <p>Traditional clothing and selected ethnic accessories.</p></div>
       <div class="go">Enquire <s>→</s></div>
     </a>
   </div>
+  <p class="store-note">Photos are illustrative. Specific designs, stock and prices are confirmed when you enquire.</p>
   <div class="store-bridge rv">
     <div>
       <h3>Looking for construction supplies?</h3>
