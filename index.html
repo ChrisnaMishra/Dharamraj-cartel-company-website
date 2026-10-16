@@ -71,7 +71,18 @@ section:not(.hero)>*,.dealer-band>*,footer>*,.inner-page>*{
 /* Import / Export sourcing section: do not repeat the Kalash watermark here.
    Keep the main Kalash brand and all other inner-page watermarks unchanged. */
 #sourcing::before{
-  background-image:none !important;
+  background-image:url("./bull-emblem.png") !important;
+  background-repeat:repeat;
+  background-position:center center;
+  background-size:clamp(180px,22vw,300px) auto;
+  opacity:.12;
+  mix-blend-mode:normal;
+}
+@media(max-width:600px){
+  #sourcing::before{
+    background-size:180px auto;
+    opacity:.10;
+  }
 }
 /* For new standalone pages: add class="inner-page" to the body or main wrapper. */
 
