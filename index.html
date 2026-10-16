@@ -68,26 +68,26 @@ section:not(.hero)>*,.dealer-band>*,footer>*,.inner-page>*{
   }
 }
 
-/* Import / Export section: use the exact bull emblem uploaded to this repository.
-   The Kalash watermark remains unchanged everywhere else. */
+/* Import / Export section: show one bull emblem only.
+   Override the repeated Kalash watermark for this section only. */
 #sourcing::before{
   content:"";
   position:absolute;
   inset:0;
   z-index:0;
   pointer-events:none;
-  background-image:url("https://raw.githubusercontent.com/ChrisnaMishra/Dharamraj-cartel-company-website/main/Golden%20Bull%20Emblem%20with%20DharmaRaj%20Cartel.png") !important;
-  background-repeat:repeat;
+  background-image:url("https://chrisnamishra.github.io/Dharamraj-cartel-company-website/Golden%20Bull%20Emblem%20with%20DharmaRaj%20Cartel.png") !important;
+  background-repeat:no-repeat !important;
   background-position:center center;
-  background-size:280px auto;
-  opacity:.20;
+  background-size:min(520px, 68vw) auto;
+  opacity:.22;
   mix-blend-mode:normal;
 }
 #sourcing>*{position:relative;z-index:1}
 @media(max-width:600px){
   #sourcing::before{
-    background-size:190px auto;
-    opacity:.16;
+    background-size:min(300px, 78vw);
+    opacity:.18;
   }
 }
 /* For new standalone pages: add class="inner-page" to the body or main wrapper. */
