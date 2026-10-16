@@ -162,6 +162,7 @@ nav.scrolled{background:rgba(11,9,8,.75);backdrop-filter:blur(14px);padding:14px
   transition:.35s;position:relative;overflow:hidden}
 .nav-cta:hover{background:var(--gold);color:#0B0908}
 .burger{display:none;background:none;border:0;color:var(--cream);font-size:1.5rem}
+.nav-links a:focus-visible,.burger:focus-visible,.nav-cta:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 
 /* ================= HERO ================= */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
@@ -540,7 +541,7 @@ footer a:hover{color:var(--cream)}
     <div class="stat"><div class="n">2</div><div class="l">Source Countries — India · China</div></div>
     <div class="stat"><div class="n">24h</div><div class="l">Enquiry Response Time</div></div>
     <div class="stat"><div class="n">FOB·CIF·DDP</div><div class="l">Incoterms Offered</div></div>
-    <div class="stat"><div class="n">100%</div><div class="l">QC Photos Before Dispatch</div></div>
+    <div class="stat"><div class="n">QC</div><div class="l">Photo Updates by Arrangement</div></div>
   </div>
   <div class="brand-signature rv" aria-label="Dharamraj Cartel Kalash emblem">
     <img src="./logo-emblem.svg?v=3" alt="Original red and gold Kalash emblem">
@@ -641,7 +642,7 @@ footer a:hover{color:var(--cream)}
   <!-- FORM -->
   <div class="form-shell rv" id="enquiry" style="margin-top:100px">
     <h3>Get a sourcing quotation</h3>
-    <p>Fill in your details to prepare an enquiry message. Nothing is paid at this stage.</p>
+    <p>Your details prepare a WhatsApp message. It sends only after you review it and tap Send. No payment is made here.</p>
     <form id="enqForm">
       <div class="frow">
         <div class="field"><label>Your name *</label><input id="q-name" required placeholder="Full name"></div>
@@ -712,7 +713,7 @@ footer a:hover{color:var(--cream)}
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 DHARAMRAJ CARTEL — ALL RIGHTS RESERVED</span>
+    <span>© <span id="siteYear">2026</span> DHARAMRAJ CARTEL — ALL RIGHTS RESERVED</span>
     <span>ROOTED IN TRADITION · BUILT FOR TOMORROW</span>
   </div>
 </footer>
@@ -775,6 +776,8 @@ document.querySelectorAll('.gate').forEach(g=>{
 });
 
 /* ---------- NAV scroll state ---------- */
+const siteYear=document.getElementById('siteYear');
+if(siteYear) siteYear.textContent=String(new Date().getFullYear());
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
 
