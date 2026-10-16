@@ -41,7 +41,7 @@ body{
   background:var(--bg);color:var(--cream);
   font-family:var(--body);font-weight:400;line-height:1.6;
   overflow-x:hidden;-webkit-font-smoothing:antialiased;
-  cursor:none;
+  cursor:auto;
 }
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
@@ -268,6 +268,9 @@ section{padding:110px 4vw;position:relative;overflow:hidden;isolation:isolate}
 .cat:hover .idx{color:var(--gold)}
 .cat:hover .go s{transform:translateX(6px)}
 .store-note{padding:16px 6px 22px;font-size:.76rem;letter-spacing:.02em;color:var(--muted);text-align:right}
+.store-photo-fallback{display:grid;place-items:center;width:100%;height:100%;min-height:140px;
+  background:linear-gradient(135deg,#19100f,#0b0908);color:var(--gold);
+  font-size:.7rem;letter-spacing:.18em;font-weight:600;text-align:center;padding:18px}
 .cat .tag{position:absolute;top:24px;right:24px;font-size:.6rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--red);border:1px solid rgba(212,58,47,.4);
   padding:4px 10px;border-radius:999px}
@@ -425,6 +428,16 @@ footer a:hover{color:var(--cream)}
 #sourcing .step{min-width:0}
 #sourcing .step>div:last-child{min-width:0}
 @media(max-width:900px){
+  nav{padding:15px 4vw;gap:12px}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;z-index:110;
+    flex-direction:column;align-items:stretch;gap:0;padding:10px 5vw 18px;
+    background:rgba(11,9,8,.98);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    box-shadow:0 16px 30px rgba(0,0,0,.32)}
+  .nav-links.is-open{display:flex}
+  .nav-links a{padding:10px 0}
+  .nav-cta{margin-left:auto}
+  .burger{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;
+    border:1px solid var(--line);border-radius:50%;cursor:pointer;flex-shrink:0}
   .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cat{min-height:350px}
   .cat-photo{height:155px}
@@ -434,6 +447,13 @@ footer a:hover{color:var(--cream)}
   .foot-top{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:600px){
+  nav{padding:12px 4vw;gap:8px}
+  .logo{gap:8px}
+  .logo .m{width:34px;height:34px}
+  .logo .t{font-size:.78rem;letter-spacing:.08em}
+  .logo .t small{font-size:.48rem}
+  .nav-cta{font-size:.6rem;letter-spacing:.05em;padding:8px 10px;white-space:nowrap}
+  .burger{width:36px;height:36px}
   section{padding:76px 5vw}
   .cats{grid-template-columns:minmax(0,1fr)}
   .cat{min-height:330px;padding:24px 22px 22px}
@@ -448,7 +468,6 @@ footer a:hover{color:var(--cream)}
   .nav-links{gap:14px}
 }
 </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -467,7 +486,7 @@ footer a:hover{color:var(--cream)}
     <img class="m brand-logo-image" src="./favicon.svg" alt="Dharamraj Cartel original logo">
     <span class="t">DHARAMRAJ<small>CARTEL</small></span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="primary-navigation">
     <a href="#store">Store</a>
     <a href="./products.html">Products</a>
     <a href="#sourcing">Import / Export</a>
@@ -476,7 +495,7 @@ footer a:hover{color:var(--cream)}
     <a href="#contact">Contact</a>
   </div>
   <a class="nav-cta" href="#enquiry">Get a Quote</a>
-  <button class="burger" onclick="document.querySelector('.nav-links').style.display='flex'" aria-label="menu">☰</button>
+  <button class="burger" id="menuToggle" type="button" aria-label="Open navigation" aria-controls="primary-navigation" aria-expanded="false">☰</button>
 </nav>
 
 <!-- HERO -->
@@ -662,7 +681,7 @@ footer a:hover{color:var(--cream)}
 <div class="dealer-band rv" id="dealers">
   <h2>Join the <span>Network</span></h2>
   <p>Repeat supply, bulk pricing and products-by-specification for shops &amp; resellers. First access to new stock lines and festival-season pricing.</p>
-  <a class="btn-gold" style="width:auto;padding:18px 44px;display:inline-flex" href="#enquiry" target="_blank" rel="noopener">Apply as a Dealer ↗</a>
+  <a class="btn-gold" style="width:auto;padding:18px 44px;display:inline-flex" href="#enquiry" target="_self">Apply as a Dealer ↗</a>
 </div>
 
 <!-- FOOTER -->
@@ -681,7 +700,7 @@ footer a:hover{color:var(--cream)}
       <h5>Contact</h5>
       <a href="https://wa.me/9779845656595?text=Namaste%20Dharamraj%20Cartel%2C%20I%20have%20an%20enquiry." target="_blank" rel="noopener noreferrer">WhatsApp: +977 9845656595</a>
       <a href="#enquiry">Send a sourcing enquiry</a>
-      <a href="mailto:">Email contact (coming soon)</a>
+      <a href="#enquiry" target="_self">Business contact via enquiry form</a>
     </div>
     <div>
       <h5>Compliance</h5>
@@ -759,6 +778,27 @@ document.querySelectorAll('.gate').forEach(g=>{
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
 
+/* ---------- MOBILE NAV ---------- */
+const navLinks=document.getElementById('primary-navigation');
+const menuToggle=document.getElementById('menuToggle');
+function closeMobileNav(){
+  navLinks.classList.remove('is-open');
+  menuToggle.setAttribute('aria-expanded','false');
+  menuToggle.setAttribute('aria-label','Open navigation');
+  menuToggle.textContent='☰';
+}
+menuToggle.addEventListener('click',()=>{
+  const isOpen=!navLinks.classList.contains('is-open');
+  navLinks.classList.toggle('is-open',isOpen);
+  menuToggle.setAttribute('aria-expanded',String(isOpen));
+  menuToggle.setAttribute('aria-label',isOpen?'Close navigation':'Open navigation');
+  menuToggle.textContent=isOpen?'×':'☰';
+});
+navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+  if(window.matchMedia('(max-width: 900px)').matches) closeMobileNav();
+}));
+document.addEventListener('keydown',event=>{if(event.key==='Escape') closeMobileNav();});
+
 /* ---------- SCROLL REVEALS ---------- */
 document.querySelectorAll('section .rv, .dealer-band, footer .rv').forEach(el=>{
   gsap.to(el,{opacity:1,y:0,duration:1,ease:'power3.out',
@@ -767,6 +807,16 @@ document.querySelectorAll('section .rv, .dealer-band, footer .rv').forEach(el=>{
 
 /* ---------- MARQUEE duplicate for seamless loop ---------- */
 const t=document.getElementById('mqtrack');t.innerHTML+=t.innerHTML;
+
+/* ---------- STORE: graceful photo fallback ---------- */
+document.querySelectorAll('.cat-photo img').forEach(image=>{
+  image.addEventListener('error',()=>{
+    const fallback=document.createElement('div');
+    fallback.className='store-photo-fallback';
+    fallback.textContent='DHARAMRAJ CARTEL';
+    image.replaceWith(fallback);
+  },{once:true});
+});
 
 /* ---------- STORE: preselect the category when a customer opens an enquiry ---------- */
 document.querySelectorAll('.cat[data-category]').forEach(card=>{
@@ -791,7 +841,7 @@ document.getElementById('enqForm').addEventListener('submit',e=>{
     'Delivery destination: '+(v('q-dest')||'-'),
     'Product details: '+v('q-msg')
   ];
-  const url='https://wa.me/9779845656595?text='+encodeURIComponent(lines.join('\\n'));
+  const url='https://wa.me/9779845656595?text='+encodeURIComponent(lines.join('\n'));
   window.open(url,'_blank','noopener,noreferrer');
 });
 </script>
