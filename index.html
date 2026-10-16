@@ -745,7 +745,9 @@ footer a:hover{color:var(--cream)}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>
-gsap.registerPlugin(ScrollTrigger);
+const hasGsap=typeof window.gsap!=='undefined';
+const hasScrollTrigger=typeof window.ScrollTrigger!=='undefined';
+if(hasGsap && hasScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
 /* ---------- PRELOADER ---------- */
 (function(){
@@ -757,13 +759,23 @@ gsap.registerPlugin(ScrollTrigger);
     pct.textContent=String(Math.floor(p)).padStart(2,'0');
     if(p>=100){
       clearInterval(tick);
-      gsap.to(loader,{opacity:0,duration:.7,delay:.25,onComplete:()=>{loader.style.display='none';heroIn();}});
+      if(hasGsap){
+        gsap.to(loader,{opacity:0,duration:.7,delay:.25,onComplete:()=>{loader.style.display='none';heroIn();}});
+      }else{
+        loader.style.display='none';
+        heroIn();
+      }
     }
   },90);
 })();
 
 function heroIn(){
-  gsap.to('.hero .rv',{opacity:1,y:0,duration:1.1,stagger:.12,ease:'power3.out'});
+  const heroItems=document.querySelectorAll('.hero .rv');
+  if(hasGsap){
+    gsap.to(heroItems,{opacity:1,y:0,duration:1.1,stagger:.12,ease:'power3.out'});
+  }else{
+    heroItems.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }
 }
 
 /* ---------- GATEWAY glow follows mouse ---------- */
@@ -803,10 +815,15 @@ navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
 document.addEventListener('keydown',event=>{if(event.key==='Escape') closeMobileNav();});
 
 /* ---------- SCROLL REVEALS ---------- */
-document.querySelectorAll('section .rv, .dealer-band, footer .rv').forEach(el=>{
-  gsap.to(el,{opacity:1,y:0,duration:1,ease:'power3.out',
-    scrollTrigger:{trigger:el,start:'top 85%'}});
-});
+const revealItems=document.querySelectorAll('section .rv, .dealer-band, footer .rv');
+if(hasGsap && hasScrollTrigger){
+  revealItems.forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:1,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 85%'}});
+  });
+}else{
+  revealItems.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+}
 
 /* ---------- MARQUEE duplicate for seamless loop ---------- */
 const t=document.getElementById('mqtrack');t.innerHTML+=t.innerHTML;
