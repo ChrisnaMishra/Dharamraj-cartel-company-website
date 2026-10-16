@@ -278,6 +278,33 @@ section{padding:110px 4vw;position:relative;overflow:hidden;isolation:isolate}
 .kw-card-copy .kw-link span:last-child{font-size:1rem;transition:transform .2s}
 .kw-card:hover .kw-link span:last-child{transform:translateX(3px)}
 .kw-note{color:var(--muted);font-size:.72rem;line-height:1.6;margin:16px 0 0}
+.kw-products{margin-top:34px;padding-top:25px;border-top:1px solid rgba(228,185,91,.18)}
+.kw-products-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:16px}
+.kw-products-head .eyebrow{margin-bottom:7px}
+.kw-products-head h4{font-family:var(--disp);font-weight:500;font-size:clamp(1.25rem,2.4vw,1.7rem);margin:0;color:var(--cream)}
+.kw-products-head p{max-width:460px;color:var(--muted);font-size:.78rem;margin:0}
+.kw-product-filters{display:flex;gap:8px;overflow-x:auto;padding:3px 1px 13px;margin-bottom:8px;scrollbar-width:thin}
+.kw-filter{flex:0 0 auto;border:1px solid rgba(228,185,91,.26);background:rgba(255,255,255,.025);color:var(--muted);padding:8px 12px;font:inherit;font-size:.7rem;cursor:pointer}
+.kw-filter:hover,.kw-filter[aria-pressed="true"]{color:var(--bg);background:var(--gold);border-color:var(--gold)}
+.kw-filter:focus-visible,.kw-product-card:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.kw-product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kw-product-card{min-width:0;display:flex;flex-direction:column;background:rgba(11,9,8,.94);border:1px solid rgba(228,185,91,.2);color:var(--cream);text-decoration:none;transition:border-color .2s,transform .2s}
+.kw-product-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.kw-product-card[hidden]{display:none!important}
+.kw-product-art{aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden;background:linear-gradient(145deg,#fbfcfd 0%,#e5e9ec 55%,#fff 100%);padding:14px}
+.kw-product-art svg{display:block;width:100%;height:100%;max-width:170px;max-height:170px;filter:drop-shadow(0 5px 5px rgba(40,48,58,.13))}
+.kw-product-art .metal{stroke:#8c98a2;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;fill:#d8dee3}
+.kw-product-art .metal-hi{stroke:#aeb7bf;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;fill:#f7f8f9}
+.kw-product-art .detail{stroke:#aeb7bf;stroke-width:2.2;stroke-linecap:round;fill:none}
+.kw-product-copy{display:flex;flex-direction:column;align-items:flex-start;gap:8px;flex:1;padding:12px}
+.kw-product-cat{color:var(--gold);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase}
+.kw-product-copy h5{font-family:var(--disp);font-size:.93rem;line-height:1.25;font-weight:500;margin:0}
+.kw-product-copy p{color:var(--muted);font-size:.72rem;line-height:1.5;margin:0}
+.kw-product-cta{margin-top:auto;padding-top:4px;display:flex;align-items:center;justify-content:space-between;width:100%;color:var(--gold);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase}
+.kw-product-empty{display:none;color:var(--muted);font-size:.82rem;padding:18px 0}
+@media(max-width:1050px){.kw-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:900px){.kw-products-head{align-items:flex-start;flex-direction:column;gap:8px}}
+@media(max-width:600px){.kw-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.kw-product-copy{padding:10px}.kw-product-copy h5{font-size:.86rem}.kw-product-art{padding:10px}}
 @media(max-width:1050px){.kw-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:900px){.kw-head{align-items:flex-start;flex-direction:column;gap:10px}.kw-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){.kw-section{padding:18px 14px}.kw-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.kw-card-copy{padding:10px}.kw-card-copy h4{font-size:.9rem}}
@@ -619,48 +646,244 @@ footer a:hover{color:var(--cream)}
       <p>Explore stainless steel kitchen tools, cookware, tableware and practical home essentials. Select a category to prepare an enquiry.</p>
     </div>
     <div class="kw-grid">
-    <a class="kw-card" href="#enquiry" data-category="Kitchen Tools" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Kitchen Tools" target="_self">
       <img class="kw-art" src="./images/kitchen-tools.webp" alt="Stainless steel ladles, spatulas, tongs, skimmer, masher and grater" loading="lazy" decoding="async">
-      <div class="kw-card-copy"><h4>Kitchen Tools</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Kitchen Tools</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
-    <a class="kw-card" href="#enquiry" data-category="Cookware" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Cookware" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Cookware category illustration, product photograph pending"><svg viewBox="0 0 200 200" aria-hidden="true"><path class="metal" d="M36 72 Q100 108 164 72 L151 128 Q100 153 49 128Z"/><path class="metal-soft" d="M52 68 Q100 82 148 68 L151 78 Q100 95 49 78Z"/><path class="metal" d="M42 75 L20 66 M158 75 L180 66"/><path class="metal" d="M62 141 L62 150 Q100 164 138 150 L138 141"/><path class="metal-soft" d="M69 53 Q100 39 131 53 L128 66 Q100 76 72 66Z"/><path class="metal" d="M82 45 L118 45"/></svg></div>
-      <div class="kw-card-copy"><h4>Cookware</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Cookware</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
-    <a class="kw-card" href="#enquiry" data-category="Tableware" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Tableware" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Tableware category illustration, product photograph pending"><svg viewBox="0 0 200 200" aria-hidden="true"><ellipse class="metal" cx="66" cy="92" rx="46" ry="12"/><path class="metal-soft" d="M20 92 Q30 133 66 135 Q102 133 112 92"/><ellipse class="metal" cx="66" cy="92" rx="33" ry="7"/><path class="metal" d="M133 47 Q160 45 164 69 L164 131 Q162 145 146 142 Q130 139 130 125 L130 69 Q131 55 133 47Z"/><path class="metal-soft" d="M132 67 L162 67"/><path class="metal" d="M141 44 Q148 34 156 44"/><ellipse class="metal-soft" cx="145" cy="151" rx="17" ry="6"/><path class="metal" d="M145 131 L145 151"/></svg></div>
-      <div class="kw-card-copy"><h4>Tableware</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Tableware</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
-    <a class="kw-card" href="#enquiry" data-category="Storage" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Storage" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Storage category illustration, product photograph pending"><svg viewBox="0 0 200 200" aria-hidden="true"><rect class="metal" x="29" y="78" width="66" height="62" rx="7"/><rect class="metal-soft" x="25" y="69" width="74" height="13" rx="4"/><path class="metal" d="M42 69 Q62 49 82 69"/><rect class="metal" x="106" y="58" width="61" height="82" rx="7"/><rect class="metal-soft" x="102" y="48" width="69" height="14" rx="4"/><path class="metal" d="M119 48 Q136 30 154 48"/><path class="metal-soft" d="M38 103 H86 M115 90 H158"/></svg></div>
-      <div class="kw-card-copy"><h4>Storage</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Storage</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
-    <a class="kw-card" href="#enquiry" data-category="Cloth Care Essentials" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Cloth Care Essentials" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Cloth Care Essentials category illustration, product photograph pending"><svg viewBox="0 0 200 200" aria-hidden="true"><path class="metal" d="M32 43 L100 160 L168 43 M54 84 H146 M69 111 H131"/><path class="metal" d="M45 43 Q45 27 59 27 Q73 27 73 43 L73 52 M80 43 Q80 27 94 27 Q108 27 108 43 L108 52 M115 43 Q115 27 129 27 Q143 27 143 43 L143 52"/><path class="metal-soft" d="M49 120 H151 L142 164 H58Z"/><path class="metal" d="M55 120 V164 M78 120 V164 M101 120 V164 M124 120 V164 M146 120 V164"/></svg></div>
-      <div class="kw-card-copy"><h4>Cloth Care Essentials</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Cloth Care Essentials</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
-    <a class="kw-card" href="#enquiry" data-category="Bowls &amp; Colanders" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Bowls &amp; Colanders" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Bowls & Colanders category illustration, product photograph pending"><svg viewBox="0 0 200 200" aria-hidden="true"><path class="metal" d="M22 76 Q100 102 178 76 L157 128 Q100 157 43 128Z"/><path class="metal-soft" d="M43 74 Q100 92 157 74"/><path class="metal" d="M48 61 Q100 81 152 61 L139 103 Q100 122 61 103Z"/><g fill="#8f9aa4"><circle cx="70" cy="90" r="2.4"/><circle cx="88" cy="96" r="2.4"/><circle cx="107" cy="96" r="2.4"/><circle cx="126" cy="90" r="2.4"/><circle cx="82" cy="108" r="2.4"/><circle cx="101" cy="113" r="2.4"/><circle cx="119" cy="108" r="2.4"/></g><path class="metal-soft" d="M63 54 Q100 68 137 54"/></svg></div>
-      <div class="kw-card-copy"><h4>Bowls &amp; Colanders</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Bowls &amp; Colanders</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
-    <a class="kw-card" href="#enquiry" data-category="Dustbins" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Dustbins" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Dustbins category illustration, product photograph pending"><svg viewBox="0 0 200 200" aria-hidden="true"><path class="metal" d="M30 68 H82 L77 148 Q56 160 35 148Z"/><rect class="metal-soft" x="25" y="57" width="62" height="13" rx="4"/><path class="metal" d="M113 68 H164 L158 148 Q139 160 119 148Z"/><path class="metal-soft" d="M109 60 Q138 38 169 60 L164 70 H113Z"/><path class="metal" d="M44 152 H70 M129 152 H151"/></svg></div>
-      <div class="kw-card-copy"><h4>Dustbins</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Dustbins</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
-    <a class="kw-card" href="#enquiry" data-category="Imported Items" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Imported Items" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Imported Items category illustration, product photograph pending"><svg viewBox="0 0 200 200" aria-hidden="true"><path class="metal" d="M26 113 H111 V145 H26Z"/><path class="metal" d="M31 113 L31 62 M49 113 L49 62 M67 113 L67 62 M85 113 L85 62 M103 113 L103 62 M26 73 H111 M26 94 H111"/><path class="metal-soft" d="M121 126 L134 82 H174 L184 126Z"/><path class="metal" d="M135 82 Q151 69 170 82"/><path class="metal" d="M139 63 Q145 51 154 63 L154 80 M154 80 Q165 53 174 67 L174 82"/></svg></div>
-      <div class="kw-card-copy"><h4>Imported Items</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Imported Items</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
-    <a class="kw-card" href="#enquiry" data-category="Hot Case &amp; Tea Urn" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Hot Case &amp; Tea Urn" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Hot Case & Tea Urn category illustration, product photograph pending"><svg viewBox="0 0 200 200" aria-hidden="true"><path class="metal" d="M24 75 Q24 63 38 63 H95 Q107 63 107 75 V136 Q107 149 95 149 H38 Q24 149 24 136Z"/><path class="metal-soft" d="M30 63 Q60 49 101 63 L98 75 H33Z"/><path class="metal" d="M123 65 H167 V139 H123Z"/><path class="metal-soft" d="M119 65 Q145 48 171 65"/><path class="metal" d="M145 139 V151 H164 M164 151 Q177 151 177 139 V133"/><path class="metal" d="M131 65 V53 Q145 43 159 53 V65"/></svg></div>
-      <div class="kw-card-copy"><h4>Hot Case &amp; Tea Urn</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Hot Case &amp; Tea Urn</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
-    <a class="kw-card" href="#enquiry" data-category="Cutlery" target="_self">
+    <a class="kw-card" href="#kw-products" data-category="Cutlery" target="_self">
       <div class="kw-placeholder" role="img" aria-label="Cutlery category illustration, product photograph pending"><svg viewBox="0 0 200 200" aria-hidden="true"><path class="metal" d="M35 35 Q18 51 29 74 Q37 87 42 74 Q53 51 35 35Z M28 76 L34 156"/><path class="metal" d="M78 33 Q68 56 75 80 L83 80 Q91 56 81 33 M83 80 L83 156"/><path class="metal" d="M119 36 L133 36 L127 85 L123 156 L115 156 L119 85Z"/><path class="metal" d="M156 34 Q145 47 150 67 Q153 79 163 77 Q176 73 170 53 Q166 40 156 34Z M160 78 L161 156"/><path class="metal-soft" d="M57 161 H154 Q162 161 162 169 H51 Q51 161 57 161Z"/></svg></div>
-      <div class="kw-card-copy"><h4>Cutlery</h4><span class="kw-link"><span>Enquire</span><span aria-hidden="true">↗</span></span></div>
+      <div class="kw-card-copy"><h4>Cutlery</h4><span class="kw-link"><span>View products</span><span aria-hidden="true">↗</span></span></div>
     </a>
     </div>
-    <p class="kw-note">Product images are illustrative. Category artwork is being completed; availability, specifications and prices are confirmed when you enquire.</p>
+
+    <div class="kw-products" id="kw-products">
+      <div class="kw-products-head">
+        <div><div class="eyebrow">Browse the range</div><h4>Kitchenware product lines</h4></div>
+        <p>Browse sample product types and send an enquiry for current photos, specifications, minimum order quantities and pricing.</p>
+      </div>
+      <div class="kw-product-filters" role="group" aria-label="Filter kitchenware products">
+        <button class="kw-filter" type="button" data-filter="All" aria-pressed="true">All products</button>
+        <button class="kw-filter" type="button" data-filter="Kitchen Tools" aria-pressed="false">Kitchen Tools</button><button class="kw-filter" type="button" data-filter="Cookware" aria-pressed="false">Cookware</button><button class="kw-filter" type="button" data-filter="Tableware" aria-pressed="false">Tableware</button><button class="kw-filter" type="button" data-filter="Storage" aria-pressed="false">Storage</button><button class="kw-filter" type="button" data-filter="Cloth Care Essentials" aria-pressed="false">Cloth Care Essentials</button><button class="kw-filter" type="button" data-filter="Bowls &amp; Colanders" aria-pressed="false">Bowls &amp; Colanders</button><button class="kw-filter" type="button" data-filter="Dustbins" aria-pressed="false">Dustbins</button><button class="kw-filter" type="button" data-filter="Imported Items" aria-pressed="false">Imported Items</button><button class="kw-filter" type="button" data-filter="Hot Case &amp; Tea Urn" aria-pressed="false">Hot Case &amp; Tea Urn</button><button class="kw-filter" type="button" data-filter="Cutlery" aria-pressed="false">Cutlery</button>
+      </div>
+      <div class="kw-product-grid">
+
+      <a class="kw-product-card" href="#enquiry" data-category="Kitchen Tools" data-product="Ladle &amp; Serving Set">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><path d="M38 32 Q18 43 28 61 Q37 76 47 61 Q57 43 38 32Z"/><path d="M38 68 L38 148"/><path d="M82 30 Q66 45 75 61 Q82 73 91 61 Q99 45 82 30Z"/><path d="M82 68 L82 148"/><path d="M126 31 Q106 43 116 61 Q126 75 136 61 Q146 43 126 31Z"/><path d="M126 68 L126 148"/></g><path class="detail" d="M31 145 H45 M75 145 H89 M119 145 H133"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Kitchen Tools</span>
+          <h5>Ladle &amp; Serving Set</h5>
+          <p>Everyday serving tools for home kitchens.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Kitchen Tools" data-product="Skimmer &amp; Turner Set">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><ellipse cx="52" cy="43" rx="20" ry="25"/><path d="M52 67 L52 150"/><path d="M102 28 L133 28 L127 66 L108 66Z"/><path d="M117 66 L117 150"/></g><g class="detail"><circle cx="44" cy="35" r="2"/><circle cx="59" cy="35" r="2"/><circle cx="44" cy="48" r="2"/><circle cx="59" cy="48" r="2"/><path d="M104 41 H131"/></g></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Kitchen Tools</span>
+          <h5>Skimmer &amp; Turner Set</h5>
+          <p>A practical pair for lifting and turning food.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Cookware" data-product="Stainless Steel Kadai">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><path class="metal" d="M35 64 Q90 85 145 64 L132 120 Q90 143 48 120Z"/><path class="metal-hi" d="M35 64 Q90 82 145 64 Q90 98 35 64Z"/><path class="metal" d="M35 70 L17 63 M145 70 L163 63"/><path class="detail" d="M54 116 Q90 132 126 116"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Cookware</span>
+          <h5>Stainless Steel Kadai</h5>
+          <p>A deep cooking pan; size and grade by enquiry.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Cookware" data-product="Saucepan with Lid">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><path class="metal" d="M37 72 H120 L111 128 Q78 144 46 128Z"/><path class="metal-hi" d="M34 70 Q78 59 123 70 L120 79 H37Z"/><path class="metal" d="M120 84 L159 93 L157 104 L117 96Z"/><path class="metal" d="M65 58 Q78 44 92 58 L88 65 H69Z"/><path class="metal" d="M78 57 V46"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Cookware</span>
+          <h5>Saucepan with Lid</h5>
+          <p>Lidded saucepan option for everyday cooking.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Tableware" data-product="Dinner Plate Set">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><ellipse class="metal" cx="86" cy="115" rx="58" ry="18"/><path class="metal-hi" d="M28 115 Q38 143 86 143 Q134 143 144 115 Q86 133 28 115Z"/><ellipse class="metal" cx="86" cy="100" rx="52" ry="16"/><ellipse class="metal-hi" cx="86" cy="99" rx="38" ry="10"/><ellipse class="metal" cx="86" cy="86" rx="44" ry="13"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Tableware</span>
+          <h5>Dinner Plate Set</h5>
+          <p>Stackable stainless steel plates in multiple sizes.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Tableware" data-product="Stainless Steel Tumblers">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><path d="M20 53 H61 L56 132 Q40 142 25 132Z"/><path d="M70 39 H113 L108 132 Q91 142 75 132Z"/><path d="M121 53 H161 L156 132 Q141 142 126 132Z"/></g><g class="detail"><path d="M27 64 H59 M77 51 H110 M128 64 H159"/></g></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Tableware</span>
+          <h5>Stainless Steel Tumblers</h5>
+          <p>Reusable drinking tumblers in selectable capacities.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Storage" data-product="Steel Canister Set">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><rect x="18" y="71" width="42" height="67" rx="4"/><rect x="69" y="53" width="42" height="85" rx="4"/><rect x="120" y="71" width="42" height="67" rx="4"/></g><g class="metal-hi"><rect x="15" y="63" width="48" height="11" rx="3"/><rect x="66" y="45" width="48" height="11" rx="3"/><rect x="117" y="63" width="48" height="11" rx="3"/></g><g class="detail"><path d="M28 97 H50 M79 82 H101 M130 97 H152"/></g></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Storage</span>
+          <h5>Steel Canister Set</h5>
+          <p>Lidded containers for pantry and countertop storage.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Storage" data-product="Masala Spice Box">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><ellipse class="metal" cx="90" cy="91" rx="61" ry="45"/><ellipse class="metal-hi" cx="90" cy="91" rx="52" ry="37"/><g class="detail"><path d="M90 55 V127 M37 91 H143 M53 66 L127 116 M127 66 L53 116"/></g><circle class="metal" cx="90" cy="91" r="9"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Storage</span>
+          <h5>Masala Spice Box</h5>
+          <p>Compact spice organiser; compartment layout varies.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Cloth Care Essentials" data-product="Stainless Steel Hangers">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><path d="M90 34 Q81 21 93 17 Q104 14 104 25 Q104 32 92 37 L37 93 L143 93 L90 37"/><path d="M90 53 L18 122 H162Z"/><path d="M90 53 L35 111 M90 53 L145 111"/></g><path class="detail" d="M35 112 H145"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Cloth Care Essentials</span>
+          <h5>Stainless Steel Hangers</h5>
+          <p>Reusable hanger styles for household organisation.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Cloth Care Essentials" data-product="Folding Drying Rack">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><path d="M26 59 H154 M26 78 H154 M26 97 H154 M26 116 H154"/><path d="M33 59 L49 147 M147 59 L131 147"/><path d="M25 147 H57 M123 147 H155"/></g><g class="detail"><path d="M38 59 V116 M65 59 V116 M92 59 V116 M119 59 V116 M146 59 V116"/></g></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Cloth Care Essentials</span>
+          <h5>Folding Drying Rack</h5>
+          <p>Space-saving drying rack option; dimensions by enquiry.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Bowls &amp; Colanders" data-product="Mixing Bowl Set">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><path class="metal" d="M16 74 Q90 101 164 74 L145 119 Q90 147 35 119Z"/><path class="metal-hi" d="M34 65 Q90 83 146 65 L136 94 Q90 115 44 94Z"/><path class="metal" d="M48 58 Q90 70 132 58 L122 81 Q90 94 58 81Z"/><path class="detail" d="M39 93 Q90 117 141 93"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Bowls &amp; Colanders</span>
+          <h5>Mixing Bowl Set</h5>
+          <p>Nested mixing bowls in assorted capacities.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Bowls &amp; Colanders" data-product="Perforated Colander">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><path class="metal" d="M29 67 Q90 87 151 67 L133 119 Q90 143 47 119Z"/><path class="metal-hi" d="M29 67 Q90 85 151 67"/><g class="detail"><circle cx="54" cy="91" r="2"/><circle cx="73" cy="98" r="2"/><circle cx="91" cy="101" r="2"/><circle cx="110" cy="98" r="2"/><circle cx="128" cy="91" r="2"/><circle cx="64" cy="112" r="2"/><circle cx="85" cy="116" r="2"/><circle cx="106" cy="112" r="2"/></g><path class="metal" d="M29 70 L13 64 M151 70 L167 64"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Bowls &amp; Colanders</span>
+          <h5>Perforated Colander</h5>
+          <p>Drain-and-rinse colander with perforated sides.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Dustbins" data-product="Pedal Dustbin">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><path class="metal" d="M45 56 H135 L127 145 Q90 157 53 145Z"/><path class="metal-hi" d="M39 49 H141 L135 61 H45Z"/><path class="metal" d="M71 45 Q90 25 109 45"/><path class="metal" d="M71 148 H109 L114 158 H66Z"/><path class="detail" d="M65 75 V130 M90 75 V130 M115 75 V130"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Dustbins</span>
+          <h5>Pedal Dustbin</h5>
+          <p>Lidded bin style for home or office use.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Dustbins" data-product="Swing-Lid Dustbin">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><path class="metal" d="M48 65 H132 L125 145 Q90 154 55 145Z"/><path class="metal-hi" d="M42 62 Q90 36 138 62 L130 73 H50Z"/><path class="metal" d="M67 59 Q90 76 113 59"/><path class="detail" d="M67 80 V131 M90 80 V131 M113 80 V131"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Dustbins</span>
+          <h5>Swing-Lid Dustbin</h5>
+          <p>Compact swing-top bin option in different sizes.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Imported Items" data-product="Oil Dispenser Set">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><path d="M27 58 H64 V137 H27Z"/><path d="M35 58 V44 H56 V58"/><path d="M43 44 V34 H58 L66 41"/><path d="M94 58 H131 V137 H94Z"/><path d="M102 58 V44 H123 V58"/><path d="M110 44 V34 H125 L133 41"/></g><path class="metal-hi" d="M31 88 H60 V126 H31Z M98 88 H127 V126 H98Z"/><path class="detail" d="M34 82 H57 M97 82 H128"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Imported Items</span>
+          <h5>Oil Dispenser Set</h5>
+          <p>Countertop dispensers for oil, vinegar or sauces.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Imported Items" data-product="Countertop Organizer">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><path d="M24 63 H156 V78 H24Z M24 115 H156 V130 H24Z"/><path d="M33 63 V147 M147 63 V147"/><path d="M48 45 H132 V63 H48Z"/></g><g class="detail"><path d="M49 83 V106 M66 83 V106 M83 83 V106 M100 83 V106 M117 83 V106 M134 83 V106"/></g></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Imported Items</span>
+          <h5>Countertop Organizer</h5>
+          <p>Shelf organiser for frequently used kitchen essentials.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Hot Case &amp; Tea Urn" data-product="Insulated Hot Case">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><path class="metal" d="M31 67 Q31 58 42 58 H138 Q149 58 149 67 V134 Q149 145 138 145 H42 Q31 145 31 134Z"/><path class="metal-hi" d="M27 58 Q90 39 153 58 L148 68 H32Z"/><path class="metal" d="M48 56 V48 Q90 32 132 48 V56"/><path class="detail" d="M53 79 H127 M53 122 H127"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Hot Case &amp; Tea Urn</span>
+          <h5>Insulated Hot Case</h5>
+          <p>Food warmer style with size and finish by enquiry.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Hot Case &amp; Tea Urn" data-product="Stainless Steel Tea Urn">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><path class="metal" d="M49 48 H131 V129 Q131 143 117 143 H63 Q49 143 49 129Z"/><path class="metal-hi" d="M43 44 Q90 29 137 44 L131 54 H49Z"/><path class="metal" d="M70 44 V31 Q90 22 110 31 V44"/><path class="metal" d="M131 91 H145 V108 H132"/><path class="metal" d="M138 108 V118 Q138 123 132 123"/><path class="detail" d="M62 65 H118"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Hot Case &amp; Tea Urn</span>
+          <h5>Stainless Steel Tea Urn</h5>
+          <p>Tea/coffee urn option; capacity and tap confirmed by enquiry.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Cutlery" data-product="Spoon &amp; Fork Set">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><path class="metal" d="M37 32 Q20 47 27 64 Q36 77 45 64 Q54 47 37 32Z M36 70 L36 149"/><path class="metal" d="M79 30 Q67 48 72 68 L86 68 Q92 48 80 30 M79 68 L79 149"/><path class="metal" d="M121 34 L136 34 L130 81 L124 149 L116 149 L121 81Z"/><path class="metal-hi" d="M28 148 H44 M72 148 H87 M115 148 H131"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Cutlery</span>
+          <h5>Spoon &amp; Fork Set</h5>
+          <p>Everyday dining cutlery sold in assorted set sizes.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      <a class="kw-product-card" href="#enquiry" data-category="Cutlery" data-product="Serving Spoon Set">
+        <div class="kw-product-art"><svg viewBox="0 0 180 180" aria-hidden="true"><g class="metal"><ellipse cx="39" cy="47" rx="13" ry="18"/><path d="M39 65 V148"/><ellipse cx="90" cy="47" rx="17" ry="18"/><path d="M90 65 V148"/><ellipse cx="141" cy="47" rx="13" ry="18"/><path d="M141 65 V148"/></g><path class="detail" d="M32 145 H46 M83 145 H97 M134 145 H148"/></svg></div>
+        <div class="kw-product-copy">
+          <span class="kw-product-cat">Cutlery</span>
+          <h5>Serving Spoon Set</h5>
+          <p>Serving spoons and ladles for family meals.</p>
+          <span class="kw-product-cta"><span>Ask for price &amp; availability</span><span aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+      </div>
+      <p class="kw-product-empty">No product lines in this category yet.</p>
+    </div>
+
+    <p class="kw-note">Product illustrations are visual guides, not a representation of confirmed stock. Product availability, specifications, MOQs and prices are confirmed when you enquire.</p>
   </div>
   <div class="store-bridge rv">
     <div>
@@ -863,11 +1086,46 @@ document.querySelectorAll('section .rv, .dealer-band, footer .rv').forEach(el=>{
 /* ---------- MARQUEE duplicate for seamless loop ---------- */
 const t=document.getElementById('mqtrack');t.innerHTML+=t.innerHTML;
 
-/* ---------- STORE: preselect the category when a customer opens an enquiry ---------- */
-document.querySelectorAll('.cat[data-category], .kw-card[data-category]').forEach(card=>{
+/* ---------- STORE: category selection and Kitchenware product catalogue ---------- */
+document.querySelectorAll('.cat[data-category]').forEach(card=>{
   card.addEventListener('click',()=>{
     const select=document.getElementById('q-cat');
     if(select) select.value=card.dataset.category;
+  });
+});
+
+const kitchenProductCards=[...document.querySelectorAll('.kw-product-card')];
+const kitchenFilters=[...document.querySelectorAll('.kw-filter')];
+const kitchenEmpty=document.querySelector('.kw-product-empty');
+
+function filterKitchenProducts(category){
+  let shown=0;
+  kitchenProductCards.forEach(card=>{
+    const visible=category==='All'||card.dataset.category===category;
+    card.hidden=!visible;
+    if(visible) shown+=1;
+  });
+  kitchenFilters.forEach(button=>{
+    button.setAttribute('aria-pressed',String(button.dataset.filter===category));
+  });
+  if(kitchenEmpty) kitchenEmpty.style.display=shown===0?'block':'none';
+}
+
+kitchenFilters.forEach(button=>{
+  button.addEventListener('click',()=>filterKitchenProducts(button.dataset.filter));
+});
+
+document.querySelectorAll('.kw-card[data-category]').forEach(card=>{
+  card.href='#kw-products';
+  card.addEventListener('click',()=>filterKitchenProducts(card.dataset.category));
+});
+
+document.querySelectorAll('.kw-product-card[data-category]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const select=document.getElementById('q-cat');
+    const details=document.getElementById('q-msg');
+    if(select) select.value=card.dataset.category;
+    if(details) details.value='I am enquiring about '+card.dataset.product+'. Please share current availability, specifications, MOQ and price.';
   });
 });
 
