@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+<title id="title">Hulas Stainless Steel Pipes</title>
+<desc id="desc">Stylized illustration of polished stainless steel pipes for the Hulas product catalogue.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#ece9e3"/></linearGradient>
+ <linearGradient id="steel" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#fafafa"/><stop offset=".16" stop-color="#9da4a8"/><stop offset=".28" stop-color="#fdfdfd"/><stop offset=".52" stop-color="#8a9297"/><stop offset=".7" stop-color="#f8f8f8"/><stop offset="1" stop-color="#70777b"/></linearGradient>
+ <linearGradient id="inner" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#30363a"/><stop offset=".5" stop-color="#07090a"/><stop offset="1" stop-color="#62686b"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-30%" width="150%" height="180%"><feGaussianBlur stdDeviation="12"/></filter>
+</defs>
+<rect width="800" height="600" fill="url(#bg)"/>
+<ellipse cx="407" cy="450" rx="300" ry="32" fill="#000" opacity=".13" filter="url(#shadow)"/>
+<g stroke="#737b80" stroke-width="3">
+ <g>
+  <path d="M100 255 L590 360 L590 407 L100 302 Z" fill="url(#steel)"/>
+  <ellipse cx="100" cy="278" rx="24" ry="24" fill="url(#steel)"/>
+  <ellipse cx="100" cy="278" rx="14" ry="14" fill="url(#inner)" stroke="#c7cbcd" stroke-width="4"/>
+  <ellipse cx="590" cy="383" rx="24" ry="24" fill="url(#steel)"/>
+  <ellipse cx="590" cy="383" rx="14" ry="14" fill="url(#inner)" stroke="#d9dcde" stroke-width="4"/>
+ </g>
+ <g>
+  <path d="M145 205 L645 315 L645 354 L145 244 Z" fill="url(#steel)"/>
+  <ellipse cx="145" cy="224" rx="20" ry="20" fill="url(#steel)"/>
+  <ellipse cx="145" cy="224" rx="11" ry="11" fill="url(#inner)" stroke="#d5d8da" stroke-width="3"/>
+  <ellipse cx="645" cy="335" rx="20" ry="20" fill="url(#steel)"/>
+  <ellipse cx="645" cy="335" rx="11" ry="11" fill="url(#inner)" stroke="#d5d8da" stroke-width="3"/>
+ </g>
+ <g>
+  <path d="M210 158 L690 264 L690 294 L210 188 Z" fill="url(#steel)"/>
+  <ellipse cx="210" cy="173" rx="16" ry="16" fill="url(#steel)"/>
+  <ellipse cx="210" cy="173" rx="8" ry="8" fill="url(#inner)" stroke="#d5d8da" stroke-width="3"/>
+  <ellipse cx="690" cy="279" rx="16" ry="16" fill="url(#steel)"/>
+  <ellipse cx="690" cy="279" rx="8" ry="8" fill="url(#inner)" stroke="#d5d8da" stroke-width="3"/>
+ </g>
+ <g>
+  <path d="M260 315 L520 372 L520 397 L260 340 Z" fill="url(#steel)"/>
+  <ellipse cx="260" cy="327" rx="13" ry="13" fill="url(#steel)"/>
+  <ellipse cx="260" cy="327" rx="6" ry="6" fill="url(#inner)" stroke="#d5d8da" stroke-width="2"/>
+  <ellipse cx="520" cy="384" rx="13" ry="13" fill="url(#steel)"/>
+  <ellipse cx="520" cy="384" rx="6" ry="6" fill="url(#inner)" stroke="#d5d8da" stroke-width="2"/>
+ </g>
+</g>
+<g font-family="Arial,sans-serif" text-anchor="middle">
+ <text x="400" y="500" font-size="30" font-weight="700" letter-spacing="8" fill="#8b6925">HULAS</text>
+ <text x="400" y="529" font-size="15" letter-spacing="4" fill="#57534e">STAINLESS STEEL PIPES</text>
+</g>
+</svg>
