@@ -297,6 +297,11 @@ section{padding:110px 4vw;position:relative;overflow:hidden;isolation:isolate}
 .kw-product-card[hidden]{display:none!important}
 .kw-product-art{aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden;background:linear-gradient(145deg,#fbfcfd 0%,#e5e9ec 55%,#fff 100%);padding:14px}
 .kw-product-art svg{display:block;width:100%;height:100%;max-width:170px;max-height:170px;filter:drop-shadow(0 5px 5px rgba(40,48,58,.13))}
+.kw-product-photo{display:block;width:100%;height:100%;object-fit:contain;background:#f1f2f1}
+.kw-product-art{padding:0}
+.kw-product-art .kw-photo-fallback{width:100%;height:100%;display:grid;place-items:center;color:#555;font-size:.74rem;text-align:center;padding:18px;background:linear-gradient(145deg,#fafbfc,#e5e9ec)}
+.kw-card .kw-art{object-fit:cover}
+
 .kw-product-art .metal{stroke:#8c98a2;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;fill:#d8dee3}
 .kw-product-art .metal-hi{stroke:#aeb7bf;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;fill:#f7f8f9}
 .kw-product-art .detail{stroke:#aeb7bf;stroke-width:2.2;stroke-linecap:round;fill:none}
@@ -1488,7 +1493,7 @@ document.querySelectorAll('.cat-photo img').forEach(image=>{
 const kitchenwareToggle=document.querySelector('[data-kitchenware-toggle]');
 const kitchenwarePanel=document.getElementById('kitchenware');
 const kitchenwareClose=document.getElementById('kitchenware-close');
-const kitchenProductCards=[...document.querySelectorAll('.kw-product-card')];
+let kitchenProductCards=[...document.querySelectorAll('.kw-product-card')];
 const kitchenFilters=[...document.querySelectorAll('.kw-filter')];
 const kitchenEmpty=document.querySelector('.kw-product-empty');
 const kitchenCount=document.querySelector('.kw-count');
@@ -1550,14 +1555,135 @@ document.querySelectorAll('.cat[data-category]:not([data-kitchenware-toggle])').
   });
 });
 
-document.querySelectorAll('.kw-product-card[data-category]').forEach(card=>{
-  card.addEventListener('click',()=>{
+const kitchenProductGrid=document.querySelector('.kw-product-grid');
+if(kitchenProductGrid){
+  kitchenProductGrid.addEventListener('click',event=>{
+    const card=event.target.closest('.kw-product-card[data-category]');
+    if(!card) return;
     const select=document.getElementById('q-cat');
     const details=document.getElementById('q-msg');
     if(select) select.value=card.dataset.category;
     if(details) details.value='I am enquiring about '+card.dataset.product+'. Please share current availability, specifications, minimum order quantity and price.';
   });
-});
+}
+
+/* Load the real locally hosted product photos generated from Indigo's catalogue.
+   The old cards are only a temporary fallback while the first photo sync runs. */
+function localCatalogueAsset(relativePath){
+  return './indigo_images/'+String(relativePath||'').split('/').map(part=>encodeURIComponent(part)).join('/');
+}
+
+function setPhoto(img, primaryPath, fallbackPath, altText){
+  img.src=localCatalogueAsset(primaryPath||fallbackPath||'categories/household-range.webp');
+  img.alt=altText;
+  img.loading='lazy';
+  img.decoding='async';
+  img.addEventListener('error',()=>{
+    if(fallbackPath && img.dataset.usedFallback!=='1'){
+      img.dataset.usedFallback='1';
+      img.src=localCatalogueAsset(fallbackPath);
+    }else{
+      const placeholder=document.createElement('div');
+      placeholder.className='kw-photo-fallback';
+      placeholder.textContent='Product photo unavailable';
+      img.replaceWith(placeholder);
+    }
+  },{once:false});
+}
+
+async function loadRealKitchenwarePhotos(){
+  const grid=document.querySelector('.kw-product-grid');
+  if(!grid) return;
+  try{
+    const response=await fetch('./indigo_images/products.json',{cache:'no-store'});
+    if(!response.ok) throw new Error('Photo manifest is not published yet.');
+    const manifest=await response.json();
+    const groups=Array.isArray(manifest.categories)?manifest.categories:[];
+    const byName=new Map(groups.map(group=>[group.name,group]));
+    const allProducts=groups.flatMap(group=>(group.products||[]).map(product=>({
+      ...product,
+      category:group.name,
+      categorySlug:group.slug
+    })));
+    const photoCount=allProducts.reduce((total,product)=>total+(Array.isArray(product.images)&&product.images.length?1:0),0);
+    if(!allProducts.length||photoCount===0) throw new Error('No product photographs were found in the manifest yet.');
+
+    const firstPhotoByCategory=new Map();
+    for(const group of groups){
+      const firstProduct=(group.products||[]).find(product=>Array.isArray(product.images)&&product.images.length);
+      if(firstProduct) firstPhotoByCategory.set(group.name,firstProduct.images[0]);
+    }
+    const overallPhoto=allProducts.find(product=>Array.isArray(product.images)&&product.images.length)?.images[0]||'categories/household-range.webp';
+
+    /* Replace every category illustration with a real product photo. */
+    document.querySelectorAll('.kw-card[data-category]').forEach(card=>{
+      const group=byName.get(card.dataset.category);
+      const categoryPhoto=firstPhotoByCategory.get(card.dataset.category)||overallPhoto;
+      const imagePath=group&&group.slug?('categories/'+group.slug+'.webp'):overallPhoto;
+      const existing=card.querySelector('.kw-placeholder');
+      if(existing){
+        const img=document.createElement('img');
+        img.className='kw-art';
+        setPhoto(img,imagePath,categoryPhoto,card.dataset.category+' product photo');
+        existing.replaceWith(img);
+      }
+    });
+
+    /* Replace the Home & Kitchen tile photo with a local catalogue collage. */
+    const homePhoto=document.querySelector('[data-kitchenware-toggle] .cat-photo img');
+    if(homePhoto) setPhoto(homePhoto,'categories/household-range.webp',overallPhoto,'Kitchenware and household product photos');
+
+    /* Render every supplier product with its actual local image when available. */
+    const fragment=document.createDocumentFragment();
+    for(const product of allProducts){
+      const productName=product.name||'Household product';
+      const category=product.category||'Kitchen Tools';
+      const categoryPhoto=firstPhotoByCategory.get(category)||overallPhoto;
+      const imagePath=Array.isArray(product.images)&&product.images.length?product.images[0]:categoryPhoto;
+      const card=document.createElement('a');
+      card.className='kw-product-card';
+      card.href='#enquiry';
+      card.dataset.category=category;
+      card.dataset.product=productName;
+      if(product.url) card.dataset.productUrl=product.url;
+
+      const artwork=document.createElement('div');
+      artwork.className='kw-product-art';
+      const image=document.createElement('img');
+      image.className='kw-product-photo';
+      setPhoto(image,imagePath,categoryPhoto,productName);
+      artwork.append(image);
+
+      const copy=document.createElement('div');
+      copy.className='kw-product-copy';
+      const categoryLabel=document.createElement('span');
+      categoryLabel.className='kw-product-cat';
+      categoryLabel.textContent=category;
+      const title=document.createElement('h5');
+      title.textContent=productName;
+      const description=document.createElement('p');
+      description.textContent='Ask us for the available model, specification, quantity and Nepal delivery price.';
+      const callToAction=document.createElement('span');
+      callToAction.className='kw-product-cta';
+      const callText=document.createElement('span');
+      callText.textContent='Enquire for details';
+      const arrow=document.createElement('span');
+      arrow.setAttribute('aria-hidden','true');
+      arrow.textContent='↗';
+      callToAction.append(callText,arrow);
+      copy.append(categoryLabel,title,description,callToAction);
+      card.append(artwork,copy);
+      fragment.append(card);
+    }
+    grid.replaceChildren(fragment);
+    kitchenProductCards=[...document.querySelectorAll('.kw-product-card')];
+    filterKitchenProducts('All products');
+  }catch(error){
+    /* Keep the page usable during the first sync or if the supplier is unavailable. */
+    console.warn('Kitchenware product photos have not finished loading:',error);
+  }
+}
+loadRealKitchenwarePhotos();
 
 /* Open the catalogue for direct product links and bookmarks. */
 if(window.location.hash==='#kw-products'||window.location.hash==='#kitchenware'){
