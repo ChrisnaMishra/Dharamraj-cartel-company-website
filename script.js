@@ -289,18 +289,20 @@ async function loadRealKitchenwarePhotos(){
 
     /* Render every supplier product with its actual local image when available. */
     const fragment=document.createDocumentFragment();
-    for(const product of allProducts){
+    for(let productIndex=0;productIndex<allProducts.length;productIndex++){
+      const product=allProducts[productIndex];
       const productName=product.name||'Household product';
       const category=product.category||'Kitchen Tools';
       const categoryPhoto=firstPhotoByCategory.get(category)||overallPhoto;
       const imagePath=Array.isArray(product.images)&&product.images.length?product.images[0]:categoryPhoto;
+      /* Product cards open the local details modal; never navigate to the supplier URL. */
       const card=document.createElement('a');
       card.className='kw-product-card';
-      card.href=product.url||'#enquiry';
-      if(product.url){card.target='_blank';card.rel='noopener noreferrer';}
+      card.href='#kw-detail-modal';
       card.dataset.category=category;
       card.dataset.product=productName;
-      if(product.url) card.dataset.productUrl=product.url;
+      card.dataset.productIndex=String(productIndex);
+      card.setAttribute('aria-haspopup','dialog');
 
       const artwork=document.createElement('div');
       artwork.className='kw-product-art';
@@ -389,9 +391,9 @@ if(enquiryForm) enquiryForm.addEventListener('submit',e=>{
         if(!response.ok){lastError=new Error('Catalogue returned HTTP '+response.status);continue;}
         const manifest=await response.json();
         const products=(manifest.categories||[]).flatMap(category=>(category.products||[]).map(product=>({...product,category:product.category||category.name})));
-        detailCache=Object.fromEntries(products.filter(product=>product.url).map(product=>[product.url,product]));
-        if(Object.keys(detailCache).length) return detailCache;
-        lastError=new Error('The catalogue contains no product records.');
+        detailCache=products;
+        if(detailCache.length) return detailCache;
+        lastError=new Error('The local catalogue contains no product records.');
       }catch(error){lastError=error;}
     }
     throw lastError||new Error('Product details are still being prepared.');
@@ -418,7 +420,12 @@ if(enquiryForm) enquiryForm.addEventListener('submit',e=>{
     event.preventDefault();
     modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
     content.className='kw-detail-loading';content.textContent='Loading full product details…';
-    try{const all=await getDetails();const detail=all[card.dataset.productUrl]||all.products?.[card.dataset.productUrl];if(!detail)throw new Error('Detailed information for this item is not available yet.');render(detail,card);}
+    try{
+      const all=await getDetails();
+      const detail=all[Number(card.dataset.productIndex)];
+      if(!detail) throw new Error('Detailed information for this item is not available yet.');
+      render(detail,card);
+    }
     catch(error){content.className='kw-detail-loading';content.textContent=(error&&error.message)||'Could not load product details. Please try again shortly.';}
   });
 })();
