@@ -62,54 +62,54 @@ footer{text-align:center;padding:24px 5%;color:var(--muted);border-top:1px solid
   <input id="search" type="search" placeholder="Search products (e.g. TMT, wire, pipe)" aria-label="Search products">
   <div class="chips" id="chips" aria-label="Filter by category"></div>
 </div>
-<main class="grid" id="grid" aria-live="polite"><article class="card"><div class="img"><img src="./hulas-ss-pipes.svg" alt="Hulas Stainless Steel Pipes"></div><div class="body"><div class="cat">Hardware</div><h3>Hulas Stainless Steel Pipes</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1753069197.webp" alt="OPC Cement"></div><div class="body"><div class="cat">Cement</div><h3>OPC Cement</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1710146546.png" alt="PPC Cement"></div><div class="body"><div class="cat">Cement</div><h3>PPC Cement</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1753069245.webp" alt="GI Sheet"></div><div class="body"><div class="cat">G.I. Sheet</div><h3>GI Sheet</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1753069302.webp" alt="GI Wire"></div><div class="body"><div class="cat">G.I. Wire</div><h3>GI Wire</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1721289505.webp" alt="GI Pipe"></div><div class="body"><div class="cat">GI Pipes</div><h3>GI Pipe</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1753678855.webp" alt="S.S. Pipe"></div><div class="body"><div class="cat">Hardware</div><h3>S.S. Pipe</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1721635847.webp" alt="Black Pipe"></div><div class="body"><div class="cat">M.S. Pipe</div><h3>Black Pipe</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1695635315.webp" alt="Square Pipe"></div><div class="body"><div class="cat">M.S. Pipe</div><h3>Square Pipe</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1695635395.webp" alt="TMT"></div><div class="body"><div class="cat">M.S. Section</div><h3>TMT</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><img src="https://rajeshhardwares.com/core/storage/app/public/product/1664513880-image.jpg" alt="Checker Plate"></div><div class="body"><div class="cat">Sheets</div><h3>Checker Plate</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article><article class="card"><div class="img"><div style="padding:20px;text-align:center;color:#d4a843;font-weight:700">DHARAMRAJ CARTEL</div></div><div class="body"><div class="cat">Hardware</div><h3>Hardware & Tools</h3><button class="btn" type="button" onclick="alert('Please contact Dharamraj Cartel to enquire about this product.')">Enquire</button></div></article></main>
+<main class="grid" id="grid" aria-live="polite"><p class="empty">Loading products…</p></main>
 <p class="note">Product images are illustrative. Confirm specifications, rates and stock with us before ordering.</p>
 <footer>© <span id="yr"></span> धर्मराज CARTEL. All rights reserved.</footer>
 <script>
 /* Add the official WhatsApp number here before launch: country code first, digits only.
-   The number was not supplied in the project details, so enquiries are safely disabled until configured. */
-const WHATSAPP = "";
-const IMG_BASE = "https://rajeshhardwares.com/core/storage/app/public/product/";
+   Uses the business WhatsApp contact shown on the homepage. */
+const WHATSAPP = "9779845656595";
+const LOCAL_PLACEHOLDER = "./product-placeholder.svg";
 const PRODUCTS = [
- {n:"OPC (Ordinary Portland Cement)",c:"Cement",f:"1753069197.webp"},
- {n:"PPC (Portland Pozzolana Cement)",c:"Cement",f:"1710146546.png"},
- {n:"PSC (Portland Slag Cement)",c:"Cement",f:"1753678747.webp"},
- {n:"Fiber Sheet",c:"Fiber",f:"1715752982.jpg"},
- {n:"Plain Fiber Sheet",c:"Fiber",f:"1753678781.webp"},
- {n:"GI Sheet",c:"G.I. Sheet",f:"1753069245.webp"},
- {n:"G.I. Wire",c:"G.I. Wire",f:"1753069302.webp"},
- {n:"GI Pipe",c:"GI Pipes",f:"1721289505.webp"},
- {n:"S.S. Pipe",c:"Hardware",f:"1753678855.webp"},
+ {n:"OPC (Ordinary Portland Cement)",c:"Cement"},
+ {n:"PPC (Portland Pozzolana Cement)",c:"Cement"},
+ {n:"PSC (Portland Slag Cement)",c:"Cement"},
+ {n:"Fiber Sheet",c:"Fiber"},
+ {n:"Plain Fiber Sheet",c:"Fiber"},
+ {n:"GI Sheet",c:"G.I. Sheet"},
+ {n:"G.I. Wire",c:"G.I. Wire"},
+ {n:"GI Pipe",c:"GI Pipes"},
+ {n:"S.S. Pipe",c:"Hardware"},
  {n:"Hulas Stainless Steel Pipes",c:"Hardware",img:"./hulas-ss-pipes.svg"},
- {n:"S.S. Rod",c:"Hardware",f:"1753678874.webp"},
- {n:"Glass Wool",c:"Hardware",f:"1753678920.webp"},
- {n:"Nails",c:"Hardware",f:"1695634880.webp"},
- {n:"MS Wire Mesh",c:"Hardware",f:"1664513362-image.jpg"},
- {n:"UPVC Tiled Profile",c:"Hardware",f:"1721582542.webp"},
- {n:"UPVC Ridge Cover",c:"Hardware",f:"1664513556-image.jfif"},
- {n:"Black Pipe",c:"M.S. Pipe",f:"1721635847.webp"},
- {n:"Square Pipe",c:"M.S. Pipe",f:"1695635315.webp"},
- {n:"Rectangular Pipe",c:"M.S. Pipe",f:"1664514474-image.jfif"},
- {n:"TMT",c:"M.S. Section",f:"1695635395.webp"},
- {n:"Angle",c:"M.S. Section",f:"1708707624.jpeg"},
- {n:"MS Channel",c:"M.S. Section",f:"1695635599.webp"},
- {n:"Beam",c:"M.S. Section",f:"1708707654.jpg"},
- {n:"Square Rod / Plain Rod",c:"M.S. Section",f:"1708933049.jpg"},
- {n:"Flat",c:"M.S. Section",f:"1753069350.webp"},
- {n:"Checker Plate",c:"Sheets",f:"1664513880-image.jpg"},
- {n:"HR Sheets",c:"Sheets",f:"1707969694-image.jpg"},
- {n:"MS Plates",c:"Sheets",f:"1721582701.webp"},
- {n:"Decking Sheets",c:"Sheets",f:"1753678819.webp"},
- {n:"MS Shutter Spring",c:"Shutter Section",f:"1664515257-image.png"},
- {n:"Side Channel",c:"Shutter Section",f:"1708707963.webp"},
- {n:"Gate Channel",c:"Shutter Section",f:"1664515552-image.jpg"},
- {n:"Shutter Strip",c:"Shutter Section",f:"1708708010.jpg"},
- {n:"Slotted Angle",c:"Slotted Angle",f:"1708708047.jpg"},
- {n:"Welding Rod",c:"Welding Rod",f:"1664515723-image.jpg"},
- {n:"Barbed Wire",c:"Wires",f:"1665568320.jpg"},
- {n:"Binding Wire",c:"Wires",f:"1715752538.jpg"},
- {n:"Concertina Wire",c:"Wires",f:"1715750815.jpg"},
- {n:"Hardware & Tools",c:"Hardware",f:""}
+ {n:"S.S. Rod",c:"Hardware"},
+ {n:"Glass Wool",c:"Hardware"},
+ {n:"Nails",c:"Hardware"},
+ {n:"MS Wire Mesh",c:"Hardware"},
+ {n:"UPVC Tiled Profile",c:"Hardware"},
+ {n:"UPVC Ridge Cover",c:"Hardware"},
+ {n:"Black Pipe",c:"M.S. Pipe"},
+ {n:"Square Pipe",c:"M.S. Pipe"},
+ {n:"Rectangular Pipe",c:"M.S. Pipe"},
+ {n:"TMT",c:"M.S. Section"},
+ {n:"Angle",c:"M.S. Section"},
+ {n:"MS Channel",c:"M.S. Section"},
+ {n:"Beam",c:"M.S. Section"},
+ {n:"Square Rod / Plain Rod",c:"M.S. Section"},
+ {n:"Flat",c:"M.S. Section"},
+ {n:"Checker Plate",c:"Sheets"},
+ {n:"HR Sheets",c:"Sheets"},
+ {n:"MS Plates",c:"Sheets"},
+ {n:"Decking Sheets",c:"Sheets"},
+ {n:"MS Shutter Spring",c:"Shutter Section"},
+ {n:"Side Channel",c:"Shutter Section"},
+ {n:"Gate Channel",c:"Shutter Section"},
+ {n:"Shutter Strip",c:"Shutter Section"},
+ {n:"Slotted Angle",c:"Slotted Angle"},
+ {n:"Welding Rod",c:"Welding Rod"},
+ {n:"Barbed Wire",c:"Wires"},
+ {n:"Binding Wire",c:"Wires"},
+ {n:"Concertina Wire",c:"Wires"},
+ {n:"Hardware & Tools",c:"Hardware"}
 ];
 const grid=document.getElementById("grid");
 const chipsEl=document.getElementById("chips");
@@ -130,7 +130,7 @@ cats.forEach(c=>{
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
 function enquire(name){
  if(!WHATSAPP || !/^\d{8,15}$/.test(WHATSAPP)){
-  alert("WhatsApp enquiry is not configured yet. Please add your business number in products.html.");
+  alert("WhatsApp enquiry could not be opened. Please use the contact details on our homepage.");
   return;
  }
  const message="Namaste, I would like to enquire about: "+name+". Please share price, stock and delivery details.";
@@ -143,7 +143,7 @@ function render(){
  if(!list.length){grid.innerHTML='<p class="empty">No products found. Try another search or category.</p>';return;}
  list.forEach(p=>{
   const card=document.createElement("article");card.className="card";
-  const imageSrc=p.img||(p.f?IMG_BASE+p.f:"");
+  const imageSrc=p.img||LOCAL_PLACEHOLDER;
   const media=imageSrc
    ?'<img loading="lazy" src="'+esc(imageSrc)+'" alt="'+esc(p.n)+'">'
    :'<div style="padding:20px;text-align:center;color:#d4a843;font-weight:700">DHARAMRAJ CARTEL</div>';
