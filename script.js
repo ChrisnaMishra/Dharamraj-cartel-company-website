@@ -191,14 +191,13 @@ if(kitchenProductGrid){
   });
 }
 
-/* Load the real locally hosted product photos generated from Indigo's catalogue.
-   The old cards are only a temporary fallback while the first photo sync runs. */
+/* Load product photos from the local Dharamraj Cartel catalogue. */
 function localCatalogueAsset(relativePath){
   const path=String(relativePath||'').split('/').map(part=>encodeURIComponent(part)).join('/');
-  return new URL('/Dharamraj-cartel-company-website/indigo_images/'+path,window.location.origin).href;
+  return new URL('./product_catalog/'+path,document.baseURI).href;
 }
 
-/* Supplier copy can contain headings as plain text; show the description separately. */
+/* Keep product descriptions readable and separate from feature headings. */
 function cleanProductDescription(value){
   return String(value||'')
     .replace(/^\s*description\s*:?\s*/i,'')
@@ -207,7 +206,7 @@ function cleanProductDescription(value){
     .trim();
 }
 
-function setPhoto(img, primaryPath, fallbackPath, altText, remoteFallback){
+function setPhoto(img, primaryPath, fallbackPath, altText){
   img.src=localCatalogueAsset(primaryPath||fallbackPath||'categories/household-range.webp');
   img.alt=altText;
   img.loading='lazy';
@@ -216,9 +215,6 @@ function setPhoto(img, primaryPath, fallbackPath, altText, remoteFallback){
     if(fallbackPath && img.dataset.usedFallback!=='1'){
       img.dataset.usedFallback='1';
       img.src=localCatalogueAsset(fallbackPath);
-    }else if(remoteFallback && img.dataset.usedRemoteFallback!=='1'){
-      img.dataset.usedRemoteFallback='1';
-      img.src=remoteFallback;
     }else{
       const placeholder=document.createElement('div');
       placeholder.className='kw-photo-fallback';
@@ -233,10 +229,7 @@ async function loadRealKitchenwarePhotos(){
   if(!grid) return;
   try{
     let response;
-    const manifestUrls=[
-      new URL('./indigo_images/products.json',window.location.href).href,
-      new URL('/Dharamraj-cartel-company-website/indigo_images/products.json',window.location.origin).href
-    ];
+    const manifestUrls=[new URL('./product_catalog/products.json',document.baseURI).href];
     let lastError;
     for(const manifestUrl of [...new Set(manifestUrls)]){
       try{
@@ -258,16 +251,12 @@ async function loadRealKitchenwarePhotos(){
     if(!allProducts.length||photoCount===0) throw new Error('No product photographs were found in the manifest yet.');
 
     const firstPhotoByCategory=new Map();
-    const firstRemotePhotoByCategory=new Map();
     for(const group of groups){
       const firstProduct=(group.products||[]).find(product=>Array.isArray(product.images)&&product.images.length);
       if(firstProduct) firstPhotoByCategory.set(group.name,firstProduct.images[0]);
-      const remoteProduct=(group.products||[]).find(product=>Array.isArray(product.image_urls)&&product.image_urls.length);
-      if(remoteProduct) firstRemotePhotoByCategory.set(group.name,remoteProduct.image_urls[0]);
     }
     const overallProduct=allProducts.find(product=>Array.isArray(product.images)&&product.images.length);
     const overallPhoto=overallProduct?.images[0]||'categories/household-range.webp';
-    const overallRemotePhoto=allProducts.find(product=>Array.isArray(product.image_urls)&&product.image_urls.length)?.image_urls[0];
 
     /* Replace every category illustration with a real product photo. */
     document.querySelectorAll('.kw-card[data-category]').forEach(card=>{
@@ -278,16 +267,16 @@ async function loadRealKitchenwarePhotos(){
       if(existing){
         const img=document.createElement('img');
         img.className='kw-art';
-        setPhoto(img,imagePath,categoryPhoto,card.dataset.category+' product photo',firstRemotePhotoByCategory.get(card.dataset.category)||overallRemotePhoto);
+        setPhoto(img,imagePath,categoryPhoto,card.dataset.category+' product photo');
         existing.replaceWith(img);
       }
     });
 
     /* Replace the Home & Kitchen tile photo with a local catalogue collage. */
     const homePhoto=document.querySelector('[data-kitchenware-toggle] .cat-photo img');
-    if(homePhoto) setPhoto(homePhoto,'categories/household-range.webp',overallPhoto,'Kitchenware and household product photos',overallRemotePhoto);
+    if(homePhoto) setPhoto(homePhoto,'categories/household-range.webp',overallPhoto,'Kitchenware and household product photos');
 
-    /* Render every supplier product with its actual local image when available. */
+    /* Render every catalogue product using locally stored images. */
     const fragment=document.createDocumentFragment();
     for(let productIndex=0;productIndex<allProducts.length;productIndex++){
       const product=allProducts[productIndex];
@@ -308,7 +297,7 @@ async function loadRealKitchenwarePhotos(){
       artwork.className='kw-product-art';
       const image=document.createElement('img');
       image.className='kw-product-photo';
-      setPhoto(image,imagePath,categoryPhoto,productName,Array.isArray(product.image_urls)?product.image_urls[0]:overallRemotePhoto);
+      setPhoto(image,imagePath,categoryPhoto,productName);
       artwork.append(image);
 
       const copy=document.createElement('div');
@@ -383,7 +372,7 @@ if(enquiryForm) enquiryForm.addEventListener('submit',e=>{
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.classList.contains('is-open'))close();});
   async function getDetails(){
     if(detailCache) return detailCache;
-    const urls=[new URL('./indigo_images/products.json',window.location.href).href,new URL('/Dharamraj-cartel-company-website/indigo_images/products.json',window.location.origin).href];
+    const urls=[new URL('./product_catalog/products.json',document.baseURI).href];
     let lastError;
     for(const url of [...new Set(urls)]){
       try{
@@ -400,10 +389,10 @@ if(enquiryForm) enquiryForm.addEventListener('submit',e=>{
   }
   function render(detail,card){
     const name=detail.name||card.dataset.product||'Kitchenware product';
-    /* Prefer the image already served by Dharamraj Cartel; supplier-hosted gallery photos follow. */
+    /* Build the gallery exclusively from locally stored images. */
     const cardImage=card.querySelector('.kw-product-photo')?.getAttribute('src')||'';
     const localImages=(detail.images||[]).map(path=>localCatalogueAsset(path));
-    const images=[cardImage,...localImages,...(detail.image_urls||[])];
+    const images=[cardImage,...localImages];
     const uniqueImages=[...new Set(images)].filter(Boolean);
     const firstImage=uniqueImages[0]||'';
     const specs=Array.isArray(detail.specifications)?detail.specifications:[];
