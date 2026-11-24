@@ -559,3 +559,10 @@ footer a:hover{color:var(--cream)}
   .nav-links{gap:clamp(12px,1.8vw,24px);font-size:.72rem;letter-spacing:.06em}
   .nav-cta{padding-left:16px;padding-right:16px;letter-spacing:.08em}
 }
+
+/* Sections hidden until their product lines are approved */
+[hidden]{display:none!important}
+.comp a,.fine a{color:var(--gold);text-decoration:underline}
+.foot-top a{overflow-wrap:anywhere}
+.foot-top .comp a{display:inline;margin:0;padding:0;font-size:inherit}
+@media(min-width:601px) and (max-width:1024px){.cat[data-category="Vehicle & Machinery Parts"]{grid-column:1/-1}}
