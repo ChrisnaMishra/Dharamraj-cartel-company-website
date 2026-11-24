@@ -3,160 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0B0908">
-<title>Products | धर्मराज CARTEL</title>
-<meta name="description" content="Browse construction, steel, and hardware products from Dharamraj Cartel. Search products and enquire about availability.">
-<link rel="icon" type="image/svg+xml" href="./favicon.svg">
-<style>
-:root{--bg:#0B0908;--card:#15120F;--gold:#E4B95B;--maroon:#5a1a1a;--text:#F4EDE0;--muted:#A89F90;--line:rgba(228,185,91,.22)}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.55;overflow-x:hidden}
-a{color:inherit}
-header{display:flex;align-items:center;gap:12px;padding:14px 5%;background:rgba(0,0,0,.94);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
-header img{width:42px;height:42px;object-fit:contain}
-.brand{color:var(--gold);text-decoration:none;font-weight:750;letter-spacing:.5px}
-header nav{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
-header nav a{font-weight:500;color:var(--text);font-size:.93rem;text-decoration:none}
-header nav a:hover{color:var(--gold)}
-.hero{text-align:center;padding:52px 5% 26px}
-.eyebrow{color:var(--gold);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase}
-.hero h1{font-size:clamp(2rem,5vw,3.3rem);color:var(--gold);line-height:1.1;margin-top:10px}
-.hero p{color:var(--muted);margin:12px auto 0;max-width:680px}
-.tools{display:flex;flex-direction:column;gap:14px;align-items:center;padding:10px 5% 26px}
-#search{width:100%;max-width:520px;padding:13px 17px;border-radius:30px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:1rem;outline:none}
-#search:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(228,185,91,.12)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:1100px}
-.chip{padding:7px 15px;border-radius:30px;border:1px solid var(--line);background:transparent;color:var(--gold);cursor:pointer;font-size:.88rem}
-.chip.active,.chip:hover{background:var(--gold);color:#0B0908}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:18px;padding:10px 5% 64px;max-width:1400px;margin:auto}
-.card{background:var(--card);border:1px solid #2c2620;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .2s,border-color .2s}
-.card:hover{transform:translateY(-3px);border-color:var(--gold)}
-.card .img{aspect-ratio:4/3;background:#f7f4ef;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.card img{width:100%;height:100%;object-fit:contain;color:#333;font-size:.8rem}
-.card .body{padding:14px;display:flex;flex-direction:column;gap:7px;flex:1}
-.card .cat{font-size:.7rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
-.card h3{font-size:1rem;line-height:1.35}
-.btn{margin-top:auto;display:block;text-align:center;padding:10px;border-radius:8px;background:var(--maroon);color:var(--text);text-decoration:none;font-weight:650;border:1px solid var(--gold);cursor:pointer}
-.btn:hover{background:var(--gold);color:#000}
-.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px}
-.note{text-align:center;color:var(--muted);font-size:.82rem;padding:0 5% 28px}
-footer{text-align:center;padding:24px 5%;color:var(--muted);border-top:1px solid #2c2620;font-size:.85rem}
-@media(max-width:520px){header{padding:12px 4%;gap:9px}header img{width:34px;height:34px}.brand{font-size:.9rem}header nav{gap:10px}header nav a{font-size:.82rem}.hero{padding-top:38px}.grid{gap:12px;padding-left:4%;padding-right:4%}}
-</style>
+<title>Products | Dharamraj Cartel</title>
+<meta name="description" content="Dharamraj Cartel, Lalitpur, Nepal. Import, export and wholesale of electrical goods and electronics, hardware, construction materials, vehicle spare parts and machinery parts.">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg?v=2">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="./style.css?v=3">
 </head>
 <body>
-<header>
-  <img src="./favicon.svg" alt="Dharamraj Cartel Kalash logo">
-  <a class="brand" href="./index.html">धर्मराज CARTEL</a>
-  <nav aria-label="Main navigation">
-    <a href="./index.html">Home</a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="brand" href="./index.html"><img src="./favicon.svg" alt="" width="46" height="37"><span>Dharamraj Cartel</span></a>
+  <nav aria-label="Main">
+    <a href="./index.html#trade">What we trade</a>
     <a href="./products.html" aria-current="page">Products</a>
+    <a href="./index.html#contact">Contact</a>
   </nav>
 </header>
-<section class="hero">
-  <div class="eyebrow">Construction · Steel · Hardware</div>
-  <h1>Our Products</h1>
-  <p>Browse our product range. Tap Enquire to ask about price, availability and delivery before placing an order.</p>
-</section>
-<div class="tools">
-  <input id="search" type="search" placeholder="Search products (e.g. TMT, wire, pipe)" aria-label="Search products">
-  <div class="chips" id="chips" aria-label="Filter by category"></div>
-</div>
-<main class="grid" id="grid" aria-live="polite"><p class="empty">Loading products…</p></main>
-<p class="note">Product images are illustrative. Confirm specifications, rates and stock with us before ordering.</p>
-<footer>© <span id="yr"></span> धर्मराज CARTEL. All rights reserved.</footer>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <h1>Products</h1>
+    <p>Hardware and construction materials. Ask us about price, specification, stock and delivery before ordering.</p>
+  </div></section>
+  <div class="wrap">
+    <div class="tools">
+      <label>Search<input id="search" type="search"></label>
+      <label>Group<select id="group"><option value="">All groups</option></select></label>
+    </div>
+    <p id="count" class="small" aria-live="polite"></p>
+    <ul class="goods" id="goods"></ul>
+  </div>
+</main>
+<footer id="contact">
+  <div class="wrap foot">
+    <div>
+      <h2>Contact</h2>
+      <p><a href="tel:+9779845656595">+977 9845656595</a><br>
+      <a href="https://wa.me/9779845656595" target="_blank" rel="noopener noreferrer">WhatsApp</a><br>
+      <a href="mailto:dharamrajcartel@gmail.com">dharamrajcartel@gmail.com</a></p>
+      <p>Complaints: <a href="tel:+9779845656595">+977 9845656595</a></p>
+    </div>
+    <div>
+      <h2>Registered firm</h2>
+      <p>Dharamraj Cartel<br>Firm Reg. No. 001-2880<br>Department of Commerce, Supplies and Consumer Protection<br>Proprietor: Krishna Mishra</p>
+      <p>Lalitpur Metropolitan City-25, Sainbu, Lalitpur, Nepal</p>
+      <p>We sell directly. We are not a marketplace.</p>
+    </div>
+    <div>
+      <h2>Policies</h2>
+      <p><a href="./legal.html">Terms</a><br><a href="./legal.html#privacy">Privacy</a><br><a href="./legal.html#returns">Returns</a><br><a href="./legal.html#complaints">Complaints</a></p>
+    </div>
+  </div>
+  <p class="wrap small">© 2026 Dharamraj Cartel</p>
+</footer>
 <script>
-/* Add the official WhatsApp number here before launch: country code first, digits only.
-   Uses the business WhatsApp contact shown on the homepage. */
-const WHATSAPP = "9779845656595";
-const LOCAL_PLACEHOLDER = "./product-placeholder.svg";
-const PRODUCTS = [
- {n:"OPC (Ordinary Portland Cement)",c:"Cement"},
- {n:"PPC (Portland Pozzolana Cement)",c:"Cement"},
- {n:"PSC (Portland Slag Cement)",c:"Cement"},
- {n:"Fiber Sheet",c:"Fiber"},
- {n:"Plain Fiber Sheet",c:"Fiber"},
- {n:"GI Sheet",c:"G.I. Sheet"},
- {n:"G.I. Wire",c:"G.I. Wire"},
- {n:"GI Pipe",c:"GI Pipes"},
- {n:"S.S. Pipe",c:"Hardware"},
- {n:"Hulas Stainless Steel Pipes",c:"Hardware",img:"./hulas-ss-pipes.svg"},
- {n:"S.S. Rod",c:"Hardware"},
- {n:"Glass Wool",c:"Hardware"},
- {n:"Nails",c:"Hardware"},
- {n:"MS Wire Mesh",c:"Hardware"},
- {n:"UPVC Tiled Profile",c:"Hardware"},
- {n:"UPVC Ridge Cover",c:"Hardware"},
- {n:"Black Pipe",c:"M.S. Pipe"},
- {n:"Square Pipe",c:"M.S. Pipe"},
- {n:"Rectangular Pipe",c:"M.S. Pipe"},
- {n:"TMT",c:"M.S. Section"},
- {n:"Angle",c:"M.S. Section"},
- {n:"MS Channel",c:"M.S. Section"},
- {n:"Beam",c:"M.S. Section"},
- {n:"Square Rod / Plain Rod",c:"M.S. Section"},
- {n:"Flat",c:"M.S. Section"},
- {n:"Checker Plate",c:"Sheets"},
- {n:"HR Sheets",c:"Sheets"},
- {n:"MS Plates",c:"Sheets"},
- {n:"Decking Sheets",c:"Sheets"},
- {n:"MS Shutter Spring",c:"Shutter Section"},
- {n:"Side Channel",c:"Shutter Section"},
- {n:"Gate Channel",c:"Shutter Section"},
- {n:"Shutter Strip",c:"Shutter Section"},
- {n:"Slotted Angle",c:"Slotted Angle"},
- {n:"Welding Rod",c:"Welding Rod"},
- {n:"Barbed Wire",c:"Wires"},
- {n:"Binding Wire",c:"Wires"},
- {n:"Concertina Wire",c:"Wires"},
- {n:"Hardware & Tools",c:"Hardware"}
+const GOODS = [
+{n:"OPC (Ordinary Portland Cement)",c:"Cement"},
+{n:"PPC (Portland Pozzolana Cement)",c:"Cement"},
+{n:"PSC (Portland Slag Cement)",c:"Cement"},
+{n:"Fiber Sheet",c:"Fiber"},
+{n:"Plain Fiber Sheet",c:"Fiber"},
+{n:"GI Sheet",c:"G.I. Sheet"},
+{n:"G.I. Wire",c:"G.I. Wire"},
+{n:"GI Pipe",c:"GI Pipes"},
+{n:"S.S. Pipe",c:"Hardware"},
+{n:"S.S. Rod",c:"Hardware"},
+{n:"Glass Wool",c:"Hardware"},
+{n:"Nails",c:"Hardware"},
+{n:"MS Wire Mesh",c:"Hardware"},
+{n:"UPVC Tiled Profile",c:"Hardware"},
+{n:"UPVC Ridge Cover",c:"Hardware"},
+{n:"Black Pipe",c:"M.S. Pipe"},
+{n:"Square Pipe",c:"M.S. Pipe"},
+{n:"Rectangular Pipe",c:"M.S. Pipe"},
+{n:"TMT",c:"M.S. Section"},
+{n:"Angle",c:"M.S. Section"},
+{n:"MS Channel",c:"M.S. Section"},
+{n:"Beam",c:"M.S. Section"},
+{n:"Square Rod / Plain Rod",c:"M.S. Section"},
+{n:"Flat",c:"M.S. Section"},
+{n:"Checker Plate",c:"Sheets"},
+{n:"HR Sheets",c:"Sheets"},
+{n:"MS Plates",c:"Sheets"},
+{n:"Decking Sheets",c:"Sheets"},
+{n:"MS Shutter Spring",c:"Shutter Section"},
+{n:"Side Channel",c:"Shutter Section"},
+{n:"Gate Channel",c:"Shutter Section"},
+{n:"Shutter Strip",c:"Shutter Section"},
+{n:"Slotted Angle",c:"Slotted Angle"},
+{n:"Welding Rod",c:"Welding Rod"},
+{n:"Barbed Wire",c:"Wires"},
+{n:"Binding Wire",c:"Wires"},
+{n:"Concertina Wire",c:"Wires"},
+{n:"Hardware & Tools",c:"Hardware"}
 ];
-const grid=document.getElementById("grid");
-const chipsEl=document.getElementById("chips");
-const searchEl=document.getElementById("search");
-let activeCat="All";
-const cats=["All",...new Set(PRODUCTS.map(p=>p.c))];
-cats.forEach(c=>{
- const b=document.createElement("button");
- b.type="button";b.className="chip"+(c==="All"?" active":"");b.textContent=c;
- b.setAttribute("aria-pressed",String(c==="All"));
- b.addEventListener("click",()=>{
-  activeCat=c;
-  document.querySelectorAll(".chip").forEach(x=>{const on=x===b;x.classList.toggle("active",on);x.setAttribute("aria-pressed",String(on));});
-  render();
- });
- chipsEl.appendChild(b);
-});
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
-function enquire(name){
- if(!WHATSAPP || !/^\d{8,15}$/.test(WHATSAPP)){
-  alert("WhatsApp enquiry could not be opened. Please use the contact details on our homepage.");
-  return;
- }
- const message="Namaste, I would like to enquire about: "+name+". Please share price, stock and delivery details.";
- window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
-}
-function render(){
- const q=searchEl.value.trim().toLowerCase();
- const list=PRODUCTS.filter(p=>(activeCat==="All"||p.c===activeCat)&&(!q||(p.n+" "+p.c).toLowerCase().includes(q)));
- grid.innerHTML="";
- if(!list.length){grid.innerHTML='<p class="empty">No products found. Try another search or category.</p>';return;}
- list.forEach(p=>{
-  const card=document.createElement("article");card.className="card";
-  const imageSrc=p.img||LOCAL_PLACEHOLDER;
-  const media=imageSrc
-   ?'<img loading="lazy" src="'+esc(imageSrc)+'" alt="'+esc(p.n)+'">'
-   :'<div style="padding:20px;text-align:center;color:#d4a843;font-weight:700">DHARAMRAJ CARTEL</div>';
-  card.innerHTML='<div class="img">'+media+'</div><div class="body"><div class="cat">'+esc(p.c)+'</div><h3>'+esc(p.n)+'</h3><button class="btn" type="button">Enquire on WhatsApp</button></div>';
-  const productImage=card.querySelector(".img img");
-  if(productImage) productImage.addEventListener("error",()=>{productImage.style.display="none";productImage.parentElement.style.background="#211a10";});
-  card.querySelector("button").addEventListener("click",()=>enquire(p.n));
-  grid.appendChild(card);
- });
-}
-searchEl.addEventListener("input",render);
-document.getElementById("yr").textContent=new Date().getFullYear();
-render();
 </script>
+<script src="./script.js?v=3"></script>
 </body>
 </html>
