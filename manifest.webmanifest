@@ -1,12 +1,12 @@
 {
   "name": "Dharamraj Cartel",
   "short_name": "Dharamraj",
-  "description": "Retail, wholesale supply and import sourcing from India and China.",
+  "description": "Import, export and wholesale, Nepal.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#11141b",
-  "theme_color": "#11141b",
+  "background_color": "#2b070b",
+  "theme_color": "#2b070b",
   "icons": [
     {
       "src": "favicon.svg",
