@@ -1,7 +1,7 @@
 /* Accessible hero slider: auto-rotates, with manual controls and reduced-motion support */
 (function(){
  const slides=[
-  {kicker:'Retail · Wholesale · Global sourcing',one:'Trade Beyond',two:'Borders',sub:'Premium sourcing from India & China for businesses — electronics, hardware, construction materials, spare parts & machinery parts — and a curated store of pooja samagri, electronics & lifestyle goods for everyone.'},
+  {kicker:'Retail · Wholesale · Global sourcing',one:'Trade Beyond',two:'Borders',sub:'Premium sourcing from India & China for businesses — electronics, hardware, construction materials, spare parts & machinery parts.'},
   {kicker:'Sourcing from India & China',one:'Global Products',two:'Closer to Home',sub:'Discover products, compare requirements and build reliable supply for homes, retailers and businesses across Nepal.'},
   {kicker:'Built for retailers and growing businesses',one:'Source Smart.',two:'Grow Together.',sub:'From product enquiries to bulk sourcing and dealer partnerships, Dharamraj Cartel connects demand with dependable supply.'}
  ];
