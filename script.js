@@ -1,11 +1,11 @@
 const PHONE = '9779845656595';
 const NE = document.documentElement.lang === 'ne';
 const T = NE ? {
-  hello: 'नमस्ते धर्मराज कार्टेल, मलाई मूल्य चाहियो।', name: 'नाम: ', biz: 'व्यवसाय: ', line: 'सामानको किसिम: ', qty: 'परिमाण: ', details: 'विवरण: ',
+  hello: 'नमस्ते धर्मराज कार्टेल, मलाई मूल्य चाहियो।', name: 'नाम: ', biz: 'व्यवसाय: ', line: 'सामानको किसिम: ', qty: 'परिमाण: ', details: 'विवरण: ', src: 'हामीबारे कहाँबाट थाहा पाउनुभयो: ',
   ask: 'मूल्य सोध्नुहोस्', askLabel: n => n + ' को मूल्य सोध्नुहोस्', askMsg: 'नमस्ते धर्मराज कार्टेल, कृपया यसको मूल्य, स्टक र डेलिभरी बताउनुहोस्: ',
   count: n => n + ' वटा सामान', none: 'मिल्ने सामान भेटिएन। अर्को शब्द वा समूह प्रयोग गर्नुहोस्।'
 } : {
-  hello: 'Namaste Dharamraj Cartel, I would like a price.', name: 'Name: ', biz: 'Business: ', line: 'Product line: ', qty: 'Quantity: ', details: 'Details: ',
+  hello: 'Namaste Dharamraj Cartel, I would like a price.', name: 'Name: ', biz: 'Business: ', line: 'Product line: ', qty: 'Quantity: ', details: 'Details: ', src: 'Heard about us via: ',
   ask: 'Ask price', askLabel: n => 'Ask the price of ' + n, askMsg: 'Namaste Dharamraj Cartel, please share price, stock and delivery for: ',
   count: n => n + ' products', none: 'No products match. Try another word or group.'
 };
@@ -25,6 +25,7 @@ if (form) {
       T.biz + (value('f-biz') || '-'),
       T.line + value('f-line'),
       T.qty + (value('f-qty') || '-'),
+      T.src + (value('f-src') || '-'),
       T.details + value('f-msg')
     ];
     window.open(whatsapp(lines.join('\n')), '_blank', 'noopener,noreferrer');
