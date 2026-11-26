@@ -78,6 +78,26 @@ footer a{overflow-wrap:anywhere}
 .goods strong{font-weight:600}
 .goods span{color:var(--muted)}
 .goods a{color:var(--red);font-weight:600}
+.section-lead{margin-top:12px;color:var(--muted);max-width:40em}
+.tiles{list-style:none;padding:0;margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.tiles a{display:flex;flex-direction:column;gap:10px;height:100%;padding:24px;border:1px solid var(--line);border-radius:10px;text-decoration:none;background:#fff;transition:border-color .15s,box-shadow .15s}
+.tiles a:hover{border-color:var(--gold);box-shadow:0 8px 24px #2b070b14}
+.tile-ico{width:44px;height:44px;padding:9px;border-radius:10px;background:var(--tint);color:var(--red)}
+.tiles h3{font-size:1.25rem;color:var(--red)}
+.tiles p{color:var(--muted);font-size:.98rem;flex:1}
+.tile-more{font-weight:600;color:var(--ink)}
+.about{padding:88px 0 0}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px 36px;margin-top:32px}
+.about-grid div{border-left:4px solid var(--gold);padding-left:18px}
+.about-grid h3{font-size:1.2rem;margin-bottom:6px}
+.about-grid p{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;padding-top:32px}
+.chips button{padding:9px 16px;border:1px solid #a98b8d;border-radius:999px;background:#fff;color:var(--ink);font:inherit;font-size:.98rem;cursor:pointer}
+.chips button:hover{border-color:var(--ink)}
+.chips button[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff}
+.listcta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;margin:-48px 0 88px;padding:32px;border-radius:12px;background:var(--tint)}
+.listcta h2{font-size:1.5rem}
+.listcta p{margin-top:6px;color:var(--muted);max-width:34em}
 .legal{max-width:760px;padding:24px 0 80px}
 .legal h2{font-size:1.4rem;margin:36px 0 10px}
 
