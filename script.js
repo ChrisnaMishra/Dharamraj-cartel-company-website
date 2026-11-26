@@ -1,4 +1,14 @@
 const PHONE = '9779845656595';
+const NE = document.documentElement.lang === 'ne';
+const T = NE ? {
+  hello: 'नमस्ते धर्मराज कार्टेल, मलाई मूल्य चाहियो।', name: 'नाम: ', biz: 'व्यवसाय: ', line: 'सामानको किसिम: ', qty: 'परिमाण: ', details: 'विवरण: ',
+  ask: 'मूल्य सोध्नुहोस्', askLabel: n => n + ' को मूल्य सोध्नुहोस्', askMsg: 'नमस्ते धर्मराज कार्टेल, कृपया यसको मूल्य, स्टक र डेलिभरी बताउनुहोस्: ',
+  count: n => n + ' वटा सामान', none: 'मिल्ने सामान भेटिएन। अर्को शब्द वा समूह प्रयोग गर्नुहोस्।'
+} : {
+  hello: 'Namaste Dharamraj Cartel, I would like a price.', name: 'Name: ', biz: 'Business: ', line: 'Product line: ', qty: 'Quantity: ', details: 'Details: ',
+  ask: 'Ask price', askLabel: n => 'Ask the price of ' + n, askMsg: 'Namaste Dharamraj Cartel, please share price, stock and delivery for: ',
+  count: n => n + ' products', none: 'No products match. Try another word or group.'
+};
 const whatsapp = text => 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(text);
 
 const form = document.getElementById('form');
@@ -10,12 +20,12 @@ if (form) {
   form.addEventListener('submit', event => {
     event.preventDefault();
     const lines = [
-      'Namaste Dharamraj Cartel, I would like a price.',
-      'Name: ' + value('f-name'),
-      'Business: ' + (value('f-biz') || '-'),
-      'Product line: ' + value('f-line'),
-      'Quantity: ' + (value('f-qty') || '-'),
-      'Details: ' + value('f-msg')
+      T.hello,
+      T.name + value('f-name'),
+      T.biz + (value('f-biz') || '-'),
+      T.line + value('f-line'),
+      T.qty + (value('f-qty') || '-'),
+      T.details + value('f-msg')
     ];
     window.open(whatsapp(lines.join('\n')), '_blank', 'noopener,noreferrer');
   });
@@ -59,15 +69,15 @@ if (list) {
       const ask = document.createElement('a');
       name.textContent = g.n;
       cat.textContent = g.c;
-      ask.textContent = 'Ask price';
-      ask.setAttribute('aria-label', 'Ask the price of ' + g.n);
-      ask.href = whatsapp('Namaste Dharamraj Cartel, please share price, stock and delivery for: ' + g.n);
+      ask.textContent = T.ask;
+      ask.setAttribute('aria-label', T.askLabel(g.n));
+      ask.href = whatsapp(T.askMsg + g.n);
       ask.target = '_blank';
       ask.rel = 'noopener noreferrer';
       li.append(name, cat, ask);
       return li;
     }));
-    count.textContent = found.length ? found.length + ' products' : 'No products match. Try another word or group.';
+    count.textContent = found.length ? T.count(found.length) : T.none;
   };
 
   const setLine = value => {

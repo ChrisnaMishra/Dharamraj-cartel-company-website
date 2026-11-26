@@ -32,3 +32,13 @@ Enter item names, quantities, unit prices, a discount percentage, and the applic
 ## Important deployment note
 
 GitHub Pages serves the existing static HTML website. The Python and C++ programs are offline maintenance/business tools; they do not run as part of the live website. A live Python backend or compiled C++ service would need a separate host and an explicit integration plan.
+
+## Python: build the Nepali pages
+
+The Nepali site (`ne/index.html`, `ne/products.html`, `ne/legal.html`) is generated from the English pages:
+
+```bash
+python3 tools/build_nepali.py
+```
+
+Run it after changing any English page. It stops with an error that names the line if an English sentence it translates has changed, so you can add the new Nepali wording to the script first. Product names in `goods.js` stay in English on both versions.
