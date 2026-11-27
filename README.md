@@ -4,7 +4,8 @@ Official website repository for Dharamraj Cartel.
 
 ## Website
 
-- Live website: https://chrisnamishra.github.io/Dharamraj-cartel-company-website/
+- Live website: https://www.dharamrajcartel.com.np/
+- Nepali version: https://www.dharamrajcartel.com.np/ne/
 - `index.html` — homepage, retail Store, sourcing information, enquiry form and contact.
 - `products.html` — searchable/filterable construction and hardware catalogue.
 
